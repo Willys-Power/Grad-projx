@@ -83,7 +83,7 @@ button {
     margin: 20px 10px;
     border-radius: 25px;
     font-weight: bold;
-    border: 2px solid #f37521;
+    border: 2px solid #f28f3b;
     background: transparent;
     color: #ffff;
     cursor: pointer;
@@ -92,7 +92,7 @@ button {
 }
 
 span {
-    background: #f37521;
+    background: #f28f3b;
     width: 0;
     height: 100%;
     border-radius: 25px;
