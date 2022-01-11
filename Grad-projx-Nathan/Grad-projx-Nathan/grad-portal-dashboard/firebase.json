@@ -9,7 +9,7 @@
         ],
         "rewrites": [{
             "source": "**",
-            "destination": "/pages/404.html"
+            "destination": "/index.html"
         }]
     }
 }
