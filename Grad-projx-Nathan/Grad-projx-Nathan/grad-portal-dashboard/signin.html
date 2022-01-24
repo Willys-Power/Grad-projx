@@ -24,7 +24,7 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" />
             </div>
-            <a href="#">Forgot Password?</a>
+            <a href="forgot.html">Forgot Password?</a>
             <input type="submit" value="Login" class="btn solid" />
             <!-- <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
@@ -46,21 +46,25 @@
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Name" id="username"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Surname" id="userSurname"/>
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" id="email"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" id="password"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Confirm Password" />
+              <input type="password" placeholder="Confirm Password"  id="confirmPass"/>
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+            <input type="submit" class="btn" value="Sign up" id="sendData"/>
             <!-- <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -109,5 +113,59 @@
     </div>
 
     <script src="app.js"></script>
+    <script type="module" id="MainScript">
+
+            import {initializeApp} from './firebase/app';
+
+            const firebaseConfig = {
+            apiKey: "AIzaSyBjb2q8JxIgOtA5c8vbH54aD6axYjt3ujc",
+            authDomain: "mindworx-grad.firebaseapp.com",
+            databaseURL: "https://mindworx-grad-default-rtdb.firebaseio.com/",
+            projectId: "mindworx-grad",
+            storageBucket: "mindworx-grad.appspot.com",
+            messagingSenderId: "632704211807",
+            appId: "1:632704211807:web:d2f599fe23015e9f9934ea"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            
+            username,email,password,confirmPass,surname;
+
+            function Ready(){
+
+              username = document.getElementById("username");
+              surname = document.getElementById("userSurname");
+              email = document.getElementById("email");
+              password = document.getElementById("password");
+              confirmPass = document.getElementById("confirmPass");
+              
+              alert("Values assigned");
+            }
+
+
+           // -------------------------Insert---------------------------------
+
+           document.getElementByClass("btn").onclick = function(){
+             Ready;
+
+             if(password.localeCompare(confirmPass) == 0){
+
+              firebase.database().ref('graduate/'+email).set({
+               Email:email,
+               Username: username,
+               surname: userSurname,
+               Passsword: password,
+               
+             });
+
+             alert("Sign up succesful");
+
+             }else{
+               alert("Password does not match");
+             }
+           }
+
+            </script>
   </body>
 </html>
