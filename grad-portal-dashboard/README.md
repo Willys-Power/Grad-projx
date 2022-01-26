@@ -1,1 +1,0 @@
-# Mindworx Graduates Portal
