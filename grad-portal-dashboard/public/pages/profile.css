@@ -214,17 +214,14 @@ section {
   font-size: 2rem;
   color: var(--f28f3b);
   border-radius: 0.5rem;
+ 
   
 }
-.fab a:hover {
-  background-color : #f28f3b;
-}
+
 
 .home .share a:hover {
   box-shadow: var(--box-shadow-inset);
   color: var(--f28f3b);
-  
-
 }
 
 .about .row {
