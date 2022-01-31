@@ -215,8 +215,6 @@ section {
   color: var(--f28f3b);
   border-radius: 0.5rem;
   
- 
-  
 }
 
 
@@ -532,6 +530,6 @@ section {
     border-right: 0;
   }
 }
-a:visited {
+a.visited {
   background:#59585B;
 }
