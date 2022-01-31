@@ -530,6 +530,11 @@ section {
     border-right: 0;
   }
 }
-a.visited {
-  background:#59585B;
+
+a:active {
+  color: #59585B;
+}
+a[tabindex]:focus {
+  color: #59585B;
+  outline: none;
 }
