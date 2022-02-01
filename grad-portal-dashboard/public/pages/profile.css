@@ -220,7 +220,7 @@ section {
 
 .home .share a:hover {
   box-shadow: var(--box-shadow-inset);
-  color: var(--f28f3b);
+  color: #f28f3b;
 }
 
 .about .row {
