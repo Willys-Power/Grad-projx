@@ -123,12 +123,13 @@ section {
   font-size: 2rem;
   box-shadow: var(--box-shadow);
   color: var(--black);
+  
 }
 
 .header .navbar a:hover {
   box-shadow: var(--box-shadow-inset);
   color: var(--f37521);
-  background-color: #f28f3b;
+ 
 }
 
 #menu-btn {
