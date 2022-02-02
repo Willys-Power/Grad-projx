@@ -1329,4 +1329,17 @@
       </div>
     </div>
   </body>
+  <script>
+
+  //----------------references---------------
+  let KeepLoggedIn = localStorage.getItem("KeepLoggedIn");
+  let signOut = document.getElementById("signOut");
+  var currentUser = null;
+
+  if(KeepLoggedIn == "yes"){
+    currentUser = JSON.parse(localStorage.getItem('user'));
+  }
+  </script>
+
+
 </html>
