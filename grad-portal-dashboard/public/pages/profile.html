@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>complete responsive personal portfolio website desgin</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- custom css file link  -->
     <link rel="stylesheet" href="profile.css">
 
@@ -18,6 +19,7 @@
 <!-- header section starts  -->
 
 <header class="header">
+    
 
     <div class="user">
         <img src="https://mindworx.co.za/wp-content/uploads/2020/10/mindworx-logo-img.png" alt="">
@@ -29,8 +31,6 @@
         <a href="#home">home</a>
         <a href="#about">about</a>
         <a href="#services">services</a>
-        <a href="#portfolio">portfolio</a>
-        <a href="#contact">contact</a>
     </nav>
 
 </header>
@@ -42,9 +42,16 @@
 
 
 <!-- home section starts  -->
-
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+     
+    </div>
+  </div>
 <section class="home" id="home">
-
+    
     <div class="content">
         <h3>Princess Sibanda</h3>
         <p>I am a front-end developer</p>
@@ -172,79 +179,6 @@
 
 </section>
 
-<!-- services section ends -->
-
-<!-- portfolio section starts  -->
-
-<section class="portfolio" id="portfolio">
-
-    <h1 class="heading"> My <span>portfolio</span> </h1>
-
-    <div class="box-container">
-
-        <div class="box">
-            <img src="image/img-1.jpg" alt="">
-            <div class="content">
-                <h3>Project 01</h3>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="image/img-2.jpg" alt="">
-            <div class="content">
-                <h3>Project 02</h3>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="image/img-3.jpg" alt="">
-            <div class="content">
-                <h3>Project 03</h3>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="image/img-4.jpg" alt="">
-            <div class="content">
-                <h3>Project 04</h3>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="image/img-5.jpg" alt="">
-            <div class="content">
-                <h3>Project 05</h3>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="image/img-6.jpg" alt="">
-            <div class="content">
-                <h3>Project 06</h3>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- portfolio section ends -->
-
-<!-- contact section starts -->
-
-<section class="contact" id="contact">
-
-    <h1 class="heading"> <span>Contact</span> me </h1>
-
-    <form action="">
-        <input type="text" placeholder="your name" class="box">
-        <input type="email" placeholder="your email" class="box">
-        <input type="text" placeholder="subject" class="box">
-        <textarea name="" class="box" placeholder="your message" id="" cols="30" rows="10"></textarea>
-        <input type="submit" value="send message" class="btn">
-    </form>
-
-</section>
 
 <!-- contact section ends -->
 
