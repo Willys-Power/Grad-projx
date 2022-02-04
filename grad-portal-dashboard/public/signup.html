@@ -18,11 +18,11 @@
           <h2 class="title">Sign in</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Username" />
+            <input type="text" placeholder="Username" id="signUsername"/>
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" id="signInpass" />
           </div>
           <a href="./pages/forgot-password.html">Forgot Password?</a>
           
@@ -268,21 +268,31 @@ alert("Trouble in paradise !! "+error.message)
 function LoginAuth(){
 
   const dbRef = ref(database);
+  const pass = document.getElementById("signInpass");
+  const usernameSignin = (document.getElementById("signUsername").value).toLowerCase();
 
-  get(child(dbRef, "UserList/"+username.value)).then((snapshort)=>{
+
+  get(child(dbRef, "UserList/"+usernameSignin)).then((snapshort)=>{
     
     if(snapshort.exists()){
+      
       let dbpassword = snapshort.val().password;
-      if(dbpassword= password){
+      if(dbpassword == pass.value){
+        alert(snapshort.val());
         login(snapshort.val());
+        alert("User signedIn successfully!")
+      }else{
+        alert("Incorrect credentials");
+        return;
       }
     }
     else{
       
+      alert("Incorect Username")
     }
   }).then(()=>
   {
-    alert("User signedIn successfully!")
+    
   }).catch(function(error){
 
 
@@ -318,13 +328,9 @@ function myFunction() {
 }
 
 // -------------------------Insert---------------------------------
-function addAdministrator(){
-
-}
 
 sign_up_act.addEventListener("click",RegisterUser);
 signIn.addEventListener("click",LoginAuth);
-addAdmin.addEventListener("click",addAdministrator);
 
 
 </script>
