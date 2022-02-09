@@ -8695,7 +8695,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #1F1F1F;
-  background-color: red !important;
+  background-color: wheat !important;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -30335,7 +30335,7 @@ div.tagsinput span.tag a {
 
 @media (min-width: 992px) {
   .boxed-layout .container-scroller {
-    background: red;
+    background: gray;
     padding: 0 calc((100% - 1200px) / 2);
   }
   .boxed-layout .navbar.fixed-top {
