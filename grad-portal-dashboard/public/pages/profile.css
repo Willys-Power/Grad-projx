@@ -546,13 +546,7 @@ a:active {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-body {
-  margin: 0;
-  background: #59585B;
-  color: #59585B;
-  font-family: sans-serif;
-  line-height: 1.5;
-}
+
 ul {
   list-style: none;
   padding: 0;
@@ -563,10 +557,10 @@ ul {
   width: 75%;
   min-height: 90px;
   padding: 1em 2em;
-  border: 2px solid #f28f3b;
+  border: 2px solid #f4f4f4;
   border-top: none;
   border-radius: 0 0 5px 5px;
-  background: #f28f3b;
+  background: #f4f4f4;
 }
   .main-header:after {
     content: " ";
@@ -578,7 +572,7 @@ ul {
   text-decoration: none;
   float: left;
   margin-top: 14px;
-  color: #59585B;
+  color: #f28f3b;
   font-size: 1.4em;
 }
 
@@ -613,7 +607,7 @@ ul {
 }
 .dropdown:after {
   content: "\25bc";
-  font-size: .5em;
+  font-size: 1em;
   display: block;
   position: absolute;
   top: 38%;
