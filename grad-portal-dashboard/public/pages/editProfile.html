@@ -103,7 +103,7 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label" >Full Name</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="fullname"/>
+                    <input type="text" class="form-control" id="fullName"/>
                   </div>
                 </div>
               </div>
@@ -267,16 +267,16 @@ const updateGrad = document.getElementById("save");
   
   //---------------------References-----------------------//
   
-  fullname = document.getElementById("fullname");
+  fullname = document.getElementById("fullName").value;
   email = document.getElementById("email");
-  gender = document.getElementById("gender");
-  address = document.getElementById("address");
-  country = document.getElementById("country");
-  city = document.getElementById("city");
-  province = document.getElementById("province");
-  DOB  = document.getElementById("DOB");
-  course = document.getElementById("course");
-  qualification = document.getElementById("qualification");
+  gender = document.getElementById("gender").value;
+  address = document.getElementById("address").value;
+  country = document.getElementById("country").value;
+  city = document.getElementById("city").value;
+  province = document.getElementById("province").value;
+  DOB  = document.getElementById("DOB").value;
+  course = document.getElementById("course").value;
+  qualification = document.getElementById("qualification").value;
 
   
   
@@ -323,25 +323,34 @@ const updateGrad = document.getElementById("save");
   
     /*if(!validate()){
       return;
-    }
+    }*/
     alert(email.value+ " "+email)
     
     const postdata = {
-          email : email.value,
-          full_name : fullname.value,
-          Role : "general_user",
-          
+          gender : gender,
+          address :address,
+          country :country,
+          city : city,
+          province : province,
+          DOB  : DOB,
+          course : course,
+          qualification : qualification
           
     }
+    /*
+    fullname is Neo
+    postdata is {gende:"female"}
+    */
    
     const updateData = {};
+    console.log("fullname is "+fullname+ "\n postdata is "+postdata["gender"]);
     updateData['/UserList/'+fullname] = postdata;
     const dbRef = ref(database);
     
-    return update(ref(database),updateData)
-    alert("User updated");*/
+    return update(dbRef,updateData);
+    alert("User updated");
 
-    const dbRef = ref(database);
+    /*const dbRef = ref(database);
     get(child(dbRef, "UserList/"+fullname.value)).then((snapshort)=>{
       
       if(snapshort.exists()){
@@ -377,22 +386,40 @@ const updateGrad = document.getElementById("save");
   alert("Trouble in paradise !! "+error.message)
   
   })
-  
+  */
   
   }
+  function IsNullOrEmpty(value) {
+    return value == null || value === "" || typeof value === "undefined";
+}
 
   //--------------------------getData--------------------
   function getUserData(){
-    const dbRef = ref(database);
+
+    
+    document.getElementById("fullName").value = localStorage.getItem('username');
+    document.getElementById("email").value = localStorage.getItem('email');
+    document.getElementById("gender").value = IsNullOrEmpty( localStorage.getItem('gender'))? document.getElementById("gender").value : localStorage.getItem('gender');
+    document.getElementById("address").value = IsNullOrEmpty( localStorage.getItem('address'))? document.getElementById("address").value : localStorage.getItem('address');
+    document.getElementById("country").value = IsNullOrEmpty( localStorage.getItem('country'))? document.getElementById("country").value : localStorage.getItem('country');
+    document.getElementById("city").value = IsNullOrEmpty( localStorage.getItem('city'))? document.getElementById("city").value : localStorage.getItem('city');
+    document.getElementById("province").value = IsNullOrEmpty( localStorage.getItem('province'))? document.getElementById("province").value : localStorage.getItem('province');
+    document.getElementById("DOB").value = IsNullOrEmpty( localStorage.getItem('DOB'))? document.getElementById("DOB").value : localStorage.getItem('DOB');
+    document.getElementById("course").value = IsNullOrEmpty( localStorage.getItem('course'))? document.getElementById("course").value : localStorage.getItem('course');
+    document.getElementById("qualification").value = IsNullOrEmpty( localStorage.getItem('qualification'))? document.getElementById("qualification").value : localStorage.getItem('qualification');
+
+
+    /*const dbRef = ref(database);
     get(child(dbRef, "UserList/"+fullname.value)).then((snapshort)=>{
-      alert(snapshort.val())
-        document.getElementById("fullname").value = snapshort.val().fullname;
-        document.getElementById("email").value = snapshort.val().email;
+        alert(localStorage.getItem('user').val());
+        console.log("this is "+localStorage.getItem('user').val())
+        document.getElementById("fullname").value = localStorage.getItem('username');
+        document.getElementById("email").value = localStorage.getItem('user')['email'];
         
 
-      })
+      })*/
     }
-     window.onload = getUserData;
+     window.onload = getUserData();
   
   
   //--------------------------encription-----------------------------
