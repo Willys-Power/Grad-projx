@@ -134,11 +134,11 @@
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   const sign_in_btn = document.querySelector("#sign-in-btn");
-const sign_up_btn = document.querySelector("#sign-up-btn");
-const sign_up = document.querySelector("#signUp");
-const sign_up_act = document.getElementById("sign_up");
-const signIn = document.getElementById("signIn");
-const container = document.querySelector(".container");
+  const sign_up_btn = document.querySelector("#sign-up-btn");
+  const sign_up = document.querySelector("#signUp");
+  const sign_up_act = document.getElementById("sign_up");
+  const signIn = document.getElementById("signIn");
+  const container = document.querySelector(".container");
 
 sign_up_btn.addEventListener("click", () => {
 container.classList.add("sign-up-mode");
@@ -170,7 +170,7 @@ container.classList.remove("sign-up-mode");
 //const auth = firebase.auth()
 const database = getDatabase(app);
 
-import {getDatabase, ref, set, child, get, update}
+import {getDatabase, ref, set, child, get, update, push}
 from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
 
 var username,email,password,confirmPass,surname;
@@ -231,21 +231,25 @@ function RegisterUser(){
  
 
   const dbRef = ref(database);
-  get(child(dbRef, "UserList/"+username.value)).then((snapshort)=>{
+  get(child(dbRef, "Users/"+username.value)).then((snapshort)=>{
     
     if(snapshort.exists()){
       alert("User aready exists");
     }else{
       var date = Date(Date.now());
-      set(ref(database,"UserList/"+username.value),
+      set(ref(database,"Users/"+username.value),
       {
         email : email.value,
         full_name : username.value,
         password :password.value,
         Role : "general_user",
-        last_login : date.toString()
-
-        
+        last_login : date.toString(),
+        country : "",
+        city :"",
+        addressLine:"",
+        course :"",
+        qualification:"",
+        gender:""
       }
       )
     }
@@ -269,18 +273,24 @@ function LoginAuth(){
 
   const dbRef = ref(database);
   const pass = document.getElementById("signInpass");
-  const usernameSignin = (document.getElementById("signUsername").value).toLowerCase();
-
-
-  get(child(dbRef, "UserList/"+usernameSignin)).then((snapshort)=>{
+  const usernameSignin = (document.getElementById("signUsername").value);
+ 
+ 
+  // -----------addData on localStorage----------------
+  localStorage.setItem('username',usernameSignin);
+  
+  
+  alert("user is "+usernameSignin)
+  get(child(dbRef, "Users/"+usernameSignin)).then((snapshort)=>{
     
     if(snapshort.exists()){
       
       let dbpassword = snapshort.val().password;
       if(dbpassword == pass.value){
-        alert(snapshort.val());
-        login(snapshort.val());
-        alert("User signedIn successfully!")
+        localStorage.setItem('pwd',pass.value);
+        const personsMap = new Map(Object.entries(snapshort.val()));
+        login(personsMap);
+        
       }else{
         alert("Incorrect credentials");
         return;
@@ -288,7 +298,7 @@ function LoginAuth(){
     }
     else{
       
-      alert("Incorect Username")
+      alert("Incorrect Username")
     }
   }).then(()=>
   {
@@ -305,10 +315,20 @@ alert("Trouble in paradise !! "+error.message)
 }
 
 function login(user){
-
+  
+  localStorage.setItem('country',user.get('country'));
+  localStorage.setItem('city',user.get('city'));
+  localStorage.setItem('address',user.get('address'));
+  localStorage.setItem('course',user.get('course'));
+  localStorage.setItem('DOB',user.get('DOB'));
+  localStorage.setItem('qualification',user.get('qualification'));
+  localStorage.setItem('gender',user.get('gender'));
+  localStorage.setItem('email',user.get('email'));
+  localStorage.setItem('province',user.get('province'));
+  localStorage.setItem('role',user.get('Role'));
   localStorage.setItem('KeepLoggedIn','yes');
-  localStorage.setItem('user',JSON.stringify(user));
-  window.location = "index.html";
+  localStorage.setItem('user',user);
+  window.location = (user.get('Role') == "admin")?"admin.html": "index.html";
 
 }
 

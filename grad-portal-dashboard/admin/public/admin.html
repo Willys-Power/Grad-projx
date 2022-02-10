@@ -713,9 +713,9 @@
                                                   <div class="row">
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label" id="Role">Role</label>
+                                                        <label class="col-sm-3 col-form-label">Role</label>
                                                         <div class="col-sm-9">
-                                                          <select class="form-control">
+                                                          <select class="form-control" id="Role">
                                                             <option>Super User</option>
                                                             <option>Administrator</option>
                                                             <option>General</option>
@@ -1368,8 +1368,15 @@
           email : email.value,
           full_name : username.value,
           password :password.value,
-          Role : "general_user",
-          last_login : date.toString()
+          Role : "admin",
+          last_login : date.toString(),
+          country : null,
+          city :null,
+          addressLine:null,
+          course :null,
+          DOB:null,
+          qualification:null,
+          gender:null
   
           
         }

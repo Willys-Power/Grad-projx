@@ -324,10 +324,24 @@ const updateGrad = document.getElementById("save");
     /*if(!validate()){
       return;
     }*/
-    alert(email.value+ " "+email)
+    fullname = document.getElementById("fullName").value;
+    email = document.getElementById("email");
+    gender = document.getElementById("gender").value;
+    address = document.getElementById("address").value;
+    country = document.getElementById("country").value;
+    city = document.getElementById("city").value;
+    province = document.getElementById("province").value;
+    DOB  = document.getElementById("DOB").value;
+    course = document.getElementById("course").value;
+    qualification = document.getElementById("qualification").value;
+    
     
     const postdata = {
           gender : gender,
+          email:email.value,
+          role: localStorage.getItem('role'),
+          password :localStorage.getItem('pwd'),
+          full_name: fullname,
           address :address,
           country :country,
           city : city,
@@ -344,12 +358,13 @@ const updateGrad = document.getElementById("save");
    
     const updateData = {};
     console.log("fullname is "+fullname+ "\n postdata is "+postdata["gender"]);
-    updateData['/UserList/'+fullname] = postdata;
+    updateData['/Users/'+fullname+'/'] = postdata;
     const dbRef = ref(database);
     
-    return update(dbRef,updateData);
+    return update(dbRef,updateData) + (redirect);
+    
     alert("User updated");
-
+    
     /*const dbRef = ref(database);
     get(child(dbRef, "UserList/"+fullname.value)).then((snapshort)=>{
       
@@ -389,9 +404,12 @@ const updateGrad = document.getElementById("save");
   */
   
   }
+  function redirect(){
+    window.location = "profile.html";
+  }
   function IsNullOrEmpty(value) {
     return value == null || value === "" || typeof value === "undefined";
-}
+  }
 
   //--------------------------getData--------------------
   function getUserData(){
@@ -419,8 +437,11 @@ const updateGrad = document.getElementById("save");
 
       })*/
     }
-     window.onload = getUserData();
-  
+    window.onload = getUserData();
+  function UpdateGrad(){
+    let updt =  UpdateUser;
+    window.location = "profile.html";
+  }
   
   //--------------------------encription-----------------------------
   
