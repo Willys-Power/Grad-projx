@@ -132,7 +132,7 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label" >Date of Birth</label>
                   <div class="col-sm-9" >
-                    <input class="form-control" type="date" placeholder="dd/mm/yyyy" id="DOB"/>
+                    <input class="form-control" type="date" placeholder="yyyy/mm/dd" id="DOB"/>
                   </div>
                 </div>
               </div>
@@ -234,6 +234,8 @@ const sign_up_act = document.getElementById("sign_up");
 const signIn = document.getElementById("signIn");
 const container = document.querySelector(".container");
 const updateGrad = document.getElementById("save");
+const CloseProfilepage = document.getElementById("close");
+
 
   
   
@@ -351,10 +353,7 @@ const updateGrad = document.getElementById("save");
           qualification : qualification
           
     }
-    /*
-    fullname is Neo
-    postdata is {gende:"female"}
-    */
+    
    
     const updateData = {};
     console.log("fullname is "+fullname+ "\n postdata is "+postdata["gender"]);
@@ -433,13 +432,10 @@ const updateGrad = document.getElementById("save");
         console.log("this is "+localStorage.getItem('user').val())
         document.getElementById("fullname").value = localStorage.getItem('username');
         document.getElementById("email").value = localStorage.getItem('user')['email'];
-        
-
       })*/
     }
     window.onload = getUserData();
   function UpdateGrad(){
-    let updt =  UpdateUser;
     window.location = "profile.html";
   }
   
@@ -447,10 +443,11 @@ const updateGrad = document.getElementById("save");
   
   
   
-  //-------------------------Toggle-------------------------------
+  //-------------------------Toggle----------------------------------
 
   // -------------------------Insert---------------------------------
   updateGrad.addEventListener("click",UpdateUser);
+  CloseProfilepage.addEventListener("click",redirect)
   
   
   </script>

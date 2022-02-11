@@ -328,7 +328,7 @@ function login(user){
   localStorage.setItem('role',user.get('Role'));
   localStorage.setItem('KeepLoggedIn','yes');
   localStorage.setItem('user',user);
-  window.location = (user.get('Role') == "admin")?"admin.html": "index.html";
+  window.location = (user.get('Role') == "admin")?"admin.html": "pages/editProfile.html";
 
 }
 

@@ -682,9 +682,9 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label" id="lastname">Last Name</label>
+                                                        <label class="col-sm-3 col-form-label" >Last Name</label>
                                                         <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
+                                                          <input type="text" class="form-control"id="lastname" />
                                                         </div>
                                                       </div>
                                                     </div>
@@ -692,9 +692,9 @@
                                                   <div class="row">
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label" id="gender">Gender</label>
+                                                        <label class="col-sm-3 col-form-label" >Gender</label>
                                                         <div class="col-sm-9">
-                                                          <select class="form-control">
+                                                          <select class="form-control" id="gender">
                                                             <option>Male</option>
                                                             <option>Female</option>
                                                           </select>
@@ -718,9 +718,7 @@
                                                           <select class="form-control" id="Role">
                                                             <option>Super User</option>
                                                             <option>Administrator</option>
-                                                            <option>General</option>
-                                                            <option>Third Party</option>
-                                                            
+                                                            <option>General</option>                                                            
                                                           </select>
                                                         </div>
                                                       </div>
@@ -1357,13 +1355,13 @@
    
   
     const dbRef = ref(database);
-    get(child(dbRef, "UserList/"+username.value)).then((snapshort)=>{
+    get(child(dbRef, "Users/"+username.value)).then((snapshort)=>{
       
       if(snapshort.exists()){
         alert("User aready exists");
       }else{
         var date = Date(Date.now());
-        set(ref(database,"UserList/"+username.value),
+        set(ref(database,"Users/"+username.value),
         {
           email : email.value,
           full_name : username.value,
