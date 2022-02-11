@@ -325,10 +325,11 @@ function login(user){
   localStorage.setItem('gender',user.get('gender'));
   localStorage.setItem('email',user.get('email'));
   localStorage.setItem('province',user.get('province'));
-  localStorage.setItem('role',user.get('Role'));
+  localStorage.setItem('role',user.get('role'));
   localStorage.setItem('KeepLoggedIn','yes');
   localStorage.setItem('user',user);
-  window.location = (user.get('Role') == "admin")?"admin.html": "pages/editProfile.html";
+  
+  window.location = (user.get('role') === "admin")?"index.html": "pages/editProfile.html";
 
 }
 

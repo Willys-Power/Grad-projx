@@ -1,6 +1,15 @@
 let menu = document.querySelector("#menu-btn");
 let header = document.querySelector(".header");
 
+window.onload = autofill();
+
+
+function autofill(){
+
+  document.getElementById("username").value = localStorage.getItem('username');
+
+}
+
 menu.onclick = () => {
   menu.classList.toggle("fa-times");
   header.classList.toggle("active");
