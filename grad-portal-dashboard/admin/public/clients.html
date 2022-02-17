@@ -6,6 +6,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <script type="text/javascript">
+    emailjs.init('user_P1WTnSnxSVq6DtglnRpOn')
+    // send email
+  </script>
   <title>Admin Dashboard </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
@@ -667,7 +675,7 @@
                                             <div class="card">
                                               <div class="card-body">
                                                 <h4 class="card-title">Client</h4>
-                                                <form class="form-sample">
+                                                <form class="form-sample" id="myForm">
                                                   <p class="card-description">
                                                     Personal info
                                                   </p>
@@ -731,7 +739,10 @@
                                                       </div>
                                                     </div>
                                                   </div>
-                                                  
+                                                  <div class="field" hidden="true">
+                                                    <label for="clientPassword">clientPassword</label>
+                                                    <input  type="text" name="clientPassword" id="clientPassword" >
+                                                  </div>
                                                  
                                                  
                                                 </form>
@@ -741,7 +752,7 @@
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary" onclick="addNewClient()">Save changes</button>
+                                          <button type="button" class="btn btn-primary" id="addClient" onclick="addNewClient()">Save changes</button>
                                         </div>
                                       </div>
                                     </div>
