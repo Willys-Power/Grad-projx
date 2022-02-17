@@ -103,7 +103,7 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label" >Full Name</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="fullName"/>
+                    <input type="text" class="form-control" id="fullname"/>
                   </div>
                 </div>
               </div>
@@ -132,7 +132,7 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label" >Date of Birth</label>
                   <div class="col-sm-9" >
-                    <input class="form-control" type="date" placeholder="yyyy/mm/dd" id="DOB"/>
+                    <input class="form-control" type="date" placeholder="dd/mm/yyyy" id="DOB"/>
                   </div>
                 </div>
               </div>
@@ -234,8 +234,6 @@ const sign_up_act = document.getElementById("sign_up");
 const signIn = document.getElementById("signIn");
 const container = document.querySelector(".container");
 const updateGrad = document.getElementById("save");
-const CloseProfilepage = document.getElementById("close");
-
 
   
   
@@ -269,16 +267,16 @@ const CloseProfilepage = document.getElementById("close");
   
   //---------------------References-----------------------//
   
-  fullname = document.getElementById("fullName").value;
+  fullname = document.getElementById("fullname");
   email = document.getElementById("email");
-  gender = document.getElementById("gender").value;
-  address = document.getElementById("address").value;
-  country = document.getElementById("country").value;
-  city = document.getElementById("city").value;
-  province = document.getElementById("province").value;
-  DOB  = document.getElementById("DOB").value;
-  course = document.getElementById("course").value;
-  qualification = document.getElementById("qualification").value;
+  gender = document.getElementById("gender");
+  address = document.getElementById("address");
+  country = document.getElementById("country");
+  city = document.getElementById("city");
+  province = document.getElementById("province");
+  DOB  = document.getElementById("DOB");
+  course = document.getElementById("course");
+  qualification = document.getElementById("qualification");
 
   
   
@@ -325,46 +323,25 @@ const CloseProfilepage = document.getElementById("close");
   
     /*if(!validate()){
       return;
-    }*/
-    fullname = document.getElementById("fullName").value;
-    email = document.getElementById("email");
-    gender = document.getElementById("gender").value;
-    address = document.getElementById("address").value;
-    country = document.getElementById("country").value;
-    city = document.getElementById("city").value;
-    province = document.getElementById("province").value;
-    DOB  = document.getElementById("DOB").value;
-    course = document.getElementById("course").value;
-    qualification = document.getElementById("qualification").value;
-    
+    }
+    alert(email.value+ " "+email)
     
     const postdata = {
-          gender : gender,
-          email:email.value,
-          role: localStorage.getItem('role'),
-          password :localStorage.getItem('pwd'),
-          full_name: fullname,
-          address :address,
-          country :country,
-          city : city,
-          province : province,
-          DOB  : DOB,
-          course : course,
-          qualification : qualification
+          email : email.value,
+          full_name : fullname.value,
+          Role : "general_user",
+          
           
     }
-    
    
     const updateData = {};
-    console.log("fullname is "+fullname+ "\n postdata is "+postdata["gender"]);
-    updateData['/Users/'+fullname+'/'] = postdata;
+    updateData['/UserList/'+fullname] = postdata;
     const dbRef = ref(database);
     
-    return update(dbRef,updateData) + (redirect);
-    
-    alert("User updated");
-    
-    /*const dbRef = ref(database);
+    return update(ref(database),updateData)
+    alert("User updated");*/
+
+    const dbRef = ref(database);
     get(child(dbRef, "UserList/"+fullname.value)).then((snapshort)=>{
       
       if(snapshort.exists()){
@@ -397,57 +374,35 @@ const CloseProfilepage = document.getElementById("close");
   
   var error_code = error.error_code
   var error_message = error.message
-  alert("Trouble in paradise !! "+error.message)
+ 
   
   })
-  */
   
-  }
-  function redirect(){
-    window.location = "profile.html";
-  }
-  function IsNullOrEmpty(value) {
-    return value == null || value === "" || typeof value === "undefined";
+  
   }
 
   //--------------------------getData--------------------
   function getUserData(){
-
-    
-    document.getElementById("fullName").value = localStorage.getItem('username');
-    document.getElementById("email").value = localStorage.getItem('email');
-    document.getElementById("gender").value = IsNullOrEmpty( localStorage.getItem('gender'))? document.getElementById("gender").value : localStorage.getItem('gender');
-    document.getElementById("address").value = IsNullOrEmpty( localStorage.getItem('address'))? document.getElementById("address").value : localStorage.getItem('address');
-    document.getElementById("country").value = IsNullOrEmpty( localStorage.getItem('country'))? document.getElementById("country").value : localStorage.getItem('country');
-    document.getElementById("city").value = IsNullOrEmpty( localStorage.getItem('city'))? document.getElementById("city").value : localStorage.getItem('city');
-    document.getElementById("province").value = IsNullOrEmpty( localStorage.getItem('province'))? document.getElementById("province").value : localStorage.getItem('province');
-    document.getElementById("DOB").value = IsNullOrEmpty( localStorage.getItem('DOB'))? document.getElementById("DOB").value : localStorage.getItem('DOB');
-    document.getElementById("course").value = IsNullOrEmpty( localStorage.getItem('course'))? document.getElementById("course").value : localStorage.getItem('course');
-    document.getElementById("qualification").value = IsNullOrEmpty( localStorage.getItem('qualification'))? document.getElementById("qualification").value : localStorage.getItem('qualification');
-
-
-    /*const dbRef = ref(database);
+    const dbRef = ref(database);
     get(child(dbRef, "UserList/"+fullname.value)).then((snapshort)=>{
-        alert(localStorage.getItem('user').val());
-        console.log("this is "+localStorage.getItem('user').val())
-        document.getElementById("fullname").value = localStorage.getItem('username');
-        document.getElementById("email").value = localStorage.getItem('user')['email'];
-      })*/
+     
+        // document.getElementById("fullname").value = snapshort.val().fullname;
+        document.getElementById("email").value = snapshort.val().email;
+        
+
+      })
     }
-    window.onload = getUserData();
-  function UpdateGrad(){
-    window.location = "profile.html";
-  }
+     window.onload = getUserData;
+  
   
   //--------------------------encription-----------------------------
   
   
   
-  //-------------------------Toggle----------------------------------
+  //-------------------------Toggle-------------------------------
 
   // -------------------------Insert---------------------------------
   updateGrad.addEventListener("click",UpdateUser);
-  CloseProfilepage.addEventListener("click",redirect)
   
   
   </script>
