@@ -374,7 +374,7 @@ const updateGrad = document.getElementById("save");
   
   var error_code = error.error_code
   var error_message = error.message
-  alert("Trouble in paradise !! "+error.message)
+ 
   
   })
   
@@ -385,8 +385,8 @@ const updateGrad = document.getElementById("save");
   function getUserData(){
     const dbRef = ref(database);
     get(child(dbRef, "UserList/"+fullname.value)).then((snapshort)=>{
-      alert(snapshort.val())
-        document.getElementById("fullname").value = snapshort.val().fullname;
+     
+        // document.getElementById("fullname").value = snapshort.val().fullname;
         document.getElementById("email").value = snapshort.val().email;
         
 

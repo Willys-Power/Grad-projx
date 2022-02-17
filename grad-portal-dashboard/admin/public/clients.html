@@ -5,6 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
   <title>Admin Dashboard </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
@@ -673,17 +674,17 @@
                                                   <div class="row">
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">First Name</label>
+                                                        <label class="col-sm-3 col-form-label">Full Name</label>
                                                         <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
+                                                          <input type="text" class="form-control" id="clientName" />
                                                         </div>
                                                       </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Last Name</label>
+                                                        <label class="col-sm-3 col-form-label">Email</label>
                                                         <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
+                                                          <input type="text" class="form-control" id="clientEmail"/>
                                                         </div>
                                                       </div>
                                                     </div>
@@ -693,7 +694,7 @@
                                                       <div class="form-group row">
                                                         <label class="col-sm-3 col-form-label">Gender</label>
                                                         <div class="col-sm-9">
-                                                          <select class="form-control">
+                                                          <select class="form-control" id="clientGender">
                                                             <option>Male</option>
                                                             <option>Female</option>
                                                           </select>
@@ -704,7 +705,7 @@
                                                       <div class="form-group row">
                                                         <label class="col-sm-3 col-form-label">Company Name</label>
                                                         <div class="col-sm-9">
-                                                          <input class="form-control" />
+                                                          <input type="text" class="form-control" id="companyName"/>
                                                         </div>
                                                       </div>
                                                     </div>
@@ -714,7 +715,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-3 col-form-label">Tittle</label>
                                                             <div class="col-sm-9">
-                                                              <input class="form-control" />
+                                                              <input type="text" class="form-control" id="clientTitle"/>
                                                             </div>
                                                           </div>
                                                     </div>
@@ -724,7 +725,7 @@
                                                         <div class="form-group row">
                                                           <label class="col-sm-3 col-form-label">Division</label>
                                                           <div class="col-sm-9">
-                                                            <input class="form-control"/>
+                                                            <input type="text" class="form-control" id="clientDivision"/>
                                                           </div>
                                                         </div>
                                                       </div>
@@ -740,7 +741,7 @@
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                          <button type="button" class="btn btn-primary" onclick="addNewClient()">Save changes</button>
                                         </div>
                                       </div>
                                     </div>
@@ -1204,6 +1205,9 @@
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
 </body>
-
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
+<script src="../../public/app.js"></script>
 </html>
 
