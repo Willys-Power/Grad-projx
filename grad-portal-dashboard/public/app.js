@@ -172,17 +172,17 @@ function addNewClient(){
         dynamicLinkDomain: 'example.page.link'
       };
 
-  // auth.sendSignInLinkToEmail(clientEmail, actionCodeSettings)
-  // .then(function() {
+  auth.sendSignInLinkToEmail(clientEmail, actionCodeSettings)
+  .then(function() {
     
-  //   window.localStorage.setItem('emailForSignIn', clientEmail);
-  //   // ...
-  // })
-  // .catch((error) => {
-  //   var errorCode = error.code;
-  //   var errorMessage = error.message;
-  //   alert(errorMessage)
-  // });
+    window.localStorage.setItem('emailForSignIn', clientEmail);
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    alert(errorMessage)
+  });
     
     database.ref('usersNkocie/' + clientEmail).set({
         clientName : clientName,
