@@ -11,15 +11,16 @@ body {
   justify-content: normal;
   align-items: normal;
   padding: 10px;
-  background: linear-gradient(135deg, #babbbd, #d46d18);
+  background: linear-gradient(135deg, #babbbd, #f28f3b);
 }
 .container {
-  max-width: 3000px;
-  width: 250%;
+  max-width: 2000px;
+  width: 150%;
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  margin-left: 60px;
 }
 .container .title {
   font-size: 25px;
@@ -34,7 +35,7 @@ body {
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  background: linear-gradient(135deg, #8a9196, #c77b19);
+  background: linear-gradient(135deg, #59585B, #f28f3b);
 }
 .content form .user-details {
   display: flex;
@@ -64,7 +65,7 @@ form .input-box span.details {
 }
 .user-details .input-box input:focus,
 .user-details .input-box input:valid {
-  border-color: #e0960d;
+  border-color: #f28f3b;
 }
 form .gender-details .gender-title {
   font-size: 20px;
@@ -86,22 +87,23 @@ form .category label .dot {
   width: 18px;
   border-radius: 50%;
   margin-right: 10px;
-  background: #d9d9d9;
+  background: 59585B;
   border: 5px solid transparent;
   transition: all 0.3s ease;
 }
 #dot-1:checked ~ .category label .one,
 #dot-2:checked ~ .category label .two,
 #dot-3:checked ~ .category label .three {
-  background: #c7831e;
-  border-color: #bdbaba;
+  background: #f28f3b;
+  border-color: #59585B;
 }
 form input[type="radio"] {
   display: none;
 }
 form .button {
   height: 45px;
-  margin: 35px 0;
+  margin: 90px 0;
+  margin-left: 320px;
 }
 form .button input {
   height: 100%;
@@ -114,11 +116,11 @@ form .button input {
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #8a9196, #c77b19);
+  background: linear-gradient(135deg, #59585B, #f28f3b);
 }
 form .button input:hover {
   /* transform: scale(0.99); */
-  background: linear-gradient(-135deg, #8a9196, #c77b19);
+  background: linear-gradient(-135deg, #59585B, #f28f3b);
 }
 @media (max-width: 584px) {
   .container {

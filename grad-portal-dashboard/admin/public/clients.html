@@ -5,6 +5,15 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <script type="text/javascript">
+    emailjs.init('user_P1WTnSnxSVq6DtglnRpOn')
+    // send email
+  </script>
   <title>Admin Dashboard </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
@@ -393,8 +402,8 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="./users.html">GRADUATES</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="./clients.html">CLIENTS</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="./admin.html">ADMIN</a></li>
+                <li class="nav-item"> <a class="nav-link" href="./clients.html">CLIENTS</a></li>
+                <li class="nav-item"> <a class="nav-link" href="./admin.html">ADMIN</a></li>
                   
                 </ul>
               </div>
@@ -638,7 +647,7 @@
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
-                                    <h4 class="card-title card-title-dash">Admin List</h4>
+                                    <h4 class="card-title card-title-dash">Clients List</h4>
                                    <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
                                   </div>
 
@@ -647,7 +656,7 @@
 
 
                                   <div>
-                                    <button class="btn btn-dark btn-lg text-white mb-0 me-0" type="button" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-account-plus"></i>Add New Admin</button>
+                                    <button class="btn btn-dark btn-lg text-white mb-0 me-0" type="button" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-account-plus"></i>Add New Client</button>
                                   </div>
 
 
@@ -656,7 +665,7 @@
                                     <div class="modal-dialog modal-xl" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLabel">Add new Admin</h5>
+                                          <h5 class="modal-title" id="exampleModalLabel">Add new Client</h5>
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
@@ -665,25 +674,25 @@
                                           <div class="col-12 grid-margin">
                                             <div class="card">
                                               <div class="card-body">
-                                                <h4 class="card-title">Admin</h4>
-                                                <form class="form-sample">
+                                                <h4 class="card-title">Client</h4>
+                                                <form class="form-sample" id="myForm">
                                                   <p class="card-description">
                                                     Personal info
                                                   </p>
                                                   <div class="row">
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">First Name</label>
+                                                        <label class="col-sm-3 col-form-label">Full Name</label>
                                                         <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
+                                                          <input type="text" class="form-control" id="clientName" />
                                                         </div>
                                                       </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Last Name</label>
+                                                        <label class="col-sm-3 col-form-label">Email</label>
                                                         <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
+                                                          <input type="text" class="form-control" id="clientEmail"/>
                                                         </div>
                                                       </div>
                                                     </div>
@@ -693,7 +702,7 @@
                                                       <div class="form-group row">
                                                         <label class="col-sm-3 col-form-label">Gender</label>
                                                         <div class="col-sm-9">
-                                                          <select class="form-control">
+                                                          <select class="form-control" id="clientGender">
                                                             <option>Male</option>
                                                             <option>Female</option>
                                                           </select>
@@ -702,102 +711,40 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Date of Birth</label>
+                                                        <label class="col-sm-3 col-form-label">Company Name</label>
                                                         <div class="col-sm-9">
-                                                          <input class="form-control" placeholder="dd/mm/yyyy"/>
+                                                          <input type="text" class="form-control" id="companyName"/>
                                                         </div>
                                                       </div>
                                                     </div>
                                                   </div>
                                                   <div class="row">
                                                     <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Role</label>
-                                                        <div class="col-sm-9">
-                                                          <select class="form-control">
-                                                            <option>Super User</option>
-                                                            <option>Administrator</option>
-                                                            <option>General</option>
-                                                            <option>Third Party</option>
-                                                            
-                                                          </select>
-                                                        </div>
-                                                      </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-3 col-form-label">Tittle</label>
+                                                            <div class="col-sm-9">
+                                                              <input type="text" class="form-control" id="clientTitle"/>
+                                                            </div>
+                                                          </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
                                                         
                                                         <div class="form-group row">
-                                                          <label class="col-sm-3 col-form-label">Position</label>
+                                                          <label class="col-sm-3 col-form-label">Division</label>
                                                           <div class="col-sm-9">
-                                                            <input class="form-control"/>
+                                                            <input type="text" class="form-control" id="clientDivision"/>
                                                           </div>
                                                         </div>
                                                       </div>
                                                     </div>
                                                   </div>
-                                                  <!-- <p class="card-description">
-                                                    Address
-                                                  </p> -->
-                                                  <!-- <div class="row">
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Address 1</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">State</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div> -->
-                                                  <!-- <div class="row">
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Address 2</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Postcode</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div> -->
-                                                  <!-- <div class="row">
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">City</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Country</label>
-                                                        <div class="col-sm-9">
-                                                          <select class="form-control">
-                                                            <option>South Africa</option>
-                                                            <option>Botswana</option>
-                                                            <option>Russia</option>
-                                                            <option>USA</option>
-                                                          </select>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div> -->
+                                                  <div class="field" hidden="true">
+                                                    <label for="clientPassword">clientPassword</label>
+                                                    <input  type="text" name="clientPassword" id="clientPassword" >
+                                                  </div>
+                                                 
+                                                 
                                                 </form>
                                               </div>
                                             </div>
@@ -805,7 +752,7 @@
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                          <button type="button" class="btn btn-primary" id="addClient" onclick="addNewClient()">Save changes</button>
                                         </div>
                                       </div>
                                     </div>
@@ -816,7 +763,16 @@
 
 
 
-                                  
+
+
+
+
+
+
+
+
+
+
                                 </div>
                                 <div class="table-responsive  mt-1">
                                   <table class="table select-table">
@@ -829,9 +785,9 @@
                                           </div>
                                         </th>
                                         <th>Names</th>
-                                        <th>Tittle</th>
-                                        
-                                        <th>Status</th>
+                                        <th>Company</th>
+                                        <th>Recruited</th>
+                                        <th>Interested</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -844,18 +800,19 @@
                                         </td>
                                         <td>
                                           <div class="d-flex ">
-                                            <img src="images/faces/face17.jpg" alt="">
+                                            <img src="images/faces/face4.jpg" alt="">
                                             <div>
-                                              <h6>David Lee</h6>
+                                              <h6>Paul Klassen</h6>
+                                              <p>head of HR</p>
                                             </div>
                                           </div>
                                         </td>
                                         <td>
-                                          <h6>Administration Officer</h6>
+                                          <h6>ABSA Bank</h6>
                                           <!-- <p>company type</p> -->
                                         </td>
-                                    
-                                        <td><div class="badge badge-success">Online</div></td>
+                                        <td><div class="badge badge-opacity-warning">6</div></td>
+                                        <td><div class="badge badge-opacity-success">11</div></td>
                                       </tr>
                                       <tr>
                                         <td>
@@ -865,19 +822,20 @@
                                           </div>
                                         </td>
                                         <td>
-                                          <div class="d-flex ">
-                                            <img src="images/faces/face18.jpg" alt="">
+                                          <div class="d-flex">
+                                            <img src="images/faces/face6.jpg" alt="">
                                             <div>
-                                              <h6>John Wayne</h6>
+                                              <h6>Ciara Johnson</h6>
+                                              <p>Recruitment Specialist</p>
                                             </div>
                                           </div>
                                         </td>
                                         <td>
-                                          <h6>IT Supervisor</h6>
+                                          <h6>old Mutual Limited</h6>
                                           <!-- <p>company type</p> -->
                                         </td>
-                                    
-                                        <td><div class="badge badge-danger">Offline</div></td>
+                                        <td><div class="badge badge-opacity-warning">11</div></td>
+                                        <td><div class="badge badge-opacity-success">3</div></td>
                                       </tr>
                                       <tr>
                                         <td>
@@ -887,19 +845,20 @@
                                           </div>
                                         </td>
                                         <td>
-                                          <div class="d-flex ">
-                                            <img src="images/faces/face13.jpg" alt="">
+                                          <div class="d-flex">
+                                            <img src="images/faces/face9.jpg" alt="">
                                             <div>
-                                              <h6>James Wayne</h6>
+                                              <h6>Thabo Lekola</h6>
+                                              <p>HR</p>
                                             </div>
                                           </div>
                                         </td>
                                         <td>
-                                          <h6>Legal Advisor</h6>
+                                          <h6>Assupol</h6>
                                           <!-- <p>company type</p> -->
                                         </td>
-                                    
-                                        <td><div class="badge badge-danger">Offline</div></td>
+                                        <td><div class="badge badge-opacity-warning">0</div></td>
+                                        <td><div class="badge badge-opacity-success">22</div></td>
                                       </tr>
                                       <tr>
                                         <td>
@@ -909,19 +868,20 @@
                                           </div>
                                         </td>
                                         <td>
-                                          <div class="d-flex ">
+                                          <div class="d-flex">
                                             <img src="images/faces/face16.jpg" alt="">
                                             <div>
-                                              <h6>Matthew Butler</h6>
+                                              <h6>George Forbes</h6>
+                                              <p>Talent Acquisition Director</p>
                                             </div>
                                           </div>
                                         </td>
                                         <td>
-                                          <h6>Administration Officer</h6>
+                                          <h6>FNB</h6>
                                           <!-- <p>company type</p> -->
                                         </td>
-                                    
-                                        <td><div class="badge badge-success">Online</div></td>
+                                        <td><div class="badge badge-opacity-warning">22</div></td>
+                                        <td><div class="badge badge-opacity-success">12</div></td>
                                       </tr>
                                       <tr>
                                         <td>
@@ -931,19 +891,20 @@
                                           </div>
                                         </td>
                                         <td>
-                                          <div class="d-flex ">
-                                            <img src="images/faces/face7.jpg" alt="">
+                                          <div class="d-flex">
+                                            <img src="images/faces/face17.jpg" alt="">
                                             <div>
-                                              <h6>Gerald Smith</h6>
+                                              <h6>Roberts Brown</h6>
+                                              <p>Sorcing Manager</p>
                                             </div>
                                           </div>
                                         </td>
                                         <td>
-                                          <h6>Enrollment Officer</h6>
+                                          <h6>Sanlam</h6>
                                           <!-- <p>company type</p> -->
                                         </td>
-                                    
-                                        <td><div class="badge badge-danger">Offline</div></td>
+                                        <td><div class="badge badge-opacity-warning">17</div></td>
+                                        <td><div class="badge badge-opacity-success">3</div></td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -1255,6 +1216,9 @@
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
 </body>
-
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
+<script src="../../public/app.js"></script>
 </html>
 

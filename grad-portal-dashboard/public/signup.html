@@ -1,126 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="style.css" />
-    <title>Sign in & Sign up Form</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="forms-container">
-        <div class="signin-signup">
-          <form action="#" class="sign-in-form">
-            <h2 class="title">Sign in</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <a href="./pages/forgot-password.html">Forgot Password?</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <script
+    src="https://kit.fontawesome.com/64d58efce2.js"
+    crossorigin="anonymous"
+  ></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Sign in & Sign up Form</title>
+</head>
+<body>
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <form action="#" class="sign-in-form">
+          <h2 class="title">Sign in</h2>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Username" id="signInEmail"/>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" id="signInpass" />
+          </div>
+          <a href="./pages/forgot-password.html">Forgot Password?</a>
+          
+          <button type="button" class="btn solid" id="signIn" onclick="login()">Login</button>
+          <!-- <p class="social-text">Or Sign in with social platforms</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div> -->
+        </form>
+        <form action="#" class="sign-up-form">
+          <h2 class="title">Sign up</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Full Name" id="fullname"/>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="text / number / email" placeholder="Email" id="email"/>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" id="password"/>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Confirm Password" id="confirmPass" />
             
-            <a href="index.html"><button type="button" class="btn solid">Login</button></a>
-            <!-- <p class="social-text">Or Sign in with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div> -->
-          </form>
-          <form action="#" class="sign-up-form">
-            <h2 class="title">Sign up</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Confirm Password" />
-            </div>
-            <div class="flex mt-6 text-sm">
-              
-                <input
-                  type="checkbox"
-                  class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                />
-                <span class="ml-2">
-                  I agree to the
-                  <a href="https://www.privacypolicies.com/blog/privacy-policy-template/#:~:text=A%20Privacy%20Policy%20is%20a,or%20sold%20to%20third%20parties.">privacy policy</a>
-                </span>
-              
-            </div>
-            <input type="submit" class="btn" value="Sign up" />
-            <!-- <p class="social-text">Or Sign up with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div> -->
-          </form>
-        </div>
-      </div>
-
-      <div class="panels-container">
-        <div class="panel left-panel">
-          <div class="content">
-            <h3>Don't have an account ?</h3>
-            <p>
-              Sign Up Here:
-            </p>
-            <button class="btn transparent" id="sign-up-btn">
-              Sign up
-            </button>
           </div>
-          <!-- <img src="img/log.svg" class="image" alt="" /> -->
-        </div>
-        <div class="panel right-panel">
-          <div class="content">
-            <h3>Already have an account ?</h3>
-            <p>
-              Sign In Here:
-            </p>
-            <button class="btn transparent" id="sign-in-btn">
-              Sign in
-            </button>
+          <!-- <input type="checkbox" onclick="myFunction()">Show Password</input> -->
+          <div class="flex mt-6 text-sm">
+            
+              <input
+                type="checkbox"
+                class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                id="checkbox"
+              />
+              <span class="ml-2">
+                I agree to the
+                <a href="https://www.privacypolicies.com/blog/privacy-policy-template/#:~:text=A%20Privacy%20Policy%20is%20a,or%20sold%20to%20third%20parties.">privacy policy</a>
+              </span>
+            
           </div>
-          <!-- <img src="img/register.svg" class="image" alt="" /> -->
-        </div>
+          <input type="submit" class="btn" value="Sign up" id="sign_up" onclick="signup()"/>
+          <!-- <p class="social-text">Or Sign up with social platforms</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div> -->
+        </form>
       </div>
     </div>
 
-    <script src="app.js"></script>
-  </body>
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>Don't have an account ?</h3>
+          <p>
+            Sign Up Here:
+          </p>
+          <button class="btn transparent" id="sign-up-btn" >
+            Sign up
+          </button>
+        </div>
+        <!-- <img src="img/log.svg" class="image" alt="" /> -->
+      </div>
+      <div class="panel right-panel">
+        <div class="content">
+          <h3>Already have an account ?</h3>
+          <p>
+            Sign In Here:
+          </p>
+          <button class="btn transparent" id="sign-in-btn" >
+            Sign in
+          </button>
+        </div>
+        <!-- <img src="img/register.svg" class="image" alt="" /> -->
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+
+<script type="module">
+//   // Import the functions you need from the SDKs you need
+//   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
+//   //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-analytics.js";
+  
+//   // TODO: Add SDKs for Firebase products that you want to use
+//   // https://firebase.google.com/docs/web/setup#available-libraries
+
+const sign_in_btn = document.querySelector("#sign-in-btn");
+const sign_up_btn = document.querySelector("#sign-up-btn");
+const sign_up = document.querySelector("#signUp");
+const sign_up_act = document.getElementById("sign_up");
+const signIn = document.getElementById("signIn");
+ const container = document.querySelector(".container");
+
+sign_up_btn.addEventListener("click", () => {
+container.classList.add("sign-up-mode");
+});
+
+
+sign_in_btn.addEventListener("click", () => {
+container.classList.remove("sign-up-mode");
+});
+//   // Your web app's Firebase configuration
+//   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+//   const firebaseConfig = {
+//     apiKey: "AIzaSyAuuAMrOqkTix4hgvE4gG3MtA44ZYQWg2k",
+//     authDomain: "mindworxgrad.firebaseapp.com",
+//     projectId: "mindworxgrad",
+//     storageBucket: "mindworxgrad.appspot.com",
+//     messagingSenderId: "921423385255",
+//     appId: "1:921423385255:web:1e0ac2a0df745193e34182",
+//     measurementId: "G-D1HH02SNW3"
+//   };
+
+//   // Initialize Firebase
+  
+//   const app = initializeApp(firebaseConfig);
+//   //const analytics = getAnalytics(app);
+
+//   //Initialize variables
+
+// //const auth = firebase.auth()
+// const database = getDatabase(app);
+
+// import {getDatabase, ref, set, child, get, update}
+// from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
+
+// var username,email,password,confirmPass,surname;
+
+//---------------------References-----------------------
+
+// username = document.getElementById("fullname");
+// email = document.getElementById("email");
+// password = document.getElementById("password");
+// confirmPass = document.getElementById("confirmPass");
+
+
+
+//Form validation
+
+// function isEmptyOrSpaces(str){
+
+//   return str ===null || str.match(/^ *$/) !== null;
+// }
+
+// function validate(){
+
+//   let nameregex = /[a-zA-Z]+/;
+//   let emailregex = /[a-zA-Z0-9]+@(gmail|mindworx|outlook|yahoo)\.(com|co.za)/;
+//   let userpwdregex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+
+//   if(! (password.value === confirmPass.value)){
+//     alert("Passwords do not match ")
+//     return;
+//   }
+
+//   if(isEmptyOrSpaces(username.value) || isEmptyOrSpaces(email.value) || isEmptyOrSpaces(password.value) || isEmptyOrSpaces(confirmPass.value)){
+//     alert("PLease fil in the empty field(s)");return;
+//   }
+//   if(!nameregex.test(username.value)) 
+//   {
+//     alert("the name should only contain alphabets!")
+//     return;
+//   }
+
+//   if(!emailregex.test(email.value))
+//   {
+//     alert("Invalid email");return;
+//   }
+//   if(!userpwdregex.test(password.value)){
+//     alert("Password not strong enough");return;
+//   }
+//   return true;
+
+// }
+// //-----------------------Register----------------------------------
+// function RegisterUser(){
+
+//   if(!validate()){
+//     return;
+//   }
+
+ 
+
+// //   const dbRef = ref(database);
+// //   get(child(dbRef, "UserList/"+username.value)).then((snapshort)=>{
+    
+// //     if(snapshort.exists()){
+// //       alert("User aready exists");
+// //     }else{
+// //       var date = Date(Date.now());
+// //       set(ref(database,"UserList/"+username.value),
+// //       {
+// //         email : email.value,
+// //         full_name : username.value,
+// //         password :password.value,
+// //         Role : "general_user",
+// //         last_login : date.toString()
+
+        
+// //       }
+// //       )
+// //     }
+// //   }).then(()=>
+// //   {
+// //     alert("User registered successfully!")
+// //     container.classList.remove("sign-up-mode");
+// //   }).catch(function(error){
+
+
+// // var error_code = error.error_code
+// // var error_message = error.message
+// // alert("Trouble in paradise !! "+error.message)
+
+// // })
+// }
+
+// //-----------------------Authentication----------------------------
+
+// function LoginAuth(){
+
+//   const dbRef = ref(database);
+//   const pass = document.getElementById("signInpass");
+//   const usernameSignin = (document.getElementById("signUsername").value).toLowerCase();
+
+
+//   get(child(dbRef, "UserList/"+usernameSignin)).then((snapshort)=>{
+    
+//     if(snapshort.exists()){
+      
+//       let dbpassword = snapshort.val().password;
+//       if(dbpassword == pass.value){
+//         //alert(snapshort.val());
+//         //console.log(snapshort)
+//         console.log(snapshort.val())
+//         login(snapshort.val());
+//         alert("User signedIn successfully!")
+//       }else{
+//         alert("Incorrect credentials");
+//         return;
+//       }
+//     }
+//     else{
+      
+//       alert("Incorect Username")
+//     }
+//   }).then(()=>
+//   {
+    
+//   }).catch(function(error){
+
+
+//   var error_code = error.error_code
+//   var error_message = error.message
+// alert("Trouble in paradise !! "+error.message)
+
+// })
+
+// }
+
+// function login(user){
+
+//   localStorage.setItem('KeepLoggedIn','yes');
+//   localStorage.setItem('user',JSON.stringify(user));
+//   window.location = "index.html";
+
+// }
+
+
+//--------------------------encription-----------------------------
+
+
+
+//-------------------------Toggle-------------------------------
+// function myFunction() {
+//   var x = document.getElementById("password");
+//   if (x.type === "password") {
+//     x.type = "text";
+//   } else {
+//     x.type = "password";
+//   }
+// }
+
+// -------------------------Insert---------------------------------
+
+// sign_up_act.addEventListener("click",RegisterUser);
+// signIn.addEventListener("click",LoginAuth);
+
+
+</script>
+
+
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
+<script src="./app.js"></script>
 </html>

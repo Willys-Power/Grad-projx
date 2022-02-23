@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "grad-projx"
+  },
+  "targets": {
+    "grad-projx": {
+      "hosting": {
+        "gradportal": [
+          "grad-projx"
+        ]
+      }
+    }
   }
 }

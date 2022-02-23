@@ -393,8 +393,8 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="./users.html">GRADUATES</a></li>
-                <li class="nav-item"> <a class="nav-link" href="./clients.html">CLIENTS</a></li>
-                <li class="nav-item"> <a class="nav-link" href="./admin.html">ADMIN</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="./clients.html">CLIENTS</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="./admin.html">ADMIN</a></li>
                   
                 </ul>
               </div>
@@ -638,7 +638,7 @@
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
-                                    <h4 class="card-title card-title-dash">Clients List</h4>
+                                    <h4 class="card-title card-title-dash">Admin List</h4>
                                    <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
                                   </div>
 
@@ -647,7 +647,7 @@
 
 
                                   <div>
-                                    <button class="btn btn-dark btn-lg text-white mb-0 me-0" type="button" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-account-plus"></i>Add New Client</button>
+                                    <button class="btn btn-dark btn-lg text-white mb-0 me-0" type="button" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-account-plus"></i>Add New Admin</button>
                                   </div>
 
 
@@ -656,16 +656,17 @@
                                     <div class="modal-dialog modal-xl" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLabel">Add new Client</h5>
+                                          <h5 class="modal-title" id="exampleModalLabel">Add new Admin</h5>
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
                                         </div>
+                                        <!--------------- Register Administrator--------------------->
                                         <div class="modal-body">
                                           <div class="col-12 grid-margin">
                                             <div class="card">
                                               <div class="card-body">
-                                                <h4 class="card-title">Client</h4>
+                                                <h4 class="card-title">Admin</h4>
                                                 <form class="form-sample">
                                                   <p class="card-description">
                                                     Personal info
@@ -673,7 +674,7 @@
                                                   <div class="row">
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">First Name</label>
+                                                        <label class="col-sm-3 col-form-label" id="firstname">First Name</label>
                                                         <div class="col-sm-9">
                                                           <input type="text" class="form-control" />
                                                         </div>
@@ -681,9 +682,9 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Last Name</label>
+                                                        <label class="col-sm-3 col-form-label" >Last Name</label>
                                                         <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
+                                                          <input type="text" class="form-control"id="lastname" />
                                                         </div>
                                                       </div>
                                                     </div>
@@ -691,9 +692,9 @@
                                                   <div class="row">
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Gender</label>
+                                                        <label class="col-sm-3 col-form-label" >Gender</label>
                                                         <div class="col-sm-9">
-                                                          <select class="form-control">
+                                                          <select class="form-control" id="gender">
                                                             <option>Male</option>
                                                             <option>Female</option>
                                                           </select>
@@ -702,27 +703,31 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Company Name</label>
+                                                        <label class="col-sm-3 col-form-label" id="DOB">Date of Birth</label>
                                                         <div class="col-sm-9">
-                                                          <input class="form-control" />
+                                                          <input class="form-control" placeholder="dd/mm/yyyy"/>
                                                         </div>
                                                       </div>
                                                     </div>
                                                   </div>
                                                   <div class="row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-3 col-form-label">Tittle</label>
-                                                            <div class="col-sm-9">
-                                                              <input class="form-control" />
-                                                            </div>
-                                                          </div>
+                                                      <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Role</label>
+                                                        <div class="col-sm-9">
+                                                          <select class="form-control" id="Role">
+                                                            <option>Super User</option>
+                                                            <option>Administrator</option>
+                                                            <option>General</option>                                                            
+                                                          </select>
+                                                        </div>
+                                                      </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
                                                         
                                                         <div class="form-group row">
-                                                          <label class="col-sm-3 col-form-label">Division</label>
+                                                          <label class="col-sm-3 col-form-label" id="position">Position</label>
                                                           <div class="col-sm-9">
                                                             <input class="form-control"/>
                                                           </div>
@@ -730,9 +735,68 @@
                                                       </div>
                                                     </div>
                                                   </div>
-                                                  
-                                                 
-                                                 
+                                                  <!-- <p class="card-description">
+                                                    Address
+                                                  </p> -->
+                                                  <!-- <div class="row">
+                                                    <div class="col-md-6">
+                                                      <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Address 1</label>
+                                                        <div class="col-sm-9">
+                                                          <input type="text" class="form-control" />
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                      <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">State</label>
+                                                        <div class="col-sm-9">
+                                                          <input type="text" class="form-control" />
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div> -->
+                                                  <!-- <div class="row">
+                                                    <div class="col-md-6">
+                                                      <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Address 2</label>
+                                                        <div class="col-sm-9">
+                                                          <input type="text" class="form-control" />
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                      <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Postcode</label>
+                                                        <div class="col-sm-9">
+                                                          <input type="text" class="form-control" />
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div> -->
+                                                  <!-- <div class="row">
+                                                    <div class="col-md-6">
+                                                      <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">City</label>
+                                                        <div class="col-sm-9">
+                                                          <input type="text" class="form-control" />
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                      <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Country</label>
+                                                        <div class="col-sm-9">
+                                                          <select class="form-control">
+                                                            <option>South Africa</option>
+                                                            <option>Botswana</option>
+                                                            <option>Russia</option>
+                                                            <option>USA</option>
+                                                          </select>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div> -->
                                                 </form>
                                               </div>
                                             </div>
@@ -740,7 +804,7 @@
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                          <button type="button" class="btn btn-primary" id="Add-admin">Save changes</button>
                                         </div>
                                       </div>
                                     </div>
@@ -751,16 +815,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
+                                  
                                 </div>
                                 <div class="table-responsive  mt-1">
                                   <table class="table select-table">
@@ -773,9 +828,9 @@
                                           </div>
                                         </th>
                                         <th>Names</th>
-                                        <th>Company</th>
-                                        <th>Recruited</th>
-                                        <th>Interested</th>
+                                        <th>Tittle</th>
+                                        
+                                        <th>Status</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -788,111 +843,106 @@
                                         </td>
                                         <td>
                                           <div class="d-flex ">
-                                            <img src="images/faces/face4.jpg" alt="">
-                                            <div>
-                                              <h6>Paul Klassen</h6>
-                                              <p>head of HR</p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>ABSA Bank</h6>
-                                          <!-- <p>company type</p> -->
-                                        </td>
-                                        <td><div class="badge badge-opacity-warning">6</div></td>
-                                        <td><div class="badge badge-opacity-success">11</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex">
-                                            <img src="images/faces/face6.jpg" alt="">
-                                            <div>
-                                              <h6>Ciara Johnson</h6>
-                                              <p>Recruitment Specialist</p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>old Mutual Limited</h6>
-                                          <!-- <p>company type</p> -->
-                                        </td>
-                                        <td><div class="badge badge-opacity-warning">11</div></td>
-                                        <td><div class="badge badge-opacity-success">3</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex">
-                                            <img src="images/faces/face9.jpg" alt="">
-                                            <div>
-                                              <h6>Thabo Lekola</h6>
-                                              <p>HR</p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>Assupol</h6>
-                                          <!-- <p>company type</p> -->
-                                        </td>
-                                        <td><div class="badge badge-opacity-warning">0</div></td>
-                                        <td><div class="badge badge-opacity-success">22</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex">
-                                            <img src="images/faces/face16.jpg" alt="">
-                                            <div>
-                                              <h6>George Forbes</h6>
-                                              <p>Talent Acquisition Director</p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>FNB</h6>
-                                          <!-- <p>company type</p> -->
-                                        </td>
-                                        <td><div class="badge badge-opacity-warning">22</div></td>
-                                        <td><div class="badge badge-opacity-success">12</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex">
                                             <img src="images/faces/face17.jpg" alt="">
                                             <div>
-                                              <h6>Roberts Brown</h6>
-                                              <p>Sorcing Manager</p>
+                                              <h6>David Lee</h6>
                                             </div>
                                           </div>
                                         </td>
                                         <td>
-                                          <h6>Sanlam</h6>
+                                          <h6>Administration Officer</h6>
                                           <!-- <p>company type</p> -->
                                         </td>
-                                        <td><div class="badge badge-opacity-warning">17</div></td>
-                                        <td><div class="badge badge-opacity-success">3</div></td>
+                                    
+                                        <td><div class="badge badge-success">Online</div></td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <div class="form-check form-check-flat mt-0">
+                                            <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <img src="images/faces/face18.jpg" alt="">
+                                            <div>
+                                              <h6>John Wayne</h6>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <h6>IT Supervisor</h6>
+                                          <!-- <p>company type</p> -->
+                                        </td>
+                                    
+                                        <td><div class="badge badge-danger">Offline</div></td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <div class="form-check form-check-flat mt-0">
+                                            <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <img src="images/faces/face13.jpg" alt="">
+                                            <div>
+                                              <h6>James Wayne</h6>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <h6>Legal Advisor</h6>
+                                          <!-- <p>company type</p> -->
+                                        </td>
+                                    
+                                        <td><div class="badge badge-danger">Offline</div></td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <div class="form-check form-check-flat mt-0">
+                                            <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <img src="images/faces/face16.jpg" alt="">
+                                            <div>
+                                              <h6>Matthew Butler</h6>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <h6>Administration Officer</h6>
+                                          <!-- <p>company type</p> -->
+                                        </td>
+                                    
+                                        <td><div class="badge badge-success">Online</div></td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <div class="form-check form-check-flat mt-0">
+                                            <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <img src="images/faces/face7.jpg" alt="">
+                                            <div>
+                                              <h6>Gerald Smith</h6>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <h6>Enrollment Officer</h6>
+                                          <!-- <p>company type</p> -->
+                                        </td>
+                                    
+                                        <td><div class="badge badge-danger">Offline</div></td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -1202,7 +1252,165 @@
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- Add Admin js -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
+    //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-analytics.js";
+    
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    const sign_in_btn = document.querySelector("#sign-in-btn");
+  const sign_up_btn = document.querySelector("#sign-up-btn");
+  const sign_up = document.querySelector("#signUp");
+  const sign_up_act = document.getElementById("sign_up");
+  const signIn = document.getElementById("signIn");
+  const container = document.querySelector(".container");
+  const addAdmin = document.getElementById("Add-admin");
+  
+  
+  
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAuuAMrOqkTix4hgvE4gG3MtA44ZYQWg2k",
+      authDomain: "mindworxgrad.firebaseapp.com",
+      projectId: "mindworxgrad",
+      storageBucket: "mindworxgrad.appspot.com",
+      messagingSenderId: "921423385255",
+      appId: "1:921423385255:web:1e0ac2a0df745193e34182",
+      measurementId: "G-D1HH02SNW3"
+    };
+  
+    // Initialize Firebase
+    
+    const app = initializeApp(firebaseConfig);
+    //const analytics = getAnalytics(app);
+  
+    //Initialize variables
+  
+  //const auth = firebase.auth()
+  const database = getDatabase(app);
+  
+  import {getDatabase, ref, set, child, get, update}
+  from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
+  
+  var username,email,password,confirmPass,surname,DOb;
+  
+  //---------------------References-----------------------
+  
+  username = document.getElementById("username");
+  email = document.getElementById("email");
+  password = document.getElementById("password");
+  confirmPass = document.getElementById("confirmPass");
+  
+  
+  
+  //Form validation
+  
+  function isEmptyOrSpaces(str){
+  
+    return str ===null || str.match(/^ *$/) !== null;
+  }
+  
+  function validate(){
+  
+    let nameregex = /[a-zA-Z]+/;
+    let emailregex = /[a-zA-Z0-9]+@(gmail|mindworx|outlook|yahoo)\.(com|co.za)/;
+    let userpwdregex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+  
+    if(! (password.value === confirmPass.value)){
+      alert("Passwords do not match ")
+      return;
+    }
+  
+    if(isEmptyOrSpaces(username.value) || isEmptyOrSpaces(email.value) || isEmptyOrSpaces(password.value) || isEmptyOrSpaces(confirmPass.value)){
+      alert("PLease fil in the empty field(s)");return;
+    }
+    if(!nameregex.test(username.value)) 
+    {
+      alert("the name should only contain alphabets!")
+      return;
+    }
+  
+    if(!emailregex.test(email.value))
+    {
+      alert("Invalid email");return;
+    }
+    if(!userpwdregex.test(password.value)){
+      alert("Password not strong enough");return;
+    }
+    return true;
+  
+  }
+  //-----------------------Register----------------------------------
+  function RegisterUser(){
+  
+    if(!validate()){
+      return;
+    }
+  
+   
+  
+    const dbRef = ref(database);
+    get(child(dbRef, "Users/"+username.value)).then((snapshort)=>{
+      
+      if(snapshort.exists()){
+        alert("User aready exists");
+      }else{
+        var date = Date(Date.now());
+        set(ref(database,"Users/"+username.value),
+        {
+          email : email.value,
+          full_name : username.value,
+          password :password.value,
+          Role : "admin",
+          last_login : date.toString(),
+          country : null,
+          city :null,
+          addressLine:null,
+          course :null,
+          DOB:null,
+          qualification:null,
+          gender:null
+  
+          
+        }
+        )
+      }
+    }).then(()=>
+    {
+      alert("User registered successfully!")
+      container.classList.remove("sign-up-mode");
+    }).catch(function(error){
+  
+  
+  var error_code = error.error_code
+  var error_message = error.message
+  alert("Trouble in paradise !! "+error.message)
+  
+  })
+  }
+  
+  
+  //--------------------------encription-----------------------------
+  
+  
+  
+  //-------------------------Toggle-------------------------------
+
+  // -------------------------Insert---------------------------------
+  addAdmin.addEventListener("click",RegisterUser);
+  
+  
+  </script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
   <!-- End custom js for this page-->
+
 </body>
 
 </html>
