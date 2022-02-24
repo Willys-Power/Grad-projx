@@ -11,9 +11,9 @@
       saleGradientBg2.addColorStop(0, 'rgba(0, 208, 255, 0.19)');
       saleGradientBg2.addColorStop(1, 'rgba(0, 208, 255, 0.03)');
       var salesTopData = {
-          labels: ["SUN","sun", "MON", "mon", "TUE","tue", "WED", "wed", "THU", "thu", "FRI", "fri", "SAT"],
+          labels: ["2015","2015", "2016", "2016", "2017","2017", "2018", "2018", "2019", "2019", "2020", "2020", "2021"],
           datasets: [{
-              label: 'This week',
+              label: 'NC',
               data: [50, 110, 60, 290, 200, 115, 130, 170, 90, 210, 240, 280, 200],
               backgroundColor: saleGradientBg,
               borderColor: [
@@ -26,19 +26,82 @@
               pointHoverRadius: [2, 2, 2, 2, 2,2, 2, 2, 2, 2,2, 2, 2],
               pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)'],
               pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
-          },{
-            label: 'Last week',
-            data: [30, 150, 190, 250, 120, 150, 130, 20, 30, 15, 40, 95, 180],
+          },
+          {
+            label: 'A',
+            data: [177, 200, 250, 90, 20, 175, 230, 150, 98, 20, 140, 180, 100],
+            backgroundColor: saleGradientBg,
+            borderColor: [
+                '#A52A2A',
+            ],
+            borderWidth: 1.5,
+            fill: true, // 3: no fill
+            pointBorderWidth: 1,
+            pointRadius: [4, 4, 4, 4, 4,4, 4, 4, 4, 4,4, 4, 4],
+            pointHoverRadius: [2, 2, 2, 2, 2,2, 2, 2, 2, 2,2, 2, 2],
+            pointBackgroundColor: ['#A52A2A)', '#A52A2A', '#A52A2A', '#A52A2A','#A52A2A)', '#A52A2A', '#A52A2A', '#A52A2A','#A52A2A)', '#A52A2A', '#A52A2A', '#A52A2A','#A52A2A)'],
+            pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
+        },
+        {
+          label: 'AI',
+          data: [20, 150, 120, 250, 250, 145, 300, 70, 40, 210, 120, 220, 260],
+          backgroundColor: saleGradientBg,
+          borderColor: [
+              '#7FFD4',
+          ],
+          borderWidth: 1.5,
+          fill: true, // 3: no fill
+          pointBorderWidth: 1,
+          pointRadius: [4, 4, 4, 4, 4,4, 4, 4, 4, 4,4, 4, 4],
+          pointHoverRadius: [2, 2, 2, 2, 2,2, 2, 2, 2, 2,2, 2, 2],
+          pointBackgroundColor: ['#7FFD4)', '#7FFD4', '#7FFD4', '#7FFD4','#7FFD4)', '#7FFD4', '#7FFD4', '#7FFD4','#7FFD4)', '#7FFD4', '#7FFD4', '#7FFD4','#7FFD4)'],
+          pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
+      },
+      {
+        label: 'C',
+        data: [140, 150, 160, 250, 120, 150, 230, 77, 130, 110, 170, 210, 200],
+        backgroundColor: saleGradientBg,
+        borderColor: [
+            '#808000',
+        ],
+        borderWidth: 1.5,
+        fill: true, // 3: no fill
+        pointBorderWidth: 1,
+        pointRadius: [4, 4, 4, 4, 4,4, 4, 4, 4, 4,4, 4, 4],
+        pointHoverRadius: [2, 2, 2, 2, 2,2, 2, 2, 2, 2,2, 2, 2],
+        pointBackgroundColor: ['#808000)', '#808000', '#808000', '#808000','#808000)', '#808000', '#808000', '#808000','#808000)', '#808000', '#808000', '#808000','#808000)'],
+        pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
+    },
+    
+    {
+      label: 'RPA',
+      data: [14, 55, 120, 142, 250, 77, 144, 154, 248, 68, 77, 112, 102],
+      backgroundColor: saleGradientBg,
+      borderColor: [
+          '#C0C0C0',
+      ],
+      borderWidth: 1.5,
+      fill: true, // 3: no fill
+      pointBorderWidth: 1,
+      pointRadius: [4, 4, 4, 4, 4,4, 4, 4, 4, 4,4, 4, 4],
+      pointHoverRadius: [2, 2, 2, 2, 2,2, 2, 2, 2, 2,2, 2, 2],
+      pointBackgroundColor: ['#C0C0C0)', '#C0C0C0', '#C0C0C0', '#C0C0C0','#C0C0C0)', '#C0C0C0', '#C0C0C0', '#C0C0C0','#C0C0C0)', '#C0C0C0', '#C0C0C0', '#C0C0C0','#C0C0C0)'],
+      pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
+  },
+  
+  {
+            label: 'Sec',
+            data: [55, 100, 184, 20, 120, 170, 210, 180, 130, 175, 240, 295, 190],
             backgroundColor: saleGradientBg2,
             borderColor: [
-                '#52CDFF',
+                '#FF0000',
             ],
             borderWidth: 1.5,
             fill: true, // 3: no fill
             pointBorderWidth: 1,
             pointRadius: [0, 0, 0, 4, 0],
             pointHoverRadius: [0, 0, 0, 2, 0],
-            pointBackgroundColor: ['#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)'],
+            pointBackgroundColor: ['#FF0000)', '#FF0000', '#FF0000', '#FF0000','#FF0000)', '#FF0000', '#FF0000', '#FF0000','#FF0000)', '#FF0000', '#FF0000', '#FF0000','#FF0000)'],
               pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
         }]
       };
@@ -369,10 +432,10 @@
     if ($("#marketingOverview").length) {
       var marketingOverviewChart = document.getElementById("marketingOverview").getContext('2d');
       var marketingOverviewData = {
-          labels: ["JAN","FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+          labels: ["MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB"],
           datasets: [{
-              label: 'Last week',
-              data: [110, 220, 200, 190, 220, 110, 210, 110, 205, 202, 201, 150],
+              label: 'NC',
+              data: [20, 25, 30, 16, 22, 11, 21, 11, 20, 22, 21, 10],
               backgroundColor: "#52CDFF",
               borderColor: [
                   '#52CDFF',
@@ -381,15 +444,66 @@
               fill: true, // 3: no fill
               
           },{
-            label: 'This week',
-            data: [215, 290, 210, 250, 290, 230, 290, 210, 280, 220, 190, 300],
-            backgroundColor: "#1F3BB3",
+            label: 'A',
+            data: [35, 34, 30, 25, 33, 19, 29, 21, 28, 27, 30, 25],
+            backgroundColor: "#ADD8E6",
             borderColor: [
-                '#1F3BB3',
+                '#ADD8E6',
             ],
             borderWidth: 0,
             fill: true, // 3: no fill
-        }]
+        },
+        {
+          label: 'IA',
+          data: [51, 50, 43, 30, 40, 33, 38, 50, 37, 39, 44, 40],
+          backgroundColor: "#800080",
+          borderColor: [
+              '#800080',
+          ],
+          borderWidth: 0,
+          fill: true, // 3: no fill
+      },
+      {
+        label: 'C',
+        data: [63, 74, 79, 66, 70, 79, 66, 65, 58, 66, 70, 75],
+        backgroundColor: "#1F3BB3",
+        borderColor: [
+            '#1F3BB3',
+        ],
+        borderWidth: 0,
+        fill: true, // 3: no fill
+    },
+    {
+      label: 'Sec',
+      data: [80, 85, 99, 100, 93, 105, 94, 110, 115, 85, 89, 100],
+      backgroundColor: "#FF00FF",
+      borderColor: [
+          '#FF00FF',
+      ],
+      borderWidth: 0,
+      fill: true, // 3: no fill
+  },
+  {
+    label: 'RPA',
+    data: [180, 160, 122, 145, 188, 200, 150, 165, 190, 195, 110, 160],
+    backgroundColor: "#800000",
+    borderColor: [
+        '#800000',
+    ],
+    borderWidth: 0,
+    fill: true, // 3: no fill
+},
+        {
+          label: 'CC',
+          data: [220, 290, 210, 250, 290, 230, 290, 210, 280, 220, 190, 300],
+          backgroundColor: "#00000",
+          borderColor: [
+              '#1F3BB4',
+          ],
+          borderWidth: 0,
+          fill: true, // 3: no fill
+      }
+      ]
       };
   
       var marketingOverviewOptions = {
