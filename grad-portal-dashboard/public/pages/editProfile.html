@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <!---<title> Leraner Profile | CodingLab </title>
     <link rel="stylesheet" href="editProfile.css">-->
@@ -13,12 +12,11 @@
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
+    
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
 <body>
-    <!-- <div class="container"> 
+  <!-- <div class="container"> 
     
     <div class="title">Graduate Profile</div>
     <div class="content">
@@ -91,163 +89,332 @@
     </div>
   </div>-->
 
-    <div class="modal-body">
-        <div class="col-12 grid-margin">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Graduate</h4>
-                    <form class="form-sample">
-                        <p class="card-description" style="font-weight: bold;">
-                            Personal info
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Full Name</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="fullname" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Email Address</label>
-                                    <div class="col-sm-9">
-                                        <input type="email" class="form-control" id="email" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Gender</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="gender">
+  <div class="modal-body">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Graduate</h4>
+          <form class="form-sample">
+            <p class="card-description" style="font-weight: bold;">
+              Personal info
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label" >Full Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="fullname"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label" >Email Address</label>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" id="email"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label" >Gender</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" id="gender">
                       <option>Male</option>
                       <option>Female</option>
                     </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Date of Birth</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" type="date" placeholder="dd/mm/yyyy" id="DOB" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Highest Qualification</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="qualification">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label" >Date of Birth</label>
+                  <div class="col-sm-9" >
+                    <input class="form-control" type="date" placeholder="dd/mm/yyyy" id="DOB"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label" >Highest Qualification</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" id="qualification">
                       <option>Matric</option>
                       <option>Bachelor's Degree</option>
-                      <option>Honours</option>
-                      <option>masters</option>
-                      <option>Doctrate</option>
+                      <option>Honours Degree</option>
+                      <option>Master's Degree</option>
+                      <option>Doctrate Degree(PhD)</option>
                     </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+                  </div>
+                </div>
+              </div>
 
+              
+              
 
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Mindworx Course</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" id="course" />
-                                    </div>
-                                </div>
+              <div class="col-md-6">
 
-                            </div>
-                        </div>
-                        <p class="card-description" style="font-weight: bold;">
-                            Address
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Address 1</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="address" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Province</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="province" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">City</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="city" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Country</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="country">
+                
+                  
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" >Mindworx Course</label>
+                    <div class="col-sm-9" >
+                      <input class="form-control" id="course"/>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+            <p class="card-description" style="font-weight: bold;">
+              Address
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label" >Address 1</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="address"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label" >Province</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="province"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label" >City</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="city"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label" >Country</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" id="country">
                       <option>South Africa</option>
                       <option>Botswana</option>
                       <option>Russia</option>
                       <option>USA</option>
                     </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
+          </form>
         </div>
+      </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Close</button>
-        <button type="button" class="btn btn-primary" id="save">Save changes</button>
-    </div>
-    <!-- Graduate Update -->
-    <script type="module">
-        // Import the functions you need from the SDKs you need import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"; //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-analytics.js"; // TODO:
-       // Add SDKs for Firebase products that you want to use // https://firebase.google.com/docs/web/setup#available-libraries const sign_in_btn = document.querySelector("#sign-in-btn"); const sign_up_btn = document.querySelector("#sign-up-btn"); const
-        sign_up = document.querySelector("#signUp"); const sign_up_act = document.getElementById("sign_up"); const signIn = document.getElementById("signIn"); const container = document.querySelector(".container"); const updateGrad = document.getElementById("save");
-        // Your web app's Firebase configuration // For Firebase JS SDK v7.20.0 and later, measurementId is optional const firebaseConfig = { apiKey: "AIzaSyAuuAMrOqkTix4hgvE4gG3MtA44ZYQWg2k", authDomain: "mindworxgrad.firebaseapp.com", projectId: "mindworxgrad",
-        storageBucket: "mindworxgrad.appspot.com", messagingSenderId: "921423385255", appId: "1:921423385255:web:1e0ac2a0df745193e34182", measurementId: "G-D1HH02SNW3" }; // Initialize Firebase const app = initializeApp(firebaseConfig); //const analytics
-        = getAnalytics(app); //Initialize variables //const auth = firebase.auth() const database = getDatabase(app); import {getDatabase, ref, set, child, get, update} from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"; var fullname,email,gender,address,country,city,province,DOB,course,qualification;
-        //---------------------References-----------------------// fullname = document.getElementById("fullname"); email = document.getElementById("email"); gender = document.getElementById("gender"); address = document.getElementById("address"); country
-        = document.getElementById("country"); city = document.getElementById("city"); province = document.getElementById("province"); DOB = document.getElementById("DOB"); course = document.getElementById("course"); qualification = document.getElementById("qualification");
-        //Form validation function isEmptyOrSpaces(str){ return str ===null || str.match(/^ *$/) !== null; } function validate(){ let nameregex = /[a-zA-Z]+/; let emailregex = /[a-zA-Z0-9]+@(gmail|mindworx|outlook|yahoo)\.(com|co.za)/; let userpwdregex
-        = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})"); if(! (password.value === confirmPass.value)){ alert("Passwords do not match ") return; } if(isEmptyOrSpaces(username.value) || isEmptyOrSpaces(email.value)
-        || isEmptyOrSpaces(password.value) || isEmptyOrSpaces(confirmPass.value)){ alert("PLease fil in the empty field(s)");return; } if(!nameregex.test(username.value)) { alert("the name should only contain alphabets!") return; } if(!emailregex.test(email.value))
-        { alert("Invalid email");return; } if(!userpwdregex.test(password.value)){ alert("Password not strong enough");return; } return true; } //-----------------------Register---------------------------------- function UpdateUser(){ /*if(!validate()){
-        return; } alert(email.value+ " "+email) const postdata = { email : email.value, full_name : fullname.value, Role : "general_user", } const updateData = {}; updateData['/UserList/'+fullname] = postdata; const dbRef = ref(database); return update(ref(database),updateData)
-        alert("User updated");*/ const dbRef = ref(database); get(child(dbRef, "UserList/"+fullname.value)).then((snapshort)=>{ if(snapshort.exists()){ set(ref(database,"UserList/"+fullname.value), { email : email.value, Role : "general_user", password:"poiuyt",
-        gender : gender.value, address :address.value, country :country.value, city : city.value, province : province.value, DOB : DOB.value, course : course.value, qualification : qualification.value } ) }else{ } }).then(()=> { alert("User registered
-        successfully!") container.classList.remove("sign-up-mode"); }).catch(function(error){ var error_code = error.error_code var error_message = error.message }) //REDIRECT window.location = "profile.html"; } //--------------------------getData--------------------
-        function getUserData(){ const dbRef = ref(database); get(child(dbRef, "UserList/"+fullname.value)).then((snapshort)=>{ // document.getElementById("fullname").value = snapshort.val().fullname; document.getElementById("email").value = snapshort.val().email;
-        }) } window.onload = getUserData; //--------------------------encription----------------------------- //-------------------------Toggle------------------------------- // -------------------------Insert--------------------------------- updateGrad.addEventListener("click",UpdateUser);
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Close</button>
+    <button type="button" class="btn btn-primary"  id="save">Save changes</button>
+  </div>
+  <!-- Graduate Update -->
+   <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
+    //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-analytics.js";
+    
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+const sign_in_btn = document.querySelector("#sign-in-btn");
+const sign_up_btn = document.querySelector("#sign-up-btn");
+const sign_up = document.querySelector("#signUp");
+const sign_up_act = document.getElementById("sign_up");
+const signIn = document.getElementById("signIn");
+const container = document.querySelector(".container");
+const updateGrad = document.getElementById("save");
 
+  
+  
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAuuAMrOqkTix4hgvE4gG3MtA44ZYQWg2k",
+      authDomain: "mindworxgrad.firebaseapp.com",
+      projectId: "mindworxgrad",
+      storageBucket: "mindworxgrad.appspot.com",
+      messagingSenderId: "921423385255",
+      appId: "1:921423385255:web:1e0ac2a0df745193e34182",
+      measurementId: "G-D1HH02SNW3"
+    };
+  
+    // Initialize Firebase
+    
+    const app = initializeApp(firebaseConfig);
+    //const analytics = getAnalytics(app);
+  
+    //Initialize variables
+  
+  //const auth = firebase.auth()
+  const database = getDatabase(app);
+  
+  import {getDatabase, ref, set, child, get, update}
+  from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
+  
+  var fullname,email,gender,address,country,city,province,DOB,course,qualification;
+  
+  //---------------------References-----------------------//
+  
+  fullname = document.getElementById("fullname");
+  email = document.getElementById("email");
+  gender = document.getElementById("gender");
+  address = document.getElementById("address");
+  country = document.getElementById("country");
+  city = document.getElementById("city");
+  province = document.getElementById("province");
+  DOB  = document.getElementById("DOB");
+  course = document.getElementById("course");
+  qualification = document.getElementById("qualification");
 
-    </script>
+  
+  
+  
+  //Form validation
+  
+  function isEmptyOrSpaces(str){
+  
+    return str ===null || str.match(/^ *$/) !== null;
+  }
+  
+  function validate(){
+  
+    let nameregex = /[a-zA-Z]+/;
+    let emailregex = /[a-zA-Z0-9]+@(gmail|mindworx|outlook|yahoo)\.(com|co.za)/;
+    let userpwdregex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+  
+    if(! (password.value === confirmPass.value)){
+      alert("Passwords do not match ")
+      return;
+    }
+  
+    if(isEmptyOrSpaces(username.value) || isEmptyOrSpaces(email.value) || isEmptyOrSpaces(password.value) || isEmptyOrSpaces(confirmPass.value)){
+      alert("PLease fil in the empty field(s)");return;
+    }
+    if(!nameregex.test(username.value)) 
+    {
+      alert("the name should only contain alphabets!")
+      return;
+    }
+  
+    if(!emailregex.test(email.value))
+    {
+      alert("Invalid email");return;
+    }
+    if(!userpwdregex.test(password.value)){
+      alert("Password not strong enough");return;
+    }
+    return true;
+  
+  }
+  //-----------------------Register----------------------------------
+  function UpdateUser(){
+  
+    /*if(!validate()){
+      return;
+    }
+    alert(email.value+ " "+email)
+    
+    const postdata = {
+          email : email.value,
+          full_name : fullname.value,
+          Role : "general_user",
+          
+          
+    }
+   
+    const updateData = {};
+    updateData['/UserList/'+fullname] = postdata;
+    const dbRef = ref(database);
+    
+    return update(ref(database),updateData)
+    alert("User updated");*/
 
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
+    const dbRef = ref(database);
+    get(child(dbRef, "UserList/"+fullname.value)).then((snapshort)=>{
+      
+      if(snapshort.exists()){
+        set(ref(database,"UserList/"+fullname.value),
+        {
+          email : email.value,
+          Role : "general_user",
+          password:"poiuyt", 
+          gender : gender.value,
+          address :address.value,
+          country :country.value,
+          city : city.value,
+          province : province.value,
+          DOB  : DOB.value,
+          course : course.value,
+          qualification : qualification.value
 
+          
+        }
+        )
+     
+      }else{
+        }
+    }).then(()=>
+    {
+      alert("User registered successfully!")
+      container.classList.remove("sign-up-mode");
+    }).catch(function(error){
+  
+  
+  var error_code = error.error_code
+  var error_message = error.message
+ 
+  
+  })
+  
+  
+  }
+
+  //--------------------------getData--------------------
+  function getUserData(){
+    const dbRef = ref(database);
+    get(child(dbRef, "UserList/"+fullname.value)).then((snapshort)=>{
+     
+        // document.getElementById("fullname").value = snapshort.val().fullname;
+        document.getElementById("email").value = snapshort.val().email;
+        
+
+      })
+    }
+     window.onload = getUserData;
+  
+  
+  //--------------------------encription-----------------------------
+  
+  
+  
+  //-------------------------Toggle-------------------------------
+
+  // -------------------------Insert---------------------------------
+  updateGrad.addEventListener("click",UpdateUser);
+  
+  
+  </script>
+  
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
+ 
 </body>
-
 </html>
