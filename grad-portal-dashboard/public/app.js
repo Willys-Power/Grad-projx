@@ -17,6 +17,7 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 
+
 //Set up the SignUp function
 function signup() {
     //get all the input fields
