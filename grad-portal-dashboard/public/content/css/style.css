@@ -109,8 +109,6 @@ button:hover {
     border: none;
 }
 
-.big-text {}
-
 .intro-sf {
     background: black;
     position: fixed;
@@ -139,7 +137,7 @@ button:hover {
 }
 
 .slider {
-    background: rgb(141, 128, 112);
+    background: #f28f3b;
     position: fixed;
     top: 0;
     left: 0;
