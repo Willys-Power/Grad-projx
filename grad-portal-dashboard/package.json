@@ -1,0 +1,19 @@
+{
+  "name": "grad-portal-dashboard",
+  "version": "1.0.0",
+  "description": "A multi theme, completely accessible, with components and pages examples, ready for production dashboard.",
+  "main": "postcss.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^9.6.7"
+  },
+  "devDependencies": {
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
