@@ -12,11 +12,33 @@ const firebaseConfig = {
   measurementId: "G-D1HH02SNW3"
 };
 
+
+
 /// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Initialize variables
 const auth = firebase.auth();
 const database = firebase.database();
+
+const Gradupdate = document.getElementById("save");
+
+var fullname,email,gender,address,country,city,province,DOB,course,qualification,Qname,LinkedIn,github,WTR;
+fullname = document.getElementById("fullname").value;
+  email = document.getElementById("email").value;
+  gender = document.getElementById("gender").value;
+  address = document.getElementById("address").value;
+  country = document.getElementById("country").value;
+  city = document.getElementById("city").value;
+  province = document.getElementById("province").value;
+  DOB  = document.getElementById("DOB").value;
+  course = document.getElementById("course").value;
+  qualification = document.getElementById("qualification").value;
+  
+  skills = Array.from(document.getElementById("skills").selectedOptions).map(o => o.value);
+  LinkedIn = document.getElementById("LinkedIn").value;
+  github = document.getElementById("Github").value;
+  WTR =  document.getElementById("WTR").value;
+  Qname = document.getElementById("qualificationName").value;
 
 //Set up the SignUp function
 function signup() {
@@ -78,7 +100,40 @@ function signup() {
     })
 }
 
+function autofill(userData){
 
+  // save users on the session
+  localStorage.setItem('country',(!Boolean(userData.get('country')))?"":userData.get('country'));
+  localStorage.setItem('city',(!Boolean(userData.get('city')))?"":userData.get('city'));
+  localStorage.setItem('address',(!Boolean(userData.get('address')))?"":userData.get('address'));
+  localStorage.setItem('course',(!Boolean(userData.get('course')))?"":userData.get('course'));
+  localStorage.setItem('DOB',(!Boolean(userData.get('DOB')))?"":userData.get('DOB'));
+  localStorage.setItem('qualification',(!Boolean(userData.get('qualification')))?"":userData.get('qualification'));
+  localStorage.setItem('qualificationName',(!Boolean(userData.get('qualificationName')))?"":userData.get('qualificationName'));
+  localStorage.setItem('WTR',(!Boolean(userData.get('WTR')))?"":userData.get('WTR'));
+  localStorage.setItem('gender',(!Boolean(userData.get('gender')))?"":userData.get('gender'));
+  localStorage.setItem('email',(!Boolean(userData.get('email')))?"":userData.get('email'));
+  localStorage.setItem('province',(!Boolean(userData.get('province')))?"":userData.get('province'));
+  localStorage.setItem('role',(!Boolean(userData.get('role')))?"":userData.get('role'));
+  localStorage.setItem('skills',(!Boolean(userData.get('skills')))?"":userData.get('skills'));
+  localStorage.setItem('Github',(!Boolean(userData.get('Github')))?"":userData.get('Github'));
+  localStorage.setItem('LinkedIn',(!Boolean(userData.get('LinkedIn')))?"":userData.get('LinkedIn'));
+  localStorage.setItem('KeepLoggedIn','yes');
+  localStorage.setItem('userId',userData.get('uid'));
+  
+ // window.location = (user.get('role') === "admin")?"index.html": "pages/editProfile.html";
+
+
+
+}
+
+function loadData(){
+  document.getElementById('DOB').value = localStorage.getItem('DOB'); 
+  document.getElementById('LinkedIn').value = localStorage.getItem('LinkedIn'); 
+  document.getElementById('Github').value = localStorage.getItem('Github');
+  document.getElementById('province').value = localStorage.getItem('province');
+
+}
 
 
 // Set up our login function
@@ -93,12 +148,11 @@ function login() {
     return
     // Don't continue running the code
   }
-
   auth.signInWithEmailAndPassword(signInEmail, signInpass)
     .then(function () {
       // Declare user variable
       var user = auth.currentUser
-
+      
       // Add this user to Firebase Database
       var database_ref = database.ref()
 
@@ -107,12 +161,22 @@ function login() {
         last_login: Date.now()
       }
 
+     localStorage.setItem('currentUser',user);
+     localStorage.setItem('Id',user.uid);
       // Push to Firebase Database
       database_ref.child('usersNkocie/' + user.uid).update(user_data)
 
       // DOne
-      alert('User Logged In!! ')
+      //alert('User Logged In!! ')
+
+      //GetUserData form Database and save it too the session
+      
+      database_ref.child('usersNkocie/' + user.uid).once("value", snap => {
+       var data = snap.val()
+        autofill(data.fullname)
+      });
       window.location = "index.html"
+      //console.log(user.uid)
     })
     .catch(function (error) {
       // Firebase will use this to alert of its errors
@@ -121,6 +185,63 @@ function login() {
 
       alert(error_message)
     })
+}
+
+
+function updateGrad(){
+
+  //enter updated values
+
+  fullname = document.getElementById("fullname").value;
+  email = document.getElementById("email").value;
+  gender = document.getElementById("gender").value;
+  address = document.getElementById("address").value;
+  country = document.getElementById("country").value;
+  city = document.getElementById("city").value;
+  province = document.getElementById("province").value;
+  DOB  = document.getElementById("DOB").value;
+  course = document.getElementById("course").value;
+  qualification = document.getElementById("qualification").value;
+  
+  skills = Array.from(document.getElementById("skills").selectedOptions).map(o => o.value);
+  LinkedIn = document.getElementById("LinkedIn").value;
+  github = document.getElementById("Github").value;
+  WTR =  document.getElementById("WTR").value;
+  Qname = document.getElementById("qualificationName").value;
+  //
+
+  var userId = localStorage.getItem('Id')
+    alert("Id is "+userId);  
+      // Add this user to Firebase Database
+  let DBRef = database.ref()
+  let userUpdatedata = 
+  {
+
+    fullname:fullname,
+    email:email,
+    gender:gender,
+    address:address,
+    country:country,
+    city:city,
+    province:province,
+    DOB:DOB,
+    course:course,
+    qualification:qualification,
+    qName:Qname,
+    LinkedIn:LinkedIn,
+    github:github,
+    WTR:WTR,
+    skills:skills
+
+  }
+  
+  
+  DBRef.child('usersNkocie/' + userId).update(userUpdatedata)
+  console.log("user id is "+userId)
+  const t = prompt(" Enter something")
+  alert("user updated succesfully");
+  window.location = "profile.html";
+
 }
 
 
@@ -145,6 +266,17 @@ function forgotPassword() {
     })
 }
 
+Gradupdate.addEventListener("click",updateGrad);
+//generate password
+function generatePassword() {
+  var length = 8,
+      charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+      retVal = "";
+  for (var i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return retVal;
+}
 //Add new client
 let clientPassword = generatePassword();
 function addNewClient() {
@@ -160,7 +292,6 @@ function addNewClient() {
 
   alert("CLient password is " + clientPassword)
 
-<<<<<<< HEAD
   auth.sendSignInLinkToEmail(clientEmail, actionCodeSettings)
   .then(function() {
     
@@ -182,144 +313,6 @@ function addNewClient() {
         clientDivision : clientDivision
     })
     alert("Client Added Successfully!")
-=======
-  var actionCodeSettings = {
-    // URL you want to redirect back to. The domain (www.example.com) for this
-    // URL must be in the authorized domains list in the Firebase Console.
-    url: 'https://mindworxgrad.web.app',
-    // This must be true.
-    handleCodeInApp: true,
-    iOS: {
-      bundleId: 'com.example.ios'
-    },
-    android: {
-      packageName: 'com.example.android',
-      installApp: true,
-      minimumVersion: '12'
-    },
-    dynamicLinkDomain: 'example.page.link'
-  };
-
-
-  if (validate_email(clientEmail) == false) {
-    alert('Email Or Password is not valid!!')
-    return
-    // Don't continue running the code
-  }
-  if ((validate_field(clientName) == false)) {
-    alert('One or More Extra Fields is not valid!!')
-    return
-  }
-
-  //   
-
-  // Move on with Auth
-  auth.createUserWithEmailAndPassword(clientEmail, clientPassword)
-    .then(function () {
-      // Declare user variable
-      var user = auth.currentUser
-
-      // Add this user to Firebase Database
-      var database_ref = database.ref()
-
-      // Create User data
-      var client_data = {
-
-        clientName: clientName,
-        clientEmail: clientEmail,
-        clientGender: clientGender,
-        companyName: companyName,
-        clientTitle: clientTitle,
-        clientDivision: clientDivision,
-        Role: "client"
-
-      }
-
-      // Push to Firebase Database
-      database_ref.child('usersNkocie/' + user.uid).set(client_data)
-
-      // DOne
-
-
-      // document.getElementById('addClient')
-      //   .addEventListener('button', function (event) {
-      //     event.preventDefault();
-
-      //       alert("inside the funct")
-
-
-      //   });
-      //sendEmail();
-      alert('User Created!!')
-
-    })
-    .catch(function (error) {
-      // Firebase will use this to alert of its errors
-      var error_code = error.code
-      var error_message = error.message
-
-      alert(error_message)
-    })
-
-  const serviceID = 'service_4jhm5mf';
-  const templateID = 'template_a0pzy7c';
-  debugger
-  emailjs.sendForm(serviceID, templateID, '#myForm')
-    .then(() => {
-      alert('Ingenile!');
-    }, (err) => {
-      alert(JSON.stringify(err));
-    });
-  // auth.sendSignInLinkToEmail(clientEmail, actionCodeSettings)
-  // .then(function() {
-
-  //   window.localStorage.setItem('emailForSignIn', clientEmail);
-  //   // ...
-  // })
-  // .catch((error) => {
-  //   var errorCode = error.code;
-  //   var errorMessage = error.message;
-  //   alert(errorMessage)
-  // });
-
-  /*database.ref('usersNkocie/' + clientEmail).set({
-      clientName : clientName,
-      clientEmail : clientEmail,
-      clientGender : clientGender,
-      companyName : companyName,
-      clientTitle : clientTitle,
-      clientDivision : clientDivision
-  })*/
-  alert("Client Added Successfully!")
-
-}
-//password generator
-function generatePassword() {
-  var length = 8,
-    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-    retVal = "";
-  for (var i = 0, n = charset.length; i < length; ++i) {
-    retVal += charset.charAt(Math.floor(Math.random() * n));
-  }
-  return retVal;
-}
-//send email with password
-
-function sendEmail() {
-  let Mailbody = " Hi " + clientName + ",\nYou have a new Mindworx profile created \n Please find your password below \n Password: " +
-    clientPassword + " \n Regards \n Mindworx App Team";
-  Email.send({
-    Host: "smtp.gmail.com",
-    Username: "mindworxgrdproject@gmail.com",
-    Password: "Mastermind*#",
-    To: clientEmail,
-    From: "mindworxgrdproject@gmail.com",
-    Subject: "Mindworx Profile",
-    Body: Mailbody,
-  }).then(
-    message => alert("Client notified via mail sent successfully")
-  );
->>>>>>> 6952f32324e4a9ecc2e964410f28b0295a6f3109
 }
 
 //Validate functions
