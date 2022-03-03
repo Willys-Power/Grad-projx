@@ -2,7 +2,7 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = initializeApp({
     apiKey: "AIzaSyAuuAMrOqkTix4hgvE4gG3MtA44ZYQWg2k",
@@ -17,13 +17,11 @@ const firebaseConfig = initializeApp({
 
 
 
-
-
 /// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Initialize variables
 const auth = getAuth(firebaseConfig);
-const database = getFirestore(firebaseConfig);
+const database = getDatabase(firebaseConfig);
 
 
 //detect auth state
