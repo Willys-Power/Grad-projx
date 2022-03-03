@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "firebase": "^9.6.7"
+    "deep-email-validator": "^0.1.21",
+    "email-deep-validator": "^3.3.0",
+    "firebase": "^9.6.7",
+    "net": "^1.0.2"
   },
   "devDependencies": {
     "webpack": "^5.69.1",

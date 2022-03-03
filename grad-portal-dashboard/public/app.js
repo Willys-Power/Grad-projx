@@ -1,10 +1,13 @@
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase } from 'firebase/database';
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { getDatabase, ref, set, child, update, remove } from 'firebase/database';
+import validate from 'deep-email-validator';
+import { async } from '@firebase/util';
 
-const firebaseConfig = initializeApp({
+
+const firebaseApp = initializeApp({
     apiKey: "AIzaSyAuuAMrOqkTix4hgvE4gG3MtA44ZYQWg2k",
     authDomain: "mindworxgrad.firebaseapp.com",
     databaseURL: "https://mindworxgrad-default-rtdb.firebaseio.com",
@@ -17,105 +20,134 @@ const firebaseConfig = initializeApp({
 
 
 
-/// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-// Initialize variables
-const auth = getAuth(firebaseConfig);
-const database = getDatabase(firebaseConfig);
+/// Initialize app
+const app = !getApps().length ? initializeApp(firebaseApp) : getApp();
+//Reference to the authentication service
+const auth = getAuth(app);
 
+// Reference to the database service
+const database = getDatabase(app);
 
 //detect auth state
 onAuthStateChanged(auth, user => {
 
     if (user != null) {
+        // User is signed in
         console.log('logged in!');
+        console.log(user.email);
+        document.getElementById("displayName").innerHTML = user.email;
     } else {
         console.log('No user');
     }
 
 });
 
-
+//------------------References----------------------// 
+//-Graduate references-//
 const Gradupdate = document.getElementById("save");
 
-var fullname, email, gender, address, country, city, province, DOB, course, qualification, Qname, LinkedIn, github, WTR;
-fullname = document.getElementById("fullname").value;
-email = document.getElementById("email").value;
-gender = document.getElementById("gender").value;
-address = document.getElementById("address").value;
-country = document.getElementById("country").value;
-city = document.getElementById("city").value;
-province = document.getElementById("province").value;
-DOB = document.getElementById("DOB").value;
-course = document.getElementById("course").value;
-qualification = document.getElementById("qualification").value;
+var fullname, email, gender, password, confirmPassword, address, country, city, province, DOB, skills, qualification, Qname, LinkedIn, github, WTR,
+    checkboxPOPI;
+fullname = document.getElementById("fullname");
+email = document.getElementById("email");
+gender = document.getElementById("gender");
+address = document.getElementById("address");
+country = document.getElementById("country");
+city = document.getElementById("city");
+province = document.getElementById("province");
+DOB = document.getElementById("DOB");
+skills = document.getElementById("skills");
+qualification = document.getElementById("qualification");
+password = document.getElementById("psw");
+confirmPassword = document.getElementById("confirmPsw");
+checkboxPOPI = document.getElementById("popiACTchkbox");
 
 // skills = Array.from(document.getElementById("skills").selectedOptions).map(o => o.value);
-LinkedIn = document.getElementById("LinkedIn").value;
-github = document.getElementById("Github").value;
-WTR = document.getElementById("WTR").value;
-Qname = document.getElementById("qualificationName").value;
+LinkedIn = document.getElementById("LinkedIn");
+github = document.getElementById("Github");
+WTR = document.getElementById("WTR");
+Qname = document.getElementById("qualificationName");
+
+var gradSignUpbtn = document.getElementById("sign_up");
+var gradSignInbtn = document.getElementById("signIn");
+
+
+
+//----------------- INSERT DATA FUNCTION -------------//
 
 //Set up the SignUp function
 function signup() {
     //get all the input fields
-    fullname = document.getElementById("fullname").value;
-    email = document.getElementById("email").value;
-    password = document.getElementById("password").value;
-    confirmPass = document.getElementById("confirmPass").value;
-    checkbox = document.getElementById("checkbox").value;
+    var fullName = fullname.value;
+    var Email = email.value;
+    var psw = password.value;
+    var confirmPsw = confirmPassword.value;
+    var checkbox = checkboxPOPI.value;
+    var groupType = 'GRADUATE';
 
-    // Validate input fields
 
-    if (validate_email(email) == false) {
-        alert('Email Or Password is not valid!!')
-        return
-        // Don't continue running the code
-    }
+    //VALIDATE INPUTS.
+    //email validation ref
+    // const main = async() => {
 
-    if (password != confirmPass) {
-        alert('Passwords do not match!!')
-        return
-    }
-    if ((validate_field(fullname) == false)) {
-        alert('One or More Extra Fields is not valid!!')
-        return
-    }
+    //     let res = await validate(Email);
 
-    //   
+    //     return res.valid;
+    // };
 
-    // Move on with Auth
-    auth.createUserWithEmailAndPassword(email, password)
-        .then(function() {
-            // Declare user variable
-            var user = auth.currentUser
 
-            // Add this user to Firebase Database
-            var database_ref = database.ref()
+    // if (main.toString() == false) {
+    //     alert('Email Or Password is not valid!!')
+    //     return
+    //     // Don't continue running the code
+    // }
 
-            // Create User data
-            var user_data = {
-                email: email,
-                fullname: fullname,
-                last_login: Date.now()
-            }
+    //make user sign in with email and password.
+    createUserWithEmailAndPassword(auth, Email, psw)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            //Signed in automatically
 
-            // Push to Firebase Database
-            database_ref.child('usersNkocie/' + user.uid).set(user_data)
-
-            // DOne
-            alert('User Created!!')
-
+            set(ref(database, 'users/' + user.uid), {
+                fullname: fullName,
+                email: Email,
+                psw: psw,
+                confirmPsw: confirmPsw,
+                checkbox: checkbox,
+                groupType: groupType,
+            });
+            console.log("logged in!");
+            window.location = "index.html";
         })
-        .catch(function(error) {
-            // Firebase will use this to alert of its errors
-            var error_code = error.code
-            var error_message = error.message
-
-            alert(error_message)
-        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
 }
 
+// Set up our login function
+const login = async() => {
+    // Get all our input fields
+    const signInEmail = document.getElementById('signInEmail').value;
+    const signInpass = document.getElementById('signInpass').value;
+
+
+    //catch any invaild inputs
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, signInEmail, signInpass);
+        console.log(userCredential.user);
+        window.location = "index.html";
+
+    } catch (error) {
+        console.log(error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        //show error to the user in a pretty way
+    }
+
+}
+
+//---- GET DATA FUNCTIONS -------/////////
 function autofill(userData) {
 
     // save users on the session
@@ -152,58 +184,7 @@ function loadData() {
 }
 
 
-// Set up our login function
-function login() {
-    // Get all our input fields
-    signInEmail = document.getElementById('signInEmail').value;
-    signInpass = document.getElementById('signInpass').value;
-
-    // Validate input fields
-    if (validate_email(signInEmail) == false || validate_password(signInpass) == false) {
-        alert('Email or Password is Outta Line!!')
-        return
-        // Don't continue running the code
-    }
-    auth.signInWithEmailAndPassword(signInEmail, signInpass)
-        .then(function() {
-            // Declare user variable
-            var user = auth.currentUser
-
-            // Add this user to Firebase Database
-            var database_ref = database.ref()
-
-            // Create User data
-            var user_data = {
-                last_login: Date.now()
-            }
-
-            localStorage.setItem('currentUser', user);
-            localStorage.setItem('Id', user.uid);
-            // Push to Firebase Database
-            database_ref.child('usersNkocie/' + user.uid).update(user_data)
-
-            // DOne
-            //alert('User Logged In!! ')
-
-            //GetUserData form Database and save it too the session
-
-            database_ref.child('usersNkocie/' + user.uid).once("value", snap => {
-                var data = snap.val()
-                autofill(data.fullname)
-            });
-            window.location = "index.html"
-                //console.log(user.uid)
-        })
-        .catch(function(error) {
-            // Firebase will use this to alert of its errors
-            var error_code = error.code
-            var error_message = error.message
-
-            alert(error_message)
-        })
-}
-
-
+// UPDATE GRADUATE PROFILE
 function updateGrad() {
 
     //enter updated values
@@ -281,7 +262,7 @@ function forgotPassword() {
         })
 }
 
-Gradupdate.addEventListener("click", updateGrad);
+//Gradupdate.addEventListener("click", updateGrad);
 //generate password
 function generatePassword() {
     var length = 8,
@@ -332,27 +313,28 @@ function addNewClient() {
 }
 
 //Validate functions
-
+//EMAIL VALIDATION
 function validate_email(email) {
-    expression = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+    // expression = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
 
-    if (expression.test(email) == true) {
-        // Email is good
-        return true
-    } else {
-        // Email is not good
-        return false
-    }
+    //library to validate actual existance of an email.
+
+
+    console.log(main);
+    return main;
 }
 
-function validate_password(password) {
-    // Firebase only accepts lengths greater than 6
-    if (password.length < 6) {
-        return false
-    } else {
-        return true
-    }
-}
+
+
+// function validate_password(password) {
+//     // Firebase only accepts lengths greater than 6
+//     if (password.length < 6) {
+//         return false
+//     } else {
+//         return true
+//     }
+// }
+
 
 function validate_field(field) {
     if (field == null) {
@@ -373,3 +355,15 @@ function validate_checkbox(checkbox) {
         return false
     }
 }
+
+
+//-------- EVENT LISTNERS -----///
+gradSignUpbtn.addEventListener('click', e => {
+    signup();
+    e.stopPropagation();
+});
+
+gradSignInbtn.addEventListener('click', e => {
+    login();
+    e.stopPropagation();
+});
