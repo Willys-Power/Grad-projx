@@ -7,6 +7,10 @@ export const AuthState_message = document.querySelector('#AuthState_msg');
 export const divSignupError = document.querySelector('#divSignupError');
 export const signupError_message = document.querySelector('#SignupError_message');
 
+export const btnLogin = document.querySelector('#signIn');
+export const btnSignup = document.querySelector('#sign_up');
+export const btnLogout = document.querySelector('#signOut');
+
 export const hideLoginError = () => {
     divLoginError.style.display = 'none'
     loginError_message.innerHTML = ''
@@ -37,7 +41,7 @@ export const showLoginState = (user) => {
     if (user == null) {
         AuthState_message.innerHTML = ' You logged out.'
     } else {
-        AuthState_message.innerHTML = ' You are logged in.'
+        AuthState_message.innerHTML = 'You are logged in.'
     }
 
 }

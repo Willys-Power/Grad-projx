@@ -1,5 +1,8 @@
 import {
     hideLoginError,
+    btnLogin,
+    btnSignup,
+    btnLogout,
     showLoginState,
     showLoginError,
     showSignupError,
@@ -32,13 +35,10 @@ const firebaseApp = initializeApp({
 
 
 
-/// Initialize app
+// /// Initialize app
 const app = !getApps().length ? initializeApp(firebaseApp) : getApp();
 //Reference to the authentication service
 const auth = getAuth(app);
-
-// Reference to the database service
-const database = getDatabase(app);
 
 //detect authentication state
 const trackAuthState = async() => {
@@ -46,9 +46,9 @@ const trackAuthState = async() => {
 
         if (user != null) {
             // User is signed in
+            console.log(user);
             console.log('logged in!');
             showLoginState(user);
-            document.getElementById("displayName").innerHTML = user.email;
             hideLoginError();
         } else {
             console.log('No user');
@@ -58,13 +58,14 @@ const trackAuthState = async() => {
 
     });
 }
-
 trackAuthState();
+// Reference to the database service
+const database = getDatabase(app);
 
 
 //------------------References----------------------// 
 //-Graduate references-//
-const Gradupdate = document.getElementById("save");
+const Gradupdatebtn = document.getElementById("save");
 
 var fullname, email, gender, password, confirmPassword, address, country, city, province, DOB, skills, qualification, Qname, LinkedIn, github, WTR,
     checkboxPOPI;
@@ -88,10 +89,6 @@ github = document.getElementById("Github");
 WTR = document.getElementById("WTR");
 Qname = document.getElementById("qualificationName");
 
-var gradSignUpbtn = document.getElementById("sign_up");
-var gradSignInbtn = document.getElementById("signIn");
-var gradSignOutbtn = document.getElementById("signOut");
-
 
 
 //----------------- INSERT DATA FUNCTION -------------//
@@ -106,22 +103,6 @@ const signup = async() => {
     var groupType = 'GRADUATE';
 
 
-    //VALIDATE INPUTS.
-    //email validation ref
-    // const main = async() => {
-
-    //     let res = await validate(Email);
-
-    //     return res.valid;
-    // };
-
-
-    // if (main.toString() == false) {
-    //     alert('Email Or Password is not valid!!')
-    //     return
-    //     // Don't continue running the code
-    // }
-
     //make user sign in with email and password.
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, Email, psw);
@@ -129,13 +110,14 @@ const signup = async() => {
         console.log(userCredential.user);
         const user = userCredential.user;
 
-        set(ref(database, 'users/' + user.uid), {
+        database.ref('user/' + user.uid).set({
             fullname: fullName,
             email: Email,
             psw: psw,
             checkbox: checkbox,
             groupType: groupType,
         });
+
         console.log("logged in!");
         window.location = "index.html";
     } catch (error) {
@@ -159,7 +141,7 @@ const login = async() => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, signInEmail, signInpass);
         console.log(userCredential.user);
-        window.location = "index.html";
+        window.location = "index";
 
     } catch (error) {
         console.log(error);
@@ -172,18 +154,14 @@ const login = async() => {
 // SET SIGN-OUT FUNCTION
 const logout = async() => {
 
-    try {
-        const userCredential = await signOut(auth);
+    await signOut(auth);
 
-        showLoginState(userCredential.user);
-        window.location = '/signup';
-    } catch (error) {
-        console.log(error);
-    }
+    showLoginState(userCredential.user);
+
 
 }
 
-//---- GET DATA FUNCTIONS -------/////////
+//---- START GET DATA FUNCTIONS -------/////////
 function autofill(userData) {
 
     // save users on the session
@@ -218,9 +196,10 @@ function loadData() {
     document.getElementById('province').value = localStorage.getItem('province');
 
 }
+//---- END GET DATA FUNCTIONS -------/////////
 
 
-// UPDATE GRADUATE PROFILE
+//-------- START UPDATE GRADUATE PROFILE FUNCTION ------------------------//
 function updateGrad() {
 
     //enter updated values
@@ -276,6 +255,10 @@ function updateGrad() {
 
 }
 
+// -------- END UPDATE FUNCTIONS --------------------------------//
+
+
+
 
 function forgotPassword() {
     forgotPassEmail = document.getElementById("forgotPassEmail").value;
@@ -287,7 +270,7 @@ function forgotPassword() {
     auth.sendPasswordResetEmail(forgotPassEmail)
         .then(function() {
             alert('Check emails for further instructions')
-            window.location = "../signup.html"
+            window.location = "./signup.html"
         })
         .catch(function(error) {
             // Firebase will use this to alert of its errors
@@ -348,8 +331,8 @@ function addNewClient() {
     alert("Client Added Successfully!")
 }
 
-//Validate functions
-//EMAIL VALIDATION
+
+//------------- START VALIDATION FUNTIONS ---------//
 function validate_email(email) {
     // expression = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
 
@@ -381,19 +364,20 @@ function validate_checkbox(checkbox) {
     }
 }
 
+// ----- END VALIDATION FUNCTIONS -----//
 
-//-------- EVENT LISTNERS -----///
-gradSignUpbtn.addEventListener('click', e => {
-    signup();
-    e.stopPropagation();
-});
 
-gradSignInbtn.addEventListener('click', e => {
-    login();
-    e.stopPropagation();
-});
+//--------START EVENT HANDLERS -----///
+if (btnSignup) {
+    btnSignup.addEventListener('click', signup, false);
+}
 
-gradSignOutbtn.addEventListener('click', e => {
-    logout();
-    e.stopPropagation();
-});
+if (btnLogin) {
+    btnLogin.addEventListener('click', login, false);
+}
+if (btnLogout) {
+    btnLogout.addEventListener('click', logout, false);
+    window.location = "signup";
+}
+
+// ----- END EVENT HANDLERS -----//

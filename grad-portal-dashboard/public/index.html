@@ -17,11 +17,15 @@
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-
 </head>
 
 <body>
-
+    <div id="divLoginError" hidden="true" class="alert alert-danger" class="close" data-dismiss="alert" aria-label="Close">
+        <div id="loginError_message" hidden="true" class="alert-link">Error message</div>
+    </div>
+    <div id="divAuthState" class="alert alert-success" hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+        <div id="AuthState_msg" hidden="true" class="alert-link">state message</div>
+    </div>
     <div id="blur" class="popover-test flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
         <!-- Desktop sidebar -->
         <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
@@ -296,10 +300,10 @@
                       </a>
                     </li>
                     <li class="flex">
-                      <button type="button"
+                      <button
                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                          id="signOut"
-                      >
+                        id="signOut"
+                        >
                         <svg
                           class="w-4 h-4 mr-3"
                           aria-hidden="true"
@@ -750,8 +754,7 @@
     </script>
 
     <script src="./assets/js/coolstuff.js"></script>
-    <script type="module" src="./dist/bundle.js"></script>
-
+    <script src="./dist/bundle.js"></script>
 </body>
 
 </html>
