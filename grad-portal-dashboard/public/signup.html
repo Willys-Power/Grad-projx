@@ -16,6 +16,12 @@
             <div class="signin-signup">
                 <form action="#" class="sign-in-form">
                     <h2 class="title">Sign in</h2>
+                    <div id="divLoginError" class="alert alert-danger" class="close" data-dismiss="alert" aria-label="Close">
+                        <div id="loginError_message" class="alert-link">Error message</div>
+                    </div>
+                    <div id="divAuthState" class="alert alert-success" class="close" data-dismiss="alert" aria-label="Close">
+                        <div id="AuthState_msg" class="alert-link">state message</div>
+                    </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
                         <input type="email" placeholder="Username" id="signInEmail" />
@@ -24,6 +30,8 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" id="signInpass" />
                     </div>
+
+
                     <a href="./pages/forgot-password.html">Forgot Password?</a>
 
                     <button type="button" class="btn solid" id="signIn">Login</button>
@@ -45,6 +53,9 @@
                 </form>
                 <form action="#" class="sign-up-form">
                     <h2 class="title">Sign up</h2>
+                    <div id="divSignupError" class="alert alert-warning" class="close" data-dismiss="alert" aria-label="Close">
+                        <div id="SignupError_message" class="alert-link">Error message</div>
+                    </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
                         <input type="text" placeholder="Full Name" id="fullname" />

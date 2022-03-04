@@ -1,10 +1,22 @@
+import {
+    hideLoginError,
+    showLoginState,
+    showLoginError,
+    showSignupError,
+    AuthState_message,
+} from './assets/js/ui'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signOut
+} from 'firebase/auth';
 import { getDatabase, ref, set, child, update, remove } from 'firebase/database';
 import validate from 'deep-email-validator';
-import { async } from '@firebase/util';
 
 
 const firebaseApp = initializeApp({
@@ -28,19 +40,27 @@ const auth = getAuth(app);
 // Reference to the database service
 const database = getDatabase(app);
 
-//detect auth state
-onAuthStateChanged(auth, user => {
+//detect authentication state
+const trackAuthState = async() => {
+    onAuthStateChanged(auth, user => {
 
-    if (user != null) {
-        // User is signed in
-        console.log('logged in!');
-        console.log(user.email);
-        document.getElementById("displayName").innerHTML = user.email;
-    } else {
-        console.log('No user');
-    }
+        if (user != null) {
+            // User is signed in
+            console.log('logged in!');
+            showLoginState(user);
+            document.getElementById("displayName").innerHTML = user.email;
+            hideLoginError();
+        } else {
+            console.log('No user');
+            showLoginState(user);
+            AuthState_message.innerHTML = "Logged Out";
+        }
 
-});
+    });
+}
+
+trackAuthState();
+
 
 //------------------References----------------------// 
 //-Graduate references-//
@@ -70,18 +90,18 @@ Qname = document.getElementById("qualificationName");
 
 var gradSignUpbtn = document.getElementById("sign_up");
 var gradSignInbtn = document.getElementById("signIn");
+var gradSignOutbtn = document.getElementById("signOut");
 
 
 
 //----------------- INSERT DATA FUNCTION -------------//
 
 //Set up the SignUp function
-function signup() {
+const signup = async() => {
     //get all the input fields
     var fullName = fullname.value;
     var Email = email.value;
     var psw = password.value;
-    var confirmPsw = confirmPassword.value;
     var checkbox = checkboxPOPI.value;
     var groupType = 'GRADUATE';
 
@@ -103,29 +123,32 @@ function signup() {
     // }
 
     //make user sign in with email and password.
-    createUserWithEmailAndPassword(auth, Email, psw)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            //Signed in automatically
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, Email, psw);
+        //Signed in automatically
+        console.log(userCredential.user);
+        const user = userCredential.user;
 
-            set(ref(database, 'users/' + user.uid), {
-                fullname: fullName,
-                email: Email,
-                psw: psw,
-                confirmPsw: confirmPsw,
-                checkbox: checkbox,
-                groupType: groupType,
-            });
-            console.log("logged in!");
-            window.location = "index.html";
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
+        set(ref(database, 'users/' + user.uid), {
+            fullname: fullName,
+            email: Email,
+            psw: psw,
+            checkbox: checkbox,
+            groupType: groupType,
         });
+        console.log("logged in!");
+        window.location = "index.html";
+    } catch (error) {
+        console.log(error);
+        showSignupError(error);
+
+    }
+
+
 }
 
-// Set up our login function
+
+// SET SIGN-IN FUNCTON
 const login = async() => {
     // Get all our input fields
     const signInEmail = document.getElementById('signInEmail').value;
@@ -140,9 +163,22 @@ const login = async() => {
 
     } catch (error) {
         console.log(error);
-        const errorCode = error.code;
-        const errorMessage = error.message;
         //show error to the user in a pretty way
+        showLoginError(error);
+    }
+
+}
+
+// SET SIGN-OUT FUNCTION
+const logout = async() => {
+
+    try {
+        const userCredential = await signOut(auth);
+
+        showLoginState(userCredential.user);
+        window.location = '/signup';
+    } catch (error) {
+        console.log(error);
     }
 
 }
@@ -325,17 +361,6 @@ function validate_email(email) {
 }
 
 
-
-// function validate_password(password) {
-//     // Firebase only accepts lengths greater than 6
-//     if (password.length < 6) {
-//         return false
-//     } else {
-//         return true
-//     }
-// }
-
-
 function validate_field(field) {
     if (field == null) {
         return false
@@ -365,5 +390,10 @@ gradSignUpbtn.addEventListener('click', e => {
 
 gradSignInbtn.addEventListener('click', e => {
     login();
+    e.stopPropagation();
+});
+
+gradSignOutbtn.addEventListener('click', e => {
+    logout();
     e.stopPropagation();
 });
