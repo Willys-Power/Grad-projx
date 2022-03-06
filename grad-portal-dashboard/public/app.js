@@ -10,7 +10,7 @@ import {
 } from './assets/js/ui'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-import { initializeApp, getApps, getApp } from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -18,27 +18,35 @@ import {
     signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth';
-import { getDatabase, ref, set, child, update, remove } from 'firebase/database';
-import validate from 'deep-email-validator';
+import { getDatabase, ref, set, child, update, remove, onValue, push } from 'firebase/database';
 
 
-const firebaseApp = initializeApp({
-    apiKey: "AIzaSyAuuAMrOqkTix4hgvE4gG3MtA44ZYQWg2k",
-    authDomain: "mindworxgrad.firebaseapp.com",
-    databaseURL: "https://mindworxgrad-default-rtdb.firebaseio.com",
-    projectId: "mindworxgrad",
-    storageBucket: "mindworxgrad.appspot.com",
-    messagingSenderId: "921423385255",
-    appId: "1:921423385255:web:1e0ac2a0df745193e34182",
-    measurementId: "G-D1HH02SNW3"
-});
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Initialize Firebase
+const firebaseApp = {
+    apiKey: "AIzaSyBeVHBQg_1eG39DLrvYfY7-1iCRxPyqDTk",
+    authDomain: "mindworx-ce3e7.firebaseapp.com",
+    databaseURL: "https://mindworx-ce3e7-default-rtdb.firebaseio.com",
+    projectId: "mindworx-ce3e7",
+    storageBucket: "mindworx-ce3e7.appspot.com",
+    messagingSenderId: "128645755464",
+    appId: "1:128645755464:web:d28831b9440848e7725e7d",
+    measurementId: "G-BV6Y0H03L7"
+};
 
 
+//initialize app
+const app = initializeApp(firebaseApp);
 
-// /// Initialize app
-const app = !getApps().length ? initializeApp(firebaseApp) : getApp();
+//reference to database
+const db = getDatabase(app);
+
+
 //Reference to the authentication service
 const auth = getAuth(app);
+
+
 
 //detect authentication state
 const trackAuthState = async() => {
@@ -59,16 +67,16 @@ const trackAuthState = async() => {
     });
 }
 trackAuthState();
-// Reference to the database service
-const database = getDatabase(app);
 
 
 //------------------References----------------------// 
 //-Graduate references-//
-const Gradupdatebtn = document.getElementById("save");
-
 var fullname, email, gender, password, confirmPassword, address, country, city, province, DOB, skills, qualification, Qname, LinkedIn, github, WTR,
     checkboxPOPI;
+
+
+const Gradupdatebtn = document.getElementById("save");
+
 fullname = document.getElementById("fullname");
 email = document.getElementById("email");
 gender = document.getElementById("gender");
@@ -90,36 +98,55 @@ WTR = document.getElementById("WTR");
 Qname = document.getElementById("qualificationName");
 
 
+//keep count of grad numbers
+var countGrads = 0;
+var countAdmins = 0;
+var countClients = 0;
 
 //----------------- INSERT DATA FUNCTION -------------//
 
-//Set up the SignUp function
+//SIGN-UP A GRADUATE USER TYPE FUNCTION
 const signup = async() => {
+
     //get all the input fields
     var fullName = fullname.value;
     var Email = email.value;
     var psw = password.value;
     var checkbox = checkboxPOPI.value;
-    var groupType = 'GRADUATE';
 
 
     //make user sign in with email and password.
     try {
+
         const userCredential = await createUserWithEmailAndPassword(auth, Email, psw);
-        //Signed in automatically
-        console.log(userCredential.user);
-        const user = userCredential.user;
+        if (userCredential) {
+            //Signed in automatically
+            console.log(userCredential.user);
+            const user = userCredential.user;
 
-        database.ref('user/' + user.uid).set({
-            fullname: fullName,
-            email: Email,
-            psw: psw,
-            checkbox: checkbox,
-            groupType: groupType,
-        });
+            //add the grad in users.
+            set(ref(db, 'users/' + user.uid), {
+                fullname: fullName,
+                email: Email,
+                psw: psw,
+                checkbox: checkbox,
+                create_at: (new Date()).toDateString(),
+                groups: {
+                    group3: true,
+                }
 
-        console.log("logged in!");
-        window.location = "index.html";
+            });
+
+            //update the graduate group members.
+            updateGradGroup();
+
+
+            console.log("logged in!");
+            //print a nice message to notify user of created account.
+            alert("SAVED");
+            //redrect user to index page after 2 sec.
+        }
+
     } catch (error) {
         console.log(error);
         showSignupError(error);
@@ -127,10 +154,10 @@ const signup = async() => {
     }
 
 
+
 }
 
-
-// SET SIGN-IN FUNCTON
+//SIGN-IN A USER FUNCTON
 const login = async() => {
     // Get all our input fields
     const signInEmail = document.getElementById('signInEmail').value;
@@ -151,7 +178,7 @@ const login = async() => {
 
 }
 
-// SET SIGN-OUT FUNCTION
+//SIGN-OUT A USER FUNCTION
 const logout = async() => {
 
     await signOut(auth);
@@ -160,6 +187,8 @@ const logout = async() => {
 
 
 }
+
+//--------------------- END CORE FUNCTIONALITY ------------------------------//
 
 //---- START GET DATA FUNCTIONS -------/////////
 function autofill(userData) {
@@ -201,6 +230,7 @@ function loadData() {
 
 //-------- START UPDATE GRADUATE PROFILE FUNCTION ------------------------//
 function updateGrad() {
+
 
     //enter updated values
 
@@ -252,6 +282,87 @@ function updateGrad() {
     const t = prompt(" Enter something")
     alert("user updated succesfully");
     window.location = "profile.html";
+
+}
+
+//update graduate group object
+function updateGradGroup() {
+    countGrads++;
+    console.log(countGrads);
+    //get current user 
+    const userId = auth.currentUser.uid;
+
+    //reference to database
+    const db = getDatabase(app);
+
+    let updates = {};
+    //get number of graduate users to update them.
+    //const newGrad = ref(db, '/groups/group3/no_of_users/');
+
+    updates['/groups/group3/no_of_users/'] = countGrads;
+
+
+    //add userID to new graduate member list.
+    updates['/groups/group3/members/' + userId] = true;
+    //updated child node.
+
+
+    alert('Group updated successfully');
+    return update(ref(db), updates);
+
+}
+
+//update administrators group object
+function updateAdminGroup() {
+    countAdmins++;
+    console.log(countAdmins);
+    //get current user 
+    const userId = auth.currentUser.uid;
+
+    //reference to database
+    const db = getDatabase(app);
+
+    let updates = {};
+    //get number of graduate users to update them.
+    //const newGrad = ref(db, '/groups/group3/no_of_users/');
+
+    updates['/groups/group1/no_of_users/'] = countAdmins;
+
+
+    //add userID to new graduate member list.
+    updates['/groups/group1/members/' + userId] = true;
+    //updated child node.
+
+
+    alert('Group updated successfully');
+    return update(ref(db), updates);
+
+}
+
+//update clients group object
+function updateClientGroup() {
+    countClients++;
+    console.log(countClients);
+    //get current user 
+    const userId = auth.currentUser.uid;
+
+    //reference to database
+    const db = getDatabase(app);
+
+    let updates = {};
+    //get number of graduate users to update them.
+    //const newGrad = ref(db, '/groups/group3/no_of_users/');
+
+    updates['/groups/group2/no_of_users/'] = countClients;
+
+
+    //add userID to new graduate member list.
+    updates['/groups/group2/members/' + userId] = true;
+    //updated child node.
+
+
+    alert('Group updated successfully');
+    return update(ref(db), updates);
 
 }
 
