@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,186 +15,200 @@
     <link rel="stylesheet" href="profile.css">
 
 </head>
+
 <body>
-    
-<!-- header section starts  -->
-
-<header class="header">
-    
-
-    <div class="user">
-        <img src="C:\Users\Lenovo-User\Documents\GitHub\Grad-projx\grad-portal-dashboard\public\content\img\afro.jpg" alt="">
-        <h3>Princess Sibanda</h3>
-        <p>Front-end developer</p>
+    <div id="divAuthState" hidden="true" class="alert alert-success" class="close" data-dismiss="alert" aria-label="Close">
+        <div id="AuthState_msg" hidden="true" class="alert-link">state message</div>
     </div>
-
-    <nav class="navbar">
-        <a href="#home">home</a>
-        <a href="#about">about</a>
-        <a href="#services">services</a>
-    </nav>
-
-</header>
-
-<!-- header section ends -->
-
-<div id="menu-btn" class="fas fa-bars"></div>
-
-
-<header class="main-header">
-    <a class="logo" href="#">Mindworx Academy</a>
-    <ul class="main-nav">
-      <li class="dropdown">
-        <a href="#">Princess Sibanda</a>
-        <ul class="drop-nav">
-          <li><a href="../pages/editProfile.html">Edit Profile</a></li>
-          <li><a href="../signup.html">Sign out</a></li>
-          
-          </li>
-              
-        </ul>
-      </li>
-      
-    </ul>
-  </header>
-<!-- home section starts  -->
-
-<section class="home" id="home">
-    
-    <div class="content">
-        <h3>Princess Sibanda</h3>
-        <p>I am a front-end developer</p>
-        <a href="#" class="btn">download CV</a>
+    <div id="divLoginError" hidden="true" class="alert alert-danger" class="close" data-dismiss="alert" aria-label="Close">
+        <div id="loginError_message" hidden="true" class="alert-link">Error message</div>
     </div>
+    <!-- header section starts  -->
 
-    <div class="share">
-        <a href="#" class="fab fa-facebook-f"></a>
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
-        <a href="#" class="fab fa-github"></a>
-    </div>
-
-</section>
-
-<!-- home section ends -->
-
-<!-- about section starts  -->
-
-<section class="about" id="about">
-
-    <h1 class="heading"> <span>about</span> me </h1>
-
-    <div class="row">
-
-        <div class="box-container">
-            <div class="box">
-                <h3>2+</h3>
-                <p>years of experience</p>
-            </div>
-            <div class="box">
-                <h3>50+</h3>
-                <p>satisfied clients</p>
-            </div>
-            <div class="box">
-                <h3>90+</h3>
-                <p>working hours</p>
-            </div>
-            <div class="box">
-                <h3>5+</h3>
-                <p>awards won</p>
-            </div>
+    <header class="header">
+        <div class="user">
+            <label class="-label" for="file">
+                <span class="glyphicon glyphicon-camera"></span>
+                <span>Change Image</span>
+              </label>
+            <input id="file" type="file" onchange="loadFile(event)" />
+            <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output" width="200" />
         </div>
+
+        <div class="user" style="color:black;">
+            <h3>Princess Sibanda</h3>
+            <p>Front-end developer</p>
+        </div>
+
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#services">services</a>
+        </nav>
+
+    </header>
+
+    <!-- header section ends -->
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+
+    <header class="main-header">
+        <a class="logo" href="#">Mindworx Academy</a>
+        <ul class="main-nav">
+            <li class="dropdown">
+                <a href="#">Princess Sibanda</a>
+                <ul class="drop-nav">
+                    <li><a href="editProfile">Edit Profile</a></li>
+                    <li><a href="/signup" id="signOut" onclick="logout()">Sign out</a></li>
+
+            </li>
+
+            </ul>
+            </li>
+
+        </ul>
+    </header>
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
 
         <div class="content">
-            <h3>My name is <span>Princess Sibanda</span></h3>
-            <p>I ensure that website visitors can easily interact with web pages. I do this through the combination of design, technology and programming to code a website's appearance, as well as taking care of debugging.</p>
-            <a href="#" class="btn">contact me</a>
+            <h3>Princess Sibanda</h3>
+            <p>I am a front-end developer</p>
+            <a href="#" class="btn">download CV</a>
         </div>
 
-    </div>
-
-    <div class="row">
-
-        <div class="progress">
-            <h3> web design <span>90%</span> </h3>
-            <div class="bar bar-1-1"><span></span></div>
-            <h3> graphic design <span>75%</span> </h3>
-            <div class="bar bar-1-2"><span></span></div>
-            <h3> UI/UX design <span>80%</span> </h3>
-            <div class="bar bar-1-3"><span></span></div>
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+            <a href="#" class="fab fa-github"></a>
         </div>
 
-        <div class="progress">
-            <h3> HTML <span>95%</span> </h3>
-            <div class="bar bar-2-1"><span></span></div>
-            <h3> CSS <span>80%</span> </h3>
-            <div class="bar bar-2-2"><span></span></div>
-            <h3> javascript <span>65%</span> </h3>
-            <div class="bar bar-2-3"><span></span></div>
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- about section starts  -->
+
+    <section class="about" id="about">
+
+        <h1 class="heading"> <span>about</span> me </h1>
+
+        <div class="row">
+
+            <div class="box-container">
+                <div class="box">
+                    <h3>2+</h3>
+                    <p>years of experience</p>
+                </div>
+                <div class="box">
+                    <h3>50+</h3>
+                    <p>satisfied clients</p>
+                </div>
+                <div class="box">
+                    <h3>90+</h3>
+                    <p>working hours</p>
+                </div>
+                <div class="box">
+                    <h3>5+</h3>
+                    <p>awards won</p>
+                </div>
+            </div>
+
+            <div class="content">
+                <h3>My name is <span>Princess Sibanda</span></h3>
+                <p>I ensure that website visitors can easily interact with web pages. I do this through the combination of design, technology and programming to code a website's appearance, as well as taking care of debugging.</p>
+                <a href="#" class="btn">contact me</a>
+            </div>
+
         </div>
 
-    </div>
+        <div class="row">
 
-</section>
+            <div class="progress">
+                <h3> web design <span>90%</span> </h3>
+                <div class="bar bar-1-1"><span></span></div>
+                <h3> graphic design <span>75%</span> </h3>
+                <div class="bar bar-1-2"><span></span></div>
+                <h3> UI/UX design <span>80%</span> </h3>
+                <div class="bar bar-1-3"><span></span></div>
+            </div>
 
-<!-- about section ends -->
+            <div class="progress">
+                <h3> HTML <span>95%</span> </h3>
+                <div class="bar bar-2-1"><span></span></div>
+                <h3> CSS <span>80%</span> </h3>
+                <div class="bar bar-2-2"><span></span></div>
+                <h3> javascript <span>65%</span> </h3>
+                <div class="bar bar-2-3"><span></span></div>
+            </div>
 
-<!-- services section starts  -->
-
-<section class="services" id="services">
-
-    <h1 class="heading"> My <span>services</span> </h1>
-
-    <div class="box-container">
-
-        <div class="box">
-            <i class="fas fa-code"></i>
-            <h3>Web design</h3>
-            <p>Click here for more information</p>
         </div>
 
-        <div class="box">
-            <i class="fas fa-paint-brush"></i>
-            <h3>Graphic design</h3>
-            <p>Click here for more information</p>
+    </section>
+
+    <!-- about section ends -->
+
+    <!-- services section starts  -->
+
+    <section class="services" id="services">
+
+        <h1 class="heading"> My <span>services</span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <i class="fas fa-code"></i>
+                <h3>Web design</h3>
+                <p>Click here for more information</p>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Graphic design</h3>
+                <p>Click here for more information</p>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-mobile"></i>
+                <h3>Responsive design</h3>
+                <p>Click here for more information</p>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-bullhorn"></i>
+                <h3>Digital marketing</h3>
+                <p>Click here for more information</p>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-search-dollar"></i>
+                <h3>SEO Marketing</h3>
+                <p>Click here for more information</p>
+            </div>
+
+            <div class="box">
+                <i class="fab fa-wordpress"></i>
+                <h3>Wordpress</h3>
+                <p>Click here for more information</p>
+            </div>
+
         </div>
 
-        <div class="box">
-            <i class="fas fa-mobile"></i>
-            <h3>Responsive design</h3>
-            <p>Click here for more information</p>
-        </div>
-
-        <div class="box">
-            <i class="fas fa-bullhorn"></i>
-            <h3>Digital marketing</h3>
-            <p>Click here for more information</p>
-        </div>
-
-        <div class="box">
-            <i class="fas fa-search-dollar"></i>
-            <h3>SEO Marketing</h3>
-            <p>Click here for more information</p>
-        </div>
-
-        <div class="box">
-            <i class="fab fa-wordpress"></i>
-            <h3>Wordpress</h3>
-            <p>Click here for more information</p>
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- contact section ends -->
+    <!-- contact section ends -->
 
-<div class="credits"> created by <span>Ms web designer</span> | all rights reserved </div>
+    <div class="credits"> created by <span>Ms web designer</span> | all rights reserved </div>
 
-<!-- custom js file link  -->
-<script src="profile.js></script>
+    <!-- custom js file link  -->
+    <script type="text/javascript" src="profile.js"></script>
+    <script src="../dist/bundle.js"></script>
 
 </body>
+
 </html>

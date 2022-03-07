@@ -2,23 +2,29 @@ let menu = document.querySelector("#menu-btn");
 let header = document.querySelector(".header");
 
 menu.onclick = () => {
-  menu.classList.toggle("fa-times");
-  header.classList.toggle("active");
+    menu.classList.toggle("fa-times");
+    header.classList.toggle("active");
 };
 
 window.onscroll = () => {
-  menu.classList.remove("fa-times");
-  header.classList.remove("active");
+    menu.classList.remove("fa-times");
+    header.classList.remove("active");
 };
 
 let themeToggler = document.querySelector("#theme-toggler");
+if (themeToggler) {
+    themeToggler.onclick = () => {
+        themeToggler.classList.toggle("fa-sun");
+        if (themeToggler.classList.contains("fa-sun")) {
+            document.body.classList.add("active");
+        } else {
+            document.body.classList.remove("active");
+        }
+    };
 
-themeToggler.onclick = () => {
-  themeToggler.classList.toggle("fa-sun");
-  if (themeToggler.classList.contains("fa-sun")) {
-    document.body.classList.add("active");
-  } else {
-    document.body.classList.remove("active");
-  }
-};
+}
 
+window.loadFile = function(event) {
+    var image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+}

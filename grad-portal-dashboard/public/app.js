@@ -183,9 +183,6 @@ const logout = async() => {
 
     await signOut(auth);
 
-    showLoginState(userCredential.user);
-
-
 }
 
 //--------------------- END CORE FUNCTIONALITY ------------------------------//
@@ -510,8 +507,12 @@ if (btnSignup) {
 if (btnLogin) {
     btnLogin.addEventListener('click', login, false);
 }
-if (btnLogout) {
-    btnLogout.addEventListener('click', logout, false);
+// if (btnLogout) {
+//     btnLogout.addEventListener('click', logout, false);
+// }
+
+window.logout = () => {
+    logout();
 }
 
 if (Gradupdatebtn) {
@@ -519,3 +520,4 @@ if (Gradupdatebtn) {
     Gradupdatebtn.addEventListener('click', updateGrad, false);
 }
 // ----- END EVENT HANDLERS -----//
+//

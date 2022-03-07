@@ -17,18 +17,32 @@
 </head>
 
 <body>
-    <div id="divAuthState" class="alert alert-success" class="close" data-dismiss="alert" aria-label="Close">
-        <div id="AuthState_msg" class="alert-link">state message</div>
+    <div id="divAuthState" hidden="true" class="alert alert-success" class="close" data-dismiss="alert" aria-label="Close">
+        <div id="AuthState_msg" hidden="true" class="alert-link">state message</div>
     </div>
     <div id="divLoginError" hidden="true" class="alert alert-danger" class="close" data-dismiss="alert" aria-label="Close">
         <div id="loginError_message" hidden="true" class="alert-link">Error message</div>
     </div>
     <div class="modal-content">
+
         <div class="modal-body">
             <div class="col-12 grid-margin">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Graduate</h4>
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">Graduate full name</h4>
+                            </div>
+                            <div class="col-6">
+
+                            </div>
+                            <div class="col">
+                                <a href="#">
+                                    <img class="card-img-top" src="../assets/img/mindworx-logo.png" alt="" aria-hidden="false">
+
+                                </a>
+                            </div>
+                        </div>
                         <form id="updateGrad" class="form-sample">
                             <p class="card-description" style="font-weight: bold;">
                                 Personal info
