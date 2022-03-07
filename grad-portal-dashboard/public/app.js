@@ -18,7 +18,7 @@ import {
     signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth';
-import { getDatabase, ref, set, child, update, remove, onValue, push } from 'firebase/database';
+import { getDatabase, ref, set, child, update, remove, onValue, push, onChildAdded } from 'firebase/database';
 
 
 // Your web app's Firebase configuration
@@ -225,6 +225,31 @@ function loadData() {
     document.getElementById('province').value = localStorage.getItem('province');
 
 }
+
+//get skills data for user to pick from.
+function showSkilloptions() {
+    const skillsRef = ref(db, 'skills/');
+    var counting = 0;
+    var skillSelectElement = document.getElementById('skills');
+    onChildAdded(skillsRef, (data) => {
+        //get item key-value pair
+        var skillKey = data.key;
+        var skillVal = data.val();
+
+        //create new option
+        var anOption = document.createElement("option");
+        var nodeOpt = document.createTextNode(`${skillVal}`);
+        anOption.setAttribute("value", `${skillKey}`);
+        anOption.appendChild(nodeOpt);
+
+        //add new option in the multiple selector
+        skillSelectElement.appendChild(anOption);
+
+    })
+}
+showSkilloptions();
+
+
 //---- END GET DATA FUNCTIONS -------/////////
 
 

@@ -17,7 +17,12 @@
 </head>
 
 <body>
-
+    <div id="divAuthState" class="alert alert-success" class="close" data-dismiss="alert" aria-label="Close">
+        <div id="AuthState_msg" class="alert-link">state message</div>
+    </div>
+    <div id="divLoginError" hidden="true" class="alert alert-danger" class="close" data-dismiss="alert" aria-label="Close">
+        <div id="loginError_message" hidden="true" class="alert-link">Error message</div>
+    </div>
     <div class="modal-body">
         <div class="col-12 grid-margin">
             <div class="card">
@@ -107,18 +112,18 @@
                                     <div class="col-sm-9">
                                         <div class="col-lg-12 d-flex justify-content-left align-items-center">
                                             <select class="js-select2" multiple="multiple" id="skills">
-                                                <option value="O1" data-badge="">GO</option>
-                                                <option value="O2" data-badge="">C++</option>
-                                                <option value="O3" data-badge="">Data Science</option>
-                                                <option value="O4" data-badge="">ReactJs</option>
-                                                <option value="O6" data-badge="">Cyber Security</option>
-                                                <option value="O7" data-badge="">Python</option>
-                                                <option value="O8" data-badge="">VB.Net</option>
-                                                <option value="O9" data-badge="">C#</option>
-                                                <option value="O10" data-badge="">Java</option>
-                                                <option value="O11" data-badge="">Html</option>
-                                                <option value="O12" data-badge="">Systems Analysis</option>
-                                                <option value="O13" data-badge="">JavaScript</option>
+                                                <!-- <option value="O1" data-badge="">problem-solving</option> -->
+                                                <!-- <option value="O2" data-badge="">communicating</option>
+                                                <option value="O3" data-badge="">persistence</option>
+                                                <option value="O4" data-badge="">flexibility</option>
+                                                <option value="O6" data-badge="">time management</option>
+                                                <option value="O7" data-badge="">Business Analysis</option>
+                                                <option value="O8" data-badge="">accounting</option>
+                                                <option value="O9" data-badge="">project management</option>
+                                                <option value="O10" data-badge="">engineering</option>
+                                                <option value="O11" data-badge="">marketing</option>
+                                                <option value="O12" data-badge="">Systems Analysis</option> -->
+                                                <!-- <option value="O13" data-badge="">JavaScript</option> -->
                                             </select>
                                         </div>
                                     </div>
@@ -234,6 +239,6 @@
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
 <script src="../assets/js/selectstuff.js"></script>
-<script type="module" src="../dist/bundle.js"></script>
+<script src="../dist/bundle.js"></script>
 
 </html>
