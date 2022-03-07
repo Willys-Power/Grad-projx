@@ -226,10 +226,9 @@ function loadData() {
 
 }
 
-//get skills data for user to pick from.
+//show all available skills data for user to pick from.
 function showSkilloptions() {
     const skillsRef = ref(db, 'skills/');
-    var counting = 0;
     var skillSelectElement = document.getElementById('skills');
     onChildAdded(skillsRef, (data) => {
         //get item key-value pair
@@ -247,8 +246,8 @@ function showSkilloptions() {
 
     })
 }
-showSkilloptions();
 
+//show all qualifications available for user to pick from.
 
 //---- END GET DATA FUNCTIONS -------/////////
 
@@ -267,7 +266,7 @@ function updateGrad() {
     city = document.getElementById("city").value;
     province = document.getElementById("province").value;
     DOB = document.getElementById("DOB").value;
-    course = document.getElementById("course").value;
+    var course = document.getElementById("course").value;
     qualification = document.getElementById("qualification").value;
 
     skills = Array.from(document.getElementById("skills").selectedOptions).map(o => o.value);
@@ -275,40 +274,40 @@ function updateGrad() {
     github = document.getElementById("Github").value;
     WTR = document.getElementById("WTR").value;
     Qname = document.getElementById("qualificationName").value;
-    //
 
-    var userId = localStorage.getItem('Id')
-    alert("Id is " + userId);
-    // Add this user to Firebase Database
-    let DBRef = database.ref()
+    //get currently signned in user.
+    var userId = auth.currentUser.uid;
+
+    //reference to database
+    const db = getDatabase(app);
+
+    let updates = {};
+    //update userid profile to Firebase Database
     let userUpdatedata = {
 
-        fullname: fullname,
-        email: email,
-        gender: gender,
-        address: address,
-        country: country,
-        city: city,
-        province: province,
-        DOB: DOB,
-        course: course,
-        qualification: qualification,
-        qName: Qname,
-        LinkedIn: LinkedIn,
-        github: github,
-        WTR: WTR,
-        skills: skills
+            fullname: fullname,
+            gender: gender,
+            address: address,
+            country: country,
+            city: city,
+            province: province,
+            DOB: DOB,
+            course: course,
+            qualification: qualification,
+            qName: Qname,
+            LinkedIn: LinkedIn,
+            github: github,
+            WTR: WTR,
+            skills: skills
 
-    }
+        }
+        // let isEmpty = Object.values(userUpdatedata).every()
+    updates['/profile/' + userId + '/'] = userUpdatedata;
 
-
-    DBRef.child('usersNkocie/' + userId).update(userUpdatedata)
-    console.log("user id is " + userId)
-    const t = prompt(" Enter something")
-    alert("user updated succesfully");
-    window.location = "profile.html";
-
+    return update(ref(db), updates);
 }
+
+//-------- END UPDATE GRADUATE PROFILE FUNCTION ------------------------//
 
 //update graduate group object
 function updateGradGroup() {
@@ -513,7 +512,10 @@ if (btnLogin) {
 }
 if (btnLogout) {
     btnLogout.addEventListener('click', logout, false);
-    window.location = "signup";
 }
 
+if (Gradupdatebtn) {
+    showSkilloptions();
+    Gradupdatebtn.addEventListener('click', updateGrad, false);
+}
 // ----- END EVENT HANDLERS -----//

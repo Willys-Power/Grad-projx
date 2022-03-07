@@ -23,211 +23,202 @@
     <div id="divLoginError" hidden="true" class="alert alert-danger" class="close" data-dismiss="alert" aria-label="Close">
         <div id="loginError_message" hidden="true" class="alert-link">Error message</div>
     </div>
-    <div class="modal-body">
-        <div class="col-12 grid-margin">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Graduate</h4>
-                    <form id="updateGrad" class="form-sample">
-                        <p class="card-description" style="font-weight: bold;">
-                            Personal info
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Full Name</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="fullname" />
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Graduate</h4>
+                        <form id="updateGrad" class="form-sample">
+                            <p class="card-description" style="font-weight: bold;">
+                                Personal info
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Full Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="fullname" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Email Address</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" class="form-control" id="email" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Email Address</label>
-                                    <div class="col-sm-9">
-                                        <input type="email" class="form-control" id="email" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Gender</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="gender">
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Date of Birth</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" type="date" placeholder="dd/mm/yyyy" id="DOB" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Highest Qualification</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="qualification">
-                                            <option>Matric</option>
-                                            <option>Bachelor's Degree</option>
-                                            <option>Honours Degree</option>
-                                            <option>Master's Degree</option>
-                                            <option>Doctrate Degree(PhD)</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Mindworx Course</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" id="course" />
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Name of Qualification</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" id="qualificationName" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Skills</label>
-                                    <div class="col-sm-9">
-                                        <div class="col-lg-12 d-flex justify-content-left align-items-center">
-                                            <select class="js-select2" multiple="multiple" id="skills">
-                                                <!-- <option value="O1" data-badge="">problem-solving</option> -->
-                                                <!-- <option value="O2" data-badge="">communicating</option>
-                                                <option value="O3" data-badge="">persistence</option>
-                                                <option value="O4" data-badge="">flexibility</option>
-                                                <option value="O6" data-badge="">time management</option>
-                                                <option value="O7" data-badge="">Business Analysis</option>
-                                                <option value="O8" data-badge="">accounting</option>
-                                                <option value="O9" data-badge="">project management</option>
-                                                <option value="O10" data-badge="">engineering</option>
-                                                <option value="O11" data-badge="">marketing</option>
-                                                <option value="O12" data-badge="">Systems Analysis</option> -->
-                                                <!-- <option value="O13" data-badge="">JavaScript</option> -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Gender</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="gender">
+                                                <option>Male</option>
+                                                <option>Female</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Date of Birth</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="date" placeholder="dd/mm/yyyy" id="DOB" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                            </div>
-                        </div>
-                        <p class="card-description" style="font-weight: bold;">
-                            Address
-                        </p>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Willing To Relocate</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Highest Qualification</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="qualification">
+                                                <option>Matric</option>
+                                                <option>Bachelor's Degree</option>
+                                                <option>Honours Degree</option>
+                                                <option>Master's Degree</option>
+                                                <option>Doctrate Degree(PhD)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Mindworx Course</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="course" />
+                                        </div>
+                                    </div>
 
-                            <div class="col-sm-2">
-                                <select class="js-select2" id="WTR">
-                                    <option value="O1" style="background-color:aqua;width: 300px;">Yes</option>
-                                    <option value="O2" style="background-color:aqua;width: 300px;">No</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Address 1</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="address" />
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Province</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="province" />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Name of Qualification</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="qualificationName" type="text">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Skills</label>
+                                        <div class="col-sm-9">
+                                            <div class="col-lg-12 d-flex justify-content-left align-items-center">
+                                                <select class="js-select2" multiple="multiple" id="skills">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">City</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="city" />
+                                </div>
+                            </div>
+                            <p class="card-description" style="font-weight: bold;">
+                                Address
+                            </p>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Willing To Relocate</label>
+
+                                <div class="col-sm-2">
+                                    <select class="js-select2" id="WTR">
+                                        <option value="yes" style="background-color:aqua;width: 300px;">Yes</option>
+                                        <option value="no" style="background-color:aqua;width: 300px;">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Address 1</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="address" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Province</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="province" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Country</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="country">
-                                            <option>South Africa</option>
-                                            <option>Botswana</option>
-                                            <option>Russia</option>
-                                            <option>USA</option>
-                                        </select>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">City</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="city" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Country</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="country">
+                                                <option>South Africa</option>
+                                                <option>Botswana</option>
+                                                <option>Russia</option>
+                                                <option>USA</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <p class="card-description" style="font-weight: bold;">
-                            Links
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">LinkedIn
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0072b1"
-                                            class="bi bi-linkedin" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
-                                        </svg>
-                                    </label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="LinkedIn" />
+                            <p class="card-description" style="font-weight: bold;">
+                                Links
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">LinkedIn
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0072b1"
+                                                class="bi bi-linkedin" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                                            </svg>
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="LinkedIn" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">GitHub
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#171515"
+                                                class="bi bi-github" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                            </svg>
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="Github">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">GitHub
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#171515"
-                                            class="bi bi-github" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                                        </svg>
-                                    </label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="Github">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Close</button>
-        <button type="button" class="btn btn-primary" id="save" style="background-color: darkorange;">Save
-            changes</button>
+        <div class="modal-footer">
+            <button type="button" class="close btn btn-secondary" data-dismiss="modal" id="close">Close</button>
+            <button type="button" class="btn btn-primary" id="save" style="background-color: darkorange;">Save
+                changes</button>
+        </div>
+
     </div>
 
 
@@ -240,5 +231,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
 <script src="../assets/js/selectstuff.js"></script>
 <script src="../dist/bundle.js"></script>
+<script>
+    document.getElementById("close").onclick = function() {
+        window.location = 'profile';
+    };
+</script>
 
 </html>
