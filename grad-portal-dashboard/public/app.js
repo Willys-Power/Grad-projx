@@ -1,4 +1,12 @@
 import {
+    img_inputloader,
+    img_outputDisplay,
+    profileLogoutLink,
+    menuOnscroll,
+    menuOnclick
+} from './pages/profile'
+
+import {
     hideLoginError,
     btnLogin,
     btnSignup,
@@ -7,7 +15,8 @@ import {
     showLoginError,
     showSignupError,
     AuthState_message,
-} from './assets/js/ui'
+} from './assets/js/ui';
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 import { initializeApp } from 'firebase/app';
@@ -182,44 +191,35 @@ const logout = async() => {
 }
 
 //UPDATE PROFILE PICTURE FILE
-window.loadFile = function(event) {
-    var image = document.getElementById("output");
-    image.src = URL.createObjectURL(event.target.files[0]);
 
-    console.log(event.target.files[0]);
+function loadImg() {
+    //the file
+    const fileList = this.files;
+    console.log(fileList[0]);
     //get current user
     const userId = auth.currentUser.uid;
 
-    const usrImgRef = sRef(storage, 'profileImages/' + userId + '/' + event.target.files[0].name);
-
+    const usrImgRef = sRef(storage, 'profileImages/' + userId + '/' + fileList[0].name);
+    img_outputDisplay.setAttribute("src", getDownloadURL(usrImgRef));
 
     const metadata = {
-        contentType: event.target.files[0].type,
-        metadata: {
-            firebaseStorageDownload: auth.currentUser.getIdTokenResult
-        },
+        type: fileList[0].type,
+        size: fileList[0].size,
+
     };
 
     // 'file' comes from the Blob or File API
-    uploadBytes(usrImgRef, file, metadata).then((snapshot) => {
+    uploadBytes(usrImgRef, Blob, metadata).then((snapshot) => {
         console.log('Uploaded a blob or file!');
-    }).put(event.target.files[0].name);
+    });
 
     let updates = {};
 
-    updates['/profileImg/' + userId + '/'] = URL.createObjectURL(event.target.files[0]);
+    updates['/profileImg/' + userId + '/'] = getDownloadURL(usrImgRef);
 
     update(ref(db), updates);
 
-    //get the profile picture, display it.
-    getDownloadURL(usrImgRef)
-        .then(url => {
-            console.log(url);
-            image.setAttribute('src', url);
-        })
-
 }
-
 
 
 
@@ -571,13 +571,20 @@ if (btnLogin) {
 //     btnLogout.addEventListener('click', logout, false);
 // }
 
-window.logout = () => {
-    logout();
-}
+// window.logout = () => {
+//     logout();
+// }
 
 if (Gradupdatebtn) {
     showSkilloptions();
     Gradupdatebtn.addEventListener('click', updateGrad, false);
 }
+
+img_inputloader.addEventListener("change", loadImg, false);
+
+
+profileLogoutLink.addEventListener("click", logout, false);
+
+
 // ----- END EVENT HANDLERS -----//
 //

@@ -32,7 +32,7 @@
                 <span class="glyphicon glyphicon-camera"></span>
                 <span>Change Image</span>
               </label>
-            <input id="file" type="file" accept=".jpg, .jpeg, .png" onchange="loadFile(event)" />
+            <input id="input_img" type="file" accept="image/*" />
             <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output" width="200" />
         </div>
 
@@ -61,7 +61,7 @@
                 <a href="#">Princess Sibanda</a>
                 <ul class="drop-nav">
                     <li><a href="editProfile">Edit Profile</a></li>
-                    <li><a href="/signup" id="signOut" onclick="logout()">Sign out</a></li>
+                    <li><a href="/signup" id="signOut">Sign out</a></li>
 
             </li>
 
@@ -207,7 +207,7 @@
     <div class="credits"> created by <span>Ms web designer</span> | all rights reserved </div>
 
     <!-- custom js file link  -->
-    <script type="text/javascript" src="profile.js"></script>
+    <script type="module" src="profile.js"></script>
     <script src="../dist/bundle.js"></script>
 
 </body>
