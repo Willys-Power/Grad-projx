@@ -19,7 +19,7 @@ import {
     signOut
 } from 'firebase/auth';
 import { getDatabase, ref, set, child, update, remove, onValue, push, onChildAdded } from 'firebase/database';
-
+import { getStorage, getDownloadURL, ref as sRef, uploadBytes } from 'firebase/storage';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -42,6 +42,8 @@ const app = initializeApp(firebaseApp);
 //reference to database
 const db = getDatabase(app);
 
+//reference to storage services
+const storage = getStorage(app);
 
 //Reference to the authentication service
 const auth = getAuth(app);
@@ -54,7 +56,6 @@ const trackAuthState = async() => {
 
         if (user != null) {
             // User is signed in
-            console.log(user);
             console.log('logged in!');
             showLoginState(user);
             hideLoginError();
@@ -97,11 +98,6 @@ github = document.getElementById("Github");
 WTR = document.getElementById("WTR");
 Qname = document.getElementById("qualificationName");
 
-
-//keep count of grad numbers
-var countGrads = 0;
-var countAdmins = 0;
-var countClients = 0;
 
 //----------------- INSERT DATA FUNCTION -------------//
 
@@ -185,9 +181,52 @@ const logout = async() => {
 
 }
 
+//UPDATE PROFILE PICTURE FILE
+window.loadFile = function(event) {
+    var image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+
+    console.log(event.target.files[0]);
+    //get current user
+    const userId = auth.currentUser.uid;
+
+    const usrImgRef = sRef(storage, 'profileImages/' + userId + '/' + event.target.files[0].name);
+
+
+    const metadata = {
+        contentType: event.target.files[0].type,
+        metadata: {
+            firebaseStorageDownload: auth.currentUser.getIdTokenResult
+        },
+    };
+
+    // 'file' comes from the Blob or File API
+    uploadBytes(usrImgRef, file, metadata).then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+    }).put(event.target.files[0].name);
+
+    let updates = {};
+
+    updates['/profileImg/' + userId + '/'] = URL.createObjectURL(event.target.files[0]);
+
+    update(ref(db), updates);
+
+    //get the profile picture, display it.
+    getDownloadURL(usrImgRef)
+        .then(url => {
+            console.log(url);
+            image.setAttribute('src', url);
+        })
+
+}
+
+
+
+
 //--------------------- END CORE FUNCTIONALITY ------------------------------//
 
 //---- START GET DATA FUNCTIONS -------/////////
+
 function autofill(userData) {
 
     // save users on the session
@@ -308,82 +347,103 @@ function updateGrad() {
 
 //update graduate group object
 function updateGradGroup() {
-    countGrads++;
-    console.log(countGrads);
+
     //get current user 
     const userId = auth.currentUser.uid;
+    let updates = {};
 
     //reference to database
     const db = getDatabase(app);
-
-    let updates = {};
     //get number of graduate users to update them.
-    //const newGrad = ref(db, '/groups/group3/no_of_users/');
+    const numofusers = ref(db, 'groups/group3/no_of_users');
+    onValue(numofusers, (snapshot) => {
+        var data = snapshot.val();
+        console.log(data);
 
-    updates['/groups/group3/no_of_users/'] = countGrads;
+        data += 1;
+        console.log(data);
+        updates['/groups/group3/no_of_users/'] = data;
+
+        //add userID to new graduate member list.
+        updates['/groups/group3/members/' + userId] = true;
+        //updated child node.
 
 
-    //add userID to new graduate member list.
-    updates['/groups/group3/members/' + userId] = true;
-    //updated child node.
+        alert('Group updated successfully');
+        update(ref(db), updates);
+
+    }, {
+        onlyOnce: true,
+    });
 
 
-    alert('Group updated successfully');
-    return update(ref(db), updates);
+
 
 }
 
 //update administrators group object
 function updateAdminGroup() {
-    countAdmins++;
-    console.log(countAdmins);
     //get current user 
     const userId = auth.currentUser.uid;
+    let updates = {};
+
 
     //reference to database
     const db = getDatabase(app);
+    //get number of administrators to update them.
+    const numofAdmins = ref(db, 'groups/group1/no_of_users');
+    onValue(numofAdmins, (snapshot) => {
+        var data = snapshot.val();
+        console.log(data);
 
-    let updates = {};
-    //get number of graduate users to update them.
-    //const newGrad = ref(db, '/groups/group3/no_of_users/');
+        data += 1;
+        console.log(data);
+        updates['/groups/group1/no_of_users/'] = data;
 
-    updates['/groups/group1/no_of_users/'] = countAdmins;
-
-
-    //add userID to new graduate member list.
-    updates['/groups/group1/members/' + userId] = true;
-    //updated child node.
+        //add userID to new graduate member list.
+        updates['/groups/group1/members/' + userId] = true;
+        //updated child node.
 
 
-    alert('Group updated successfully');
-    return update(ref(db), updates);
+        alert('Group updated successfully');
+        update(ref(db), updates);
+
+    }, {
+        onlyOnce: true,
+    });
 
 }
 
 //update clients group object
 function updateClientGroup() {
-    countClients++;
-    console.log(countClients);
     //get current user 
     const userId = auth.currentUser.uid;
+    let updates = {};
+
 
     //reference to database
     const db = getDatabase(app);
+    //get number of administrators to update them.
+    const numofAdmins = ref(db, 'groups/group1/no_of_users');
+    onValue(numofAdmins, (snapshot) => {
+        var data = snapshot.val();
+        console.log(data);
 
-    let updates = {};
-    //get number of graduate users to update them.
-    //const newGrad = ref(db, '/groups/group3/no_of_users/');
+        data += 1;
+        console.log(data);
+        updates['/groups/group1/no_of_users/'] = data;
 
-    updates['/groups/group2/no_of_users/'] = countClients;
-
-
-    //add userID to new graduate member list.
-    updates['/groups/group2/members/' + userId] = true;
-    //updated child node.
+        //add userID to new graduate member list.
+        updates['/groups/group1/members/' + userId] = true;
+        //updated child node.
 
 
-    alert('Group updated successfully');
-    return update(ref(db), updates);
+        alert('Group updated successfully');
+        update(ref(db), updates);
+
+    }, {
+        onlyOnce: true,
+    });
 
 }
 
