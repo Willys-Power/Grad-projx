@@ -90,7 +90,7 @@ section {
 }
 
 .user {
-    position: relative;
+    /* position: relative; */
     color: transparent;
     transition: all 0.3s ease;
     justify-content: center;
@@ -98,12 +98,13 @@ section {
     transition: all 0.3s ease;
 }
 
-.user input {
-    display: none;
-}
+
+/* .user input {
+    hid: none;
+} */
 
 .header .user img {
-    position: relative;
+    /* position: relative; */
     object-fit: cover;
     margin: 1rem 0px 1rem 5px;
     /* border: .8rem solid transparent; */

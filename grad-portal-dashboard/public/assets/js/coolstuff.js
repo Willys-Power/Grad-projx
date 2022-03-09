@@ -1,3 +1,5 @@
+export const indexLogoutLink = document.querySelector('#signOut');
+
 //only the cool javascript in here
 const tl = gsap.timeline({ defaults: { ease: 'power1.out' } })
 

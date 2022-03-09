@@ -9,7 +9,7 @@ export const signupError_message = document.querySelector('#SignupError_message'
 
 export const btnLogin = document.querySelector('#signIn');
 export const btnSignup = document.querySelector('#sign_up');
-export const btnLogout = document.querySelector('#signOut');
+
 
 export const hideLoginError = () => {
     divLoginError.style.display = 'none'

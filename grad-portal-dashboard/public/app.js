@@ -2,15 +2,17 @@ import {
     img_inputloader,
     img_outputDisplay,
     profileLogoutLink,
-    menuOnscroll,
+    menu,
     menuOnclick
 } from './pages/profile'
+import {
+    indexLogoutLink,
+} from './assets/js/coolstuff'
 
 import {
     hideLoginError,
     btnLogin,
     btnSignup,
-    btnLogout,
     showLoginState,
     showLoginError,
     showSignupError,
@@ -192,15 +194,14 @@ const logout = async() => {
 
 //UPDATE PROFILE PICTURE FILE
 
-function loadImg() {
+function loadImg(e) {
     //the file
-    const fileList = this.files;
+    const fileList = e.target.files;
     console.log(fileList[0]);
     //get current user
     const userId = auth.currentUser.uid;
 
     const usrImgRef = sRef(storage, 'profileImages/' + userId + '/' + fileList[0].name);
-    img_outputDisplay.setAttribute("src", getDownloadURL(usrImgRef));
 
     const metadata = {
         type: fileList[0].type,
@@ -208,16 +209,22 @@ function loadImg() {
 
     };
 
+
     // 'file' comes from the Blob or File API
     uploadBytes(usrImgRef, Blob, metadata).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
+        console.log('Uploaded a blob or file!' + snapshot.metadata);
     });
 
-    let updates = {};
+    getDownloadURL(usrImgRef)
+        .then((url) => {
+            let updates = {};
+            //display image
+            img_outputDisplay.setAttribute("src", url);
 
-    updates['/profileImg/' + userId + '/'] = getDownloadURL(usrImgRef);
+            updates['/profileImg/' + userId + '/'] = url;
 
-    update(ref(db), updates);
+            update(ref(db), updates);
+        })
 
 }
 
@@ -567,23 +574,29 @@ if (btnSignup) {
 if (btnLogin) {
     btnLogin.addEventListener('click', login, false);
 }
-// if (btnLogout) {
-//     btnLogout.addEventListener('click', logout, false);
-// }
 
-// window.logout = () => {
-//     logout();
-// }
+if (indexLogoutLink) {
+    indexLogoutLink.addEventListener('click', logout, false);
+}
 
 if (Gradupdatebtn) {
     showSkilloptions();
     Gradupdatebtn.addEventListener('click', updateGrad, false);
 }
 
-img_inputloader.addEventListener("change", loadImg, false);
+if (img_inputloader) {
+    img_inputloader.addEventListener('change', loadImg, false);
+}
 
 
-profileLogoutLink.addEventListener("click", logout, false);
+if (profileLogoutLink) {
+    profileLogoutLink.addEventListener("click", logout, false);
+}
+
+if (menu) {
+    menu.addEventListener('click', menuOnclick, false);
+}
+
 
 
 // ----- END EVENT HANDLERS -----//
