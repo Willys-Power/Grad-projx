@@ -27,7 +27,8 @@ import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
     signInWithEmailAndPassword,
-    signOut
+    signOut,
+    updateProfile
 } from 'firebase/auth';
 import { getDatabase, ref, set, child, update, remove, onValue, push, onChildAdded } from 'firebase/database';
 import { getStorage, getDownloadURL, ref as sRef, uploadBytes } from 'firebase/storage';
@@ -109,6 +110,15 @@ github = document.getElementById("Github");
 WTR = document.getElementById("WTR");
 Qname = document.getElementById("qualificationName");
 
+updateProfile(auth.currentUser, {
+    displayName: fullname
+}).then(() => {
+    // Profile updated!
+    // ...
+}).catch((error) => {
+    // An error occurred
+    // ...
+});
 
 //----------------- INSERT DATA FUNCTION -------------//
 
@@ -201,30 +211,38 @@ function loadImg(e) {
     //get current user
     const userId = auth.currentUser.uid;
 
-    const usrImgRef = sRef(storage, 'profileImages/' + userId + '/' + fileList[0].name);
+    const usrImgRef = sRef(storage, '/profileImages/' + userId + '/' + fileList[0].name);
 
     const metadata = {
-        type: fileList[0].type,
+        name: fileList[0].name,
         size: fileList[0].size,
+        ContentType: fileList[0].type,
 
     };
 
-
+    console.log(metadata);
     // 'file' comes from the Blob or File API
-    uploadBytes(usrImgRef, Blob, metadata).then((snapshot) => {
+    uploadBytes(usrImgRef, fileList[0], metadata).then((snapshot) => {
         console.log('Uploaded a blob or file!' + snapshot.metadata);
     });
 
-    getDownloadURL(usrImgRef)
-        .then((url) => {
-            let updates = {};
-            //display image
-            img_outputDisplay.setAttribute("src", url);
+    // getDownloadURL(sRef(storage, usrImgRef))
+    //     .then((url) => {
+    //        
+    //         //display image
+    //         img_outputDisplay.setAttribute("src", url);
 
-            updates['/profileImg/' + userId + '/'] = url;
+    //         updates['/profileImg/' + userId + '/'] = url;
 
-            update(ref(db), updates);
-        })
+    //         update(ref(db), updates);
+    //     })
+    var localURL = URL.createObjectURL(fileList[0]);
+    img_outputDisplay.setAttribute("src", localURL);
+
+    let updates = {};
+    updates['/profileImg/' + userId + '/'] = localURL;
+
+    update(ref(db), updates);
 
 }
 
