@@ -6,26 +6,12 @@
  export const profileLogoutLink = document.querySelector('#signOut');
 
 
- //  menu.onclick = () => {
- //      menu.classList.toggle("fa-times");
- //      header.classList.toggle("active");
- //  };
 
  export const menuOnclick = () => {
 
      menu.classList.toggle("fa-times");
      profileheader.classList.toggle("active");
  }
-
- window.onscroll = () => {
-     menu.classList.remove("fa-times");
-     profileheader.classList.remove("active");
- };
-
- //  export const menuOnscroll = () => {
- //      menu.classList.remove("fa-times");
- //      profileheader.classList.remove("active");
- //  }
 
  //  let themeToggler = document.querySelector("#theme-toggler");
  //  if (themeToggler) {

@@ -2,6 +2,7 @@ import {
     img_inputloader,
     img_outputDisplay,
     profileLogoutLink,
+    profileheader,
     menu,
     menuOnclick
 } from './pages/profile'
@@ -30,6 +31,8 @@ import {
     signOut,
     updateProfile
 } from 'firebase/auth';
+
+
 import { getDatabase, ref, set, child, update, remove, onValue, push, onChildAdded } from 'firebase/database';
 import { getStorage, getDownloadURL, ref as sRef, uploadBytes } from 'firebase/storage';
 
@@ -61,7 +64,6 @@ const storage = getStorage(app);
 const auth = getAuth(app);
 
 
-
 //detect authentication state
 const trackAuthState = async() => {
     onAuthStateChanged(auth, user => {
@@ -69,6 +71,7 @@ const trackAuthState = async() => {
         if (user != null) {
             // User is signed in
             console.log('logged in!');
+            getProfilepic()
             showLoginState(user);
             hideLoginError();
         } else {
@@ -109,16 +112,32 @@ LinkedIn = document.getElementById("LinkedIn");
 github = document.getElementById("Github");
 WTR = document.getElementById("WTR");
 Qname = document.getElementById("qualificationName");
+var fileName = '';
 
-updateProfile(auth.currentUser, {
-    displayName: fullname
-}).then(() => {
-    // Profile updated!
-    // ...
-}).catch((error) => {
-    // An error occurred
-    // ...
-});
+// updateProfile(auth.currentUser, {
+//     displayName: fullname
+// }).then(() => {
+//     // Profile updated!
+//     // ...
+// }).catch((error) => {
+//     // An error occurred
+//     // ...
+// });
+
+//----------------------------------------------- Start Custom page handler conditions --------------------//
+const editProfile_activ = document.body.id;
+if (editProfile_activ == 'editProfile_xc') {
+    showSkilloptions();
+}
+
+const profileScrollor = document.body.id;
+if (profileScrollor == 'gradprofileScroll') {
+    window.onscroll = () => {
+        menu.classList.remove("fa-times");
+        profileheader.classList.remove("active");
+    };
+}
+//---------------------------------------------- End Custom page handler conditions --------------------------------///
 
 //----------------- INSERT DATA FUNCTION -------------//
 
@@ -204,6 +223,7 @@ const logout = async() => {
 
 //UPDATE PROFILE PICTURE FILE
 
+
 function loadImg(e) {
     //the file
     const fileList = e.target.files;
@@ -222,30 +242,25 @@ function loadImg(e) {
 
     console.log(metadata);
     // 'file' comes from the Blob or File API
-    uploadBytes(usrImgRef, fileList[0], metadata).then((snapshot) => {
-        console.log('Uploaded a blob or file!' + snapshot.metadata);
+    uploadBytes(usrImgRef, fileList[0]).then((snapshot) => {
+        console.log('Uploaded a blob or file!' + snapshot.metadata.size);
     });
 
-    // getDownloadURL(sRef(storage, usrImgRef))
-    //     .then((url) => {
-    //        
-    //         //display image
-    //         img_outputDisplay.setAttribute("src", url);
+    fileName = fileList[0].name;
+    // var localURL = URL.createObjectURL(fileList[0]);
+    // var globalRefURL = sRef(storage, '/profileImages/' + userId + '/' + fileList[0].name);
+    // var globalRefURL = sRef(storage, `/profileImages/${userId}/${fileList[0].name}`);
+    // img_outputDisplay.setAttribute("src", localURL);
 
-    //         updates['/profileImg/' + userId + '/'] = url;
-
-    //         update(ref(db), updates);
-    //     })
-    var localURL = URL.createObjectURL(fileList[0]);
-    img_outputDisplay.setAttribute("src", localURL);
 
     let updates = {};
-    updates['/profileImg/' + userId + '/'] = localURL;
+
+    updates['/profileImg/' + userId + '/'] = fileName;
 
     update(ref(db), updates);
 
-}
 
+}
 
 
 //--------------------- END CORE FUNCTIONALITY ------------------------------//
@@ -289,7 +304,7 @@ function loadData() {
 
 //show all available skills data for user to pick from.
 function showSkilloptions() {
-    const skillsRef = ref(db, 'skills/');
+    const skillsRef = ref(db, '/skills/');
     var skillSelectElement = document.getElementById('skills');
     onChildAdded(skillsRef, (data) => {
         //get item key-value pair
@@ -309,6 +324,34 @@ function showSkilloptions() {
 }
 
 //show all qualifications available for user to pick from.
+
+
+function getProfilepic() {
+    //get current user
+    const userId = auth.currentUser.uid;
+
+    //get file name from database, not storage
+    const userprofile = ref(db, '/profileImg/' + userId + '/');
+    onValue(userprofile, (snapshot) => {
+        var userImgName = snapshot.val();
+        console.log(userImgName);
+        // Create a reference from an HTTPS URL
+
+        // Note that in the URL, characters are URL escaped!
+
+        const imgpathReference = sRef(storage, '/profileImages/' + userId + '/' + userImgName);
+
+        getDownloadURL(imgpathReference)
+            .then((url) => {
+                // //display image
+                img_outputDisplay.setAttribute("src", url);
+            })
+
+    }, {
+        onlyOnce: true,
+    });
+
+}
 
 //---- END GET DATA FUNCTIONS -------/////////
 
@@ -587,6 +630,7 @@ function validate_checkbox(checkbox) {
 //--------START EVENT HANDLERS -----///
 if (btnSignup) {
     btnSignup.addEventListener('click', signup, false);
+
 }
 
 if (btnLogin) {
@@ -598,7 +642,6 @@ if (indexLogoutLink) {
 }
 
 if (Gradupdatebtn) {
-    showSkilloptions();
     Gradupdatebtn.addEventListener('click', updateGrad, false);
 }
 
@@ -615,6 +658,7 @@ if (menu) {
     menu.addEventListener('click', menuOnclick, false);
 }
 
+// setTimeout(function() { myfunction; }, 5000);
 
 
 // ----- END EVENT HANDLERS -----//

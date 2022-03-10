@@ -13,7 +13,8 @@
         "deep-email-validator": "^0.1.21",
         "email-deep-validator": "^3.3.0",
         "firebase": "^9.6.7",
-        "net": "^1.0.2"
+        "net": "^1.0.2",
+        "uuid": "^8.3.2"
     },
     "devDependencies": {
         "css-loader": "^6.7.0",
