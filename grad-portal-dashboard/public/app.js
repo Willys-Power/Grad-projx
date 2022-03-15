@@ -7,10 +7,6 @@ import {
     menuOnclick
 } from './pages/profile'
 import {
-    indexLogoutLink,
-} from './assets/js/coolstuff'
-
-import {
     hideLoginError,
     btnLogin,
     btnSignup,
@@ -67,10 +63,9 @@ const auth = getAuth(app);
 //detect authentication state
 const trackAuthState = async() => {
     onAuthStateChanged(auth, user => {
-
         if (user != null) {
             // User is signed in
-            console.log('logged in!');
+            console.log(`logged in! ${user.displayName}`);
             getProfilepic()
             showLoginState(user);
             hideLoginError();
@@ -88,7 +83,7 @@ trackAuthState();
 //------------------References----------------------// 
 //-Graduate references-//
 var fullname, email, gender, password, confirmPassword, address, country, city, province, DOB, skills, qualification, Qname, LinkedIn, github, WTR,
-    checkboxPOPI;
+    checkboxPOPI, profession;
 
 
 const Gradupdatebtn = document.getElementById("save");
@@ -96,8 +91,9 @@ const Gradupdatebtn = document.getElementById("save");
 fullname = document.getElementById("fullname");
 email = document.getElementById("email");
 gender = document.getElementById("gender");
-address = document.getElementById("address");
+// address = document.getElementById("address");
 country = document.getElementById("country");
+profession = document.getElementById("profession");
 city = document.getElementById("city");
 province = document.getElementById("province");
 DOB = document.getElementById("DOB");
@@ -114,15 +110,6 @@ WTR = document.getElementById("WTR");
 Qname = document.getElementById("qualificationName");
 var fileName = '';
 
-// updateProfile(auth.currentUser, {
-//     displayName: fullname
-// }).then(() => {
-//     // Profile updated!
-//     // ...
-// }).catch((error) => {
-//     // An error occurred
-//     // ...
-// });
 
 //----------------------------------------------- Start Custom page handler conditions --------------------//
 const editProfile_activ = document.body.id;
@@ -136,6 +123,15 @@ if (profileScrollor == 'gradprofileScroll') {
         menu.classList.remove("fa-times");
         profileheader.classList.remove("active");
     };
+}
+
+if (window.location.pathname == '/') {
+    populateGradTable();
+}
+
+if (window.location.pathname == '/pages/profile') {
+    setTimeout(getProfile, 1500);
+
 }
 //---------------------------------------------- End Custom page handler conditions --------------------------------///
 
@@ -172,6 +168,8 @@ const signup = async() => {
                 }
 
             });
+
+
 
             //update the graduate group members.
             updateGradGroup();
@@ -214,6 +212,10 @@ const login = async() => {
 
 }
 
+// if (window.location.pathname == "/") {
+//     populateGradTable();
+// }
+
 //SIGN-OUT A USER FUNCTION
 const logout = async() => {
 
@@ -233,14 +235,14 @@ function loadImg(e) {
 
     const usrImgRef = sRef(storage, '/profileImages/' + userId + '/' + fileList[0].name);
 
-    const metadata = {
-        name: fileList[0].name,
-        size: fileList[0].size,
-        ContentType: fileList[0].type,
+    // const metadata = {
+    //     name: fileList[0].name,
+    //     size: fileList[0].size,
+    //     ContentType: fileList[0].type,
 
-    };
+    // };
 
-    console.log(metadata);
+    // console.log(metadata);
     // 'file' comes from the Blob or File API
     uploadBytes(usrImgRef, fileList[0]).then((snapshot) => {
         console.log('Uploaded a blob or file!' + snapshot.metadata.size);
@@ -265,43 +267,8 @@ function loadImg(e) {
 
 //--------------------- END CORE FUNCTIONALITY ------------------------------//
 
-//---- START GET DATA FUNCTIONS -------/////////
 
-function autofill(userData) {
-
-    // save users on the session
-    localStorage.setItem('country', (!Boolean(userData.get('country'))) ? "" : userData.get('country'));
-    localStorage.setItem('city', (!Boolean(userData.get('city'))) ? "" : userData.get('city'));
-    localStorage.setItem('address', (!Boolean(userData.get('address'))) ? "" : userData.get('address'));
-    localStorage.setItem('course', (!Boolean(userData.get('course'))) ? "" : userData.get('course'));
-    localStorage.setItem('DOB', (!Boolean(userData.get('DOB'))) ? "" : userData.get('DOB'));
-    localStorage.setItem('qualification', (!Boolean(userData.get('qualification'))) ? "" : userData.get('qualification'));
-    localStorage.setItem('qualificationName', (!Boolean(userData.get('qualificationName'))) ? "" : userData.get('qualificationName'));
-    localStorage.setItem('WTR', (!Boolean(userData.get('WTR'))) ? "" : userData.get('WTR'));
-    localStorage.setItem('gender', (!Boolean(userData.get('gender'))) ? "" : userData.get('gender'));
-    localStorage.setItem('email', (!Boolean(userData.get('email'))) ? "" : userData.get('email'));
-    localStorage.setItem('province', (!Boolean(userData.get('province'))) ? "" : userData.get('province'));
-    localStorage.setItem('role', (!Boolean(userData.get('role'))) ? "" : userData.get('role'));
-    localStorage.setItem('skills', (!Boolean(userData.get('skills'))) ? "" : userData.get('skills'));
-    localStorage.setItem('Github', (!Boolean(userData.get('Github'))) ? "" : userData.get('Github'));
-    localStorage.setItem('LinkedIn', (!Boolean(userData.get('LinkedIn'))) ? "" : userData.get('LinkedIn'));
-    localStorage.setItem('KeepLoggedIn', 'yes');
-    localStorage.setItem('userId', userData.get('uid'));
-
-    // window.location = (user.get('role') === "admin")?"index.html": "pages/editProfile.html";
-
-
-
-}
-
-function loadData() {
-    document.getElementById('DOB').value = localStorage.getItem('DOB');
-    document.getElementById('LinkedIn').value = localStorage.getItem('LinkedIn');
-    document.getElementById('Github').value = localStorage.getItem('Github');
-    document.getElementById('province').value = localStorage.getItem('province');
-
-}
-
+//---------------------- START GET DATA FUNCTIONS -------/////////
 //show all available skills data for user to pick from.
 function showSkilloptions() {
     const skillsRef = ref(db, '/skills/');
@@ -323,13 +290,152 @@ function showSkilloptions() {
     })
 }
 
+//pull all graduates to table
+function populateGradTable() {
+
+    // var tblUserElement = document.getElementById('graduatesTable');
+    var tbodyUserElement = document.getElementById('gradBodyT');
+
+    const usersRef = ref(db, 'profile/');
+    onValue(usersRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+
+            // const childData = childSnapshot.val();
+            // ...
+            var Name = childSnapshot.val().fullname;
+            var profession = childSnapshot.val().profession;
+            var qName = childSnapshot.val().qName;
+            var coursename = childSnapshot.val().course;
+
+
+
+
+            //create a table row for each user
+            var userRow = document.createElement('tr');
+            userRow.classList.add("text-gray-700", "dark:text-gray-400");
+
+
+            //create tds and text nodes for each user
+            var cellName = document.createElement('td');
+            cellName.classList.add("px-4", "py-3");
+            var divClss = document.createElement('div');
+            divClss.classList.add("flex", "items-center", "text-sm");
+            var divImg = document.createElement('div');
+            divImg.classList.add("relative", "hidden", "w-8", "h-8", "mr-3", "rounded-full", "md:block");
+            var gradprofpic = document.createElement('img');
+            gradprofpic.classList.add("object-cover", "w-full", "h-full", "rounded-full");
+            var divLast = document.createElement('div');
+            divLast.classList.add("absolute", "inset-0", "rounded-full", "shadow-inner");
+            divLast.ariaHidden = true;
+            //name of graduate
+            var divNameNprofes = document.createElement('div');
+            var paragraph1 = document.createElement('p');
+            paragraph1.classList.add("font-semibold");
+            var paragraph1Text = document.createTextNode(`${Name}`);
+            paragraph1.appendChild(paragraph1Text);
+            //graduate profession
+            var paragraph2 = document.createElement('p');
+            paragraph2.classList.add("text-xs", "text-gray-600", "dark:text-gray-400");
+            var paragraph2Text = document.createTextNode(`${profession}`);
+            paragraph2.appendChild(paragraph2Text);
+
+            //get current user
+            const childKey = childSnapshot.key;
+            const userId = childKey;
+
+            //get file name from database, not storage
+            const userprofile = ref(db, '/profileImg/' + userId + '/');
+            onValue(userprofile, (snapshot) => {
+                var userImgName = snapshot.val();
+                console.log(userImgName);
+                // Note that in the URL, characters are URL escaped!
+
+                const imgpathReference = sRef(storage, '/profileImages/' + userId + '/' + userImgName);
+
+                getDownloadURL(imgpathReference)
+                    .then((url) => {
+                        gradprofpic.src = url;
+                    })
+
+            });
+
+
+            //append image div
+            divImg.appendChild(gradprofpic);
+            divImg.appendChild(divLast);
+
+            //append name & profession
+            divNameNprofes.appendChild(paragraph1);
+            divNameNprofes.appendChild(paragraph2);
+
+
+            //add divImage to 
+            divClss.appendChild(divImg);
+            divClss.appendChild(divNameNprofes);
+
+            //add the td NAMES
+            cellName.appendChild(divClss);
+
+
+
+            //academic cell.
+            var cellAcademic = document.createElement('td');
+            cellAcademic.classList.add("px-4", "text-sm");
+
+            var cellAcademicTextNode = document.createTextNode(`${coursename}`);
+            cellAcademic.appendChild(cellAcademicTextNode);
+
+
+            //Qualification cell.
+            var cellQualications = document.createElement('td');
+            cellQualications.classList.add("px-4", "text-xs");
+
+
+            var cellQualicationsNode = document.createTextNode(`${qName}`);
+            cellQualications.appendChild(cellQualicationsNode);
+
+
+            //Avalibility cell.
+            var cellAvailability = document.createElement('td');
+            cellAvailability.classList.add("px-4", "text-sm");
+            var spanPara = document.createElement('span');
+            spanPara.classList.add("px-2", "py-1", "font-semibold", "leading-tight", "text-green-700", "bg-green-100", "rounded-full", "dark:bg-green-700", "dark:text-green-100");
+
+            var spanParaNode = document.createTextNode("open");
+            spanPara.appendChild(spanParaNode);
+
+            var btnInterview = document.createElement("button");
+            btnInterview.classList.add("px-4", "py-2", "text-sm", "font-medium", "leading-5", "text-white", "transition-colors", "duration-150", "bg-purple-600", "border", "border-transparent", "rounded-lg", "active:bg-purple-600", "hover:bg-purple-700", "focus:outline-none", "focus:shadow-outline-purple");
+
+            var btnInterviewNode = document.createTextNode('Interviews');
+            btnInterview.appendChild(btnInterviewNode);
+
+            //add to cellAvailability
+            cellAvailability.appendChild(spanPara);
+            cellAvailability.appendChild(btnInterview);
+
+
+
+            //add all td in row
+            userRow.appendChild(cellName);
+            userRow.appendChild(cellAcademic);
+            userRow.appendChild(cellQualications);
+            userRow.appendChild(cellAvailability);
+
+            //add new row in the table boda\y
+            tbodyUserElement.appendChild(userRow);
+        });
+
+    });
+    // tblUserElement.appendChild(tbodyUserElement);
+}
+
 //show all qualifications available for user to pick from.
 
-
+//get profile picture.
 function getProfilepic() {
     //get current user
     const userId = auth.currentUser.uid;
-
     //get file name from database, not storage
     const userprofile = ref(db, '/profileImg/' + userId + '/');
     onValue(userprofile, (snapshot) => {
@@ -344,7 +450,8 @@ function getProfilepic() {
         getDownloadURL(imgpathReference)
             .then((url) => {
                 // //display image
-                img_outputDisplay.setAttribute("src", url);
+                if (window.location.pathname != '/pages/editProfile' && window.location.pathname != '/signup')
+                    img_outputDisplay.setAttribute("src", url);
             })
 
     }, {
@@ -353,7 +460,33 @@ function getProfilepic() {
 
 }
 
+//get profile details
+function getProfile() {
+    const userId = auth.currentUser.uid;
+    console.log(userId);
+    const usersRef = ref(db, '/profile/' + userId + '/');
+
+    onValue(usersRef, (snapshot) => {
+        console.log(snapshot.val());
+        document.getElementById('gradName').innerHTML = snapshot.val().fullname;
+        document.getElementById('gradName2').innerHTML = snapshot.val().fullname;
+        document.getElementById('gradName3').innerHTML = snapshot.val().fullname;
+        document.getElementById('gradName4').innerHTML = snapshot.val().fullname;
+
+
+
+        document.getElementById('gradQuali').innerHTML = snapshot.val().qualification;
+
+        document.getElementById('gradprofession').innerHTML = snapshot.val().profession;
+
+    }, {
+        onlyOnce: true,
+    });
+}
+
 //---- END GET DATA FUNCTIONS -------/////////
+
+
 
 
 //-------- START UPDATE GRADUATE PROFILE FUNCTION ------------------------//
@@ -365,7 +498,7 @@ function updateGrad() {
     fullname = document.getElementById("fullname").value;
     email = document.getElementById("email").value;
     gender = document.getElementById("gender").value;
-    address = document.getElementById("address").value;
+    profession = document.getElementById("profession").value;
     country = document.getElementById("country").value;
     city = document.getElementById("city").value;
     province = document.getElementById("province").value;
@@ -382,31 +515,30 @@ function updateGrad() {
     //get currently signned in user.
     var userId = auth.currentUser.uid;
 
-    //reference to database
-    const db = getDatabase(app);
-
     let updates = {};
     //update userid profile to Firebase Database
     let userUpdatedata = {
 
-            fullname: fullname,
-            gender: gender,
-            address: address,
-            country: country,
-            city: city,
-            province: province,
-            DOB: DOB,
-            course: course,
-            qualification: qualification,
-            qName: Qname,
-            LinkedIn: LinkedIn,
-            github: github,
-            WTR: WTR,
-            skills: skills
+        fullname: fullname,
+        gender: gender,
+        profession: profession,
+        country: country,
+        city: city,
+        province: province,
+        DOB: DOB,
+        course: course,
+        qualification: qualification,
+        qName: Qname,
+        LinkedIn: LinkedIn,
+        github: github,
+        WTR: WTR,
+        skills: skills
 
-        }
-        // let isEmpty = Object.values(userUpdatedata).every()
+    }
+
+    // let isEmpty = Object.values(userUpdatedata).every()
     updates['/profile/' + userId + '/'] = userUpdatedata;
+    updates['/users/' + userId + '/fullname/'] = fullname;
 
     return update(ref(db), updates);
 }
@@ -637,9 +769,9 @@ if (btnLogin) {
     btnLogin.addEventListener('click', login, false);
 }
 
-if (indexLogoutLink) {
-    indexLogoutLink.addEventListener('click', logout, false);
-}
+// if (indexLogoutLink) {
+//     indexLogoutLink.addEventListener('click', logout, false);
+// }
 
 if (Gradupdatebtn) {
     Gradupdatebtn.addEventListener('click', updateGrad, false);
@@ -657,8 +789,6 @@ if (profileLogoutLink) {
 if (menu) {
     menu.addEventListener('click', menuOnclick, false);
 }
-
-// setTimeout(function() { myfunction; }, 5000);
 
 
 // ----- END EVENT HANDLERS -----//
