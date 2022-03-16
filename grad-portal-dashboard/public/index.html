@@ -7,6 +7,7 @@
     <title>Client Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/css/dataTables.bootstrap4.min.css " rel=stylesheet>
 
     <link rel="stylesheet" href="./content/css/popover.css">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -303,8 +304,7 @@
                     <li class="flex">
                       <a
                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                         href="signup" id="signOut" 
-                        >
+                         href="signup" id="sign_Out1" >
                         <svg
                           class="w-4 h-4 mr-3"
                           aria-hidden="true"
@@ -336,7 +336,7 @@
                     <!-- New Table -->
                     <div class="w-full overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto">
-                            <table class="w-full whitespace-no-wrap" id="graduatesTable">
+                            <table class="w-full whitespace-no-wrap searchable sortable" id="graduatesTable">
                                 <thead>
                                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                                         <th class="px-4 py-3">Graduate</th>

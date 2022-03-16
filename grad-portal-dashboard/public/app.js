@@ -2,6 +2,7 @@ import {
     img_inputloader,
     img_outputDisplay,
     profileLogoutLink,
+    btnSignout,
     profileheader,
     menu,
     menuOnclick
@@ -135,7 +136,7 @@ if (window.location.pathname == '/pages/profile') {
 }
 //---------------------------------------------- End Custom page handler conditions --------------------------------///
 
-//----------------- INSERT DATA FUNCTION -------------//
+//----------------- START INSERT DATA FUNCTION -------------//
 
 //SIGN-UP A GRADUATE USER TYPE FUNCTION
 const signup = async() => {
@@ -168,7 +169,6 @@ const signup = async() => {
                 }
 
             });
-
 
 
             //update the graduate group members.
@@ -212,10 +212,6 @@ const login = async() => {
 
 }
 
-// if (window.location.pathname == "/") {
-//     populateGradTable();
-// }
-
 //SIGN-OUT A USER FUNCTION
 const logout = async() => {
 
@@ -224,8 +220,6 @@ const logout = async() => {
 }
 
 //UPDATE PROFILE PICTURE FILE
-
-
 function loadImg(e) {
     //the file
     const fileList = e.target.files;
@@ -265,7 +259,7 @@ function loadImg(e) {
 }
 
 
-//--------------------- END CORE FUNCTIONALITY ------------------------------//
+//--------------------- END INSERT DATA FUNCTIONA ------------------------------//
 
 
 //---------------------- START GET DATA FUNCTIONS -------/////////
@@ -785,6 +779,11 @@ if (img_inputloader) {
 if (profileLogoutLink) {
     profileLogoutLink.addEventListener("click", logout, false);
 }
+
+if (btnSignout) {
+    btnSignout.addEventListener('click', logout, false);
+}
+
 
 if (menu) {
     menu.addEventListener('click', menuOnclick, false);

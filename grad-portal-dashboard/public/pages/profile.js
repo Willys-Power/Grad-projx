@@ -4,6 +4,7 @@
  export const img_inputloader = document.querySelector('#input_img');
  export let img_outputDisplay = document.querySelector('#output');
  export const profileLogoutLink = document.querySelector('#signOut');
+ export const btnSignout = document.querySelector('#sign_Out1');
 
 
 

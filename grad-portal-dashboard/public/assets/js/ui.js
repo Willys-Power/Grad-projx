@@ -11,6 +11,7 @@ export const btnLogin = document.querySelector('#signIn');
 export const btnSignup = document.querySelector('#sign_up');
 
 
+
 export const hideLoginError = () => {
     divLoginError.style.display = 'none'
     loginError_message.innerHTML = ''
