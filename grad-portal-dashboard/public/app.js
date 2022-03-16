@@ -177,8 +177,10 @@ const signup = async() => {
 
             console.log("logged in!");
             //print a nice message to notify user of created account.
-            alert("SAVED");
             //redrect user to index page after 2 sec.
+            window.location = '/pages/profile';
+            // MULTI USER REDIRECTS
+
         }
 
     } catch (error) {
@@ -190,6 +192,7 @@ const signup = async() => {
 
 
 }
+
 
 //SIGN-IN A USER FUNCTON
 const login = async() => {
