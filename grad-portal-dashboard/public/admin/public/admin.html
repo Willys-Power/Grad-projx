@@ -2,107 +2,68 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Admin Dashboard </title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="vendors/feather/feather.css">
-  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="vendors/typicons/typicons.css">
-  <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- endinject -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="js/select.dataTables.min.css">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin Dashboard </title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css">
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- endinject -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
 </head>
+
 <body>
-  <div class="container-scroller"> 
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar  col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-        <div class="me-3">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar  col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+                <div class="me-3">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
             <span class="icon-menu"></span>
           </button>
-        </div>
-        <div>
-          <a class="navbar-brand brand-logo" href="index.html">
-            <img src="images/mindworx-logo.png" alt="logo" />
-          </a>
-          <!-- <a class="navbar-brand brand-logo-mini" href="index.html">
+                </div>
+                <div>
+                    <a class="navbar-brand brand-logo" href="index.html">
+                        <img src="images/mindworx-logo.png" alt="logo" />
+                    </a>
+                    <!-- <a class="navbar-brand brand-logo-mini" href="index.html">
             <img src="images/mindworx-logo.png" alt="logo" />
           </a> -->
-        </div>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-top"> 
-        <ul class="navbar-nav">
-          <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <!-- <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1> -->
-            <h3 class="welcome-sub-text text-danger">SUMMARY </h3>
-          </li>
-        </ul>
-        <ul class="navbar-nav ms-auto">
-          <!-- <li class="nav-item dropdown d-none d-lg-block">
-            <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false"> Select Category </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-              <a class="dropdown-item py-3" >
-                <p class="mb-0 font-weight-medium float-left">Select category</p>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle </p>
-                  <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards</p>
                 </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Angular Bundle</p>
-                  <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular projects</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">VUE Bundle</p>
-                  <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">React Bundle</p>
-                  <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
-                </div>
-              </a>
             </div>
-          </li> -->
-          <!-- <li class="nav-item d-none d-lg-block">
-            <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
-              <span class="input-group-addon input-group-prepend border-right">
-                <span class="icon-calendar input-group-text calendar-icon"></span>
-              </span>
-              <input type="text" class="form-control">
-            </div>
-          </li> -->
-          <li class="nav-item">
-            <form class="search-form" action="#">
-              <i class="icon-search"></i>
-              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-            </form>
-          </li>
-          <!-- <li class="nav-item dropdown">
+            <div class="navbar-menu-wrapper d-flex align-items-top">
+                <ul class="navbar-nav">
+                    <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+                        <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
+
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <form class="search-form" action="#">
+                            <i class="icon-search"></i>
+                            <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                        </form>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
             <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
               <i class="icon-mail icon-lg"></i>
             </a>
@@ -140,7 +101,7 @@
               </a>
             </div>
           </li> -->
-          <!-- <li class="nav-item dropdown"> 
+                    <!-- <li class="nav-item dropdown"> 
             <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="icon-bell"></i>
               <span class="count"></span>
@@ -180,230 +141,232 @@
               </a>
             </div>
           </li> -->
-          <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-            <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="Profile image"> </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <div class="dropdown-header text-center">
-                <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
-                <p class="mb-1 mt-3 font-weight-semibold">Ramahadi Moheane</p>
-                <p class="fw-light text-muted mb-0">moheanerj@gmail.com</p>
-              </div>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account text-danger me-2"></i> My Profile</span></a>
-              <!-- <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
+                    <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+                        <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="Profile image"> </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            <div class="dropdown-header text-center">
+                                <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
+                                <p class="mb-1 mt-3 font-weight-semibold">Ramahadi Moheane</p>
+                                <p class="fw-light text-muted mb-0">moheanerj@gmail.com</p>
+                            </div>
+                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account text-danger me-2"></i> My Profile</span></a>
+                            <!-- <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a> -->
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-danger me-2"></i>Sign Out</a>
-            </div>
-          </li>
-        </ul>
-        <!-- <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-danger me-2"></i>Sign Out</a>
+                        </div>
+                    </li>
+                </ul>
+                <!-- <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
           <span class="mdi mdi-menu"></span>
         </button> -->
-      </div>
-    </nav>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper bg-danger text-danger">
-      <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close ti-close"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border me-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border me-3"></div>Dark</div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div>
-      <div id="right-sidebar" class="settings-panel">
-        <i class="settings-close ti-close"></i>
-        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="todo-tab" data-bs-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="chats-tab" data-bs-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="setting-content">
-          <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
-            <div class="add-items d-flex px-3 mb-0">
-              <form class="form w-100">
-                <div class="form-group d-flex">
-                  <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
-                  <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
-                </div>
-              </form>
             </div>
-            <div class="list-wrapper px-3">
-              <ul class="d-flex flex-column-reverse todo-list">
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper bg-danger text-danger">
+            <!-- partial:partials/_settings-panel.html -->
+            <div class="theme-setting-wrapper">
+                <div id="settings-trigger"><i class="ti-settings"></i></div>
+                <div id="theme-settings" class="settings-panel">
+                    <i class="settings-close ti-close"></i>
+                    <p class="settings-heading">SIDEBAR SKINS</p>
+                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                        <div class="img-ss rounded-circle bg-light border me-3"></div>Light</div>
+                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                        <div class="img-ss rounded-circle bg-dark border me-3"></div>Dark</div>
+                    <p class="settings-heading mt-2">HEADER SKINS</p>
+                    <div class="color-tiles mx-0 px-4">
+                        <div class="tiles success"></div>
+                        <div class="tiles warning"></div>
+                        <div class="tiles danger"></div>
+                        <div class="tiles info"></div>
+                        <div class="tiles dark"></div>
+                        <div class="tiles default"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="right-sidebar" class="settings-panel">
+                <i class="settings-close ti-close"></i>
+                <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="todo-tab" data-bs-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="chats-tab" data-bs-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="setting-content">
+                    <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+                        <div class="add-items d-flex px-3 mb-0">
+                            <form class="form w-100">
+                                <div class="form-group d-flex">
+                                    <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                                    <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="list-wrapper px-3">
+                            <ul class="d-flex flex-column-reverse todo-list">
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
                       <input class="checkbox" type="checkbox">
                       Team review meeting at 3.00 PM
                     </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
+                                    </div>
+                                    <i class="remove ti-close"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
                       <input class="checkbox" type="checkbox">
                       Prepare for presentation
                     </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
+                                    </div>
+                                    <i class="remove ti-close"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
                       <input class="checkbox" type="checkbox">
                       Resolve all the low priority tickets due today
                     </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li class="completed">
-                  <div class="form-check">
-                    <label class="form-check-label">
+                                    </div>
+                                    <i class="remove ti-close"></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
                       <input class="checkbox" type="checkbox" checked>
                       Schedule meeting for next week
                     </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li class="completed">
-                  <div class="form-check">
-                    <label class="form-check-label">
+                                    </div>
+                                    <i class="remove ti-close"></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
                       <input class="checkbox" type="checkbox" checked>
                       Project review
                     </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-              </ul>
+                                    </div>
+                                    <i class="remove ti-close"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <h4 class="px-3 text-muted mt-5 fw-light mb-0">Events</h4>
+                        <div class="events pt-4 px-3">
+                            <div class="wrapper d-flex mb-2">
+                                <i class="ti-control-record text-primary me-2"></i>
+                                <span>Feb 11 2018</span>
+                            </div>
+                            <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
+                            <p class="text-gray mb-0">The total number of sessions</p>
+                        </div>
+                        <div class="events pt-4 px-3">
+                            <div class="wrapper d-flex mb-2">
+                                <i class="ti-control-record text-primary me-2"></i>
+                                <span>Feb 7 2018</span>
+                            </div>
+                            <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
+                            <p class="text-gray mb-0 ">Call Sarah Graves</p>
+                        </div>
+                    </div>
+                    <!-- To do section tab ends -->
+                    <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
+                        <div class="d-flex align-items-center justify-content-between border-bottom">
+                            <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
+                            <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 fw-normal">See All</small>
+                        </div>
+                        <ul class="chat-list">
+                            <li class="list active">
+                                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                                <div class="info">
+                                    <p>Thomas Douglas</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto">19 min</small>
+                            </li>
+                            <li class="list">
+                                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
+                                <div class="info">
+                                    <div class="wrapper d-flex">
+                                        <p>Catherine</p>
+                                    </div>
+                                    <p>Away</p>
+                                </div>
+                                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
+                                <small class="text-muted my-auto">23 min</small>
+                            </li>
+                            <li class="list">
+                                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
+                                <div class="info">
+                                    <p>Daniel Russell</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto">14 min</small>
+                            </li>
+                            <li class="list">
+                                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
+                                <div class="info">
+                                    <p>James Richardson</p>
+                                    <p>Away</p>
+                                </div>
+                                <small class="text-muted my-auto">2 min</small>
+                            </li>
+                            <li class="list">
+                                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
+                                <div class="info">
+                                    <p>Madeline Kennedy</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto">5 min</small>
+                            </li>
+                            <li class="list">
+                                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
+                                <div class="info">
+                                    <p>Sarah Graves</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto">47 min</small>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- chat tab ends -->
+                </div>
             </div>
-            <h4 class="px-3 text-muted mt-5 fw-light mb-0">Events</h4>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="ti-control-record text-primary me-2"></i>
-                <span>Feb 11 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
-              <p class="text-gray mb-0">The total number of sessions</p>
-            </div>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="ti-control-record text-primary me-2"></i>
-                <span>Feb 7 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-              <p class="text-gray mb-0 ">Call Sarah Graves</p>
-            </div>
-          </div>
-          <!-- To do section tab ends -->
-          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
-            <div class="d-flex align-items-center justify-content-between border-bottom">
-              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 fw-normal">See All</small>
-            </div>
-            <ul class="chat-list">
-              <li class="list active">
-                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Thomas Douglas</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">19 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
-                <div class="info">
-                  <div class="wrapper d-flex">
-                    <p>Catherine</p>
-                  </div>
-                  <p>Away</p>
-                </div>
-                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
-                <small class="text-muted my-auto">23 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Daniel Russell</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">14 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
-                <div class="info">
-                  <p>James Richardson</p>
-                  <p>Away</p>
-                </div>
-                <small class="text-muted my-auto">2 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Madeline Kennedy</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">5 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Sarah Graves</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">47 min</small>
-              </li>
-            </ul>
-          </div>
-          <!-- chat tab ends -->
-        </div>
-      </div>
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav p-1 m-1" style="background-color: inherit;">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">
-              <i class="mdi mdi-grid-large menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">USERS</li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-floor-plan"></i>
-              <span class="menu-title">USERS LIST</span>
-              <i class="menu-arrow"></i> 
-            </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="./users.html">GRADUATES</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="./clients.html">CLIENTS</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="./admin.html">ADMIN</a></li>
-                  
-                </ul>
-              </div>
-          </li>
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav p-1 m-1" style="background-color: inherit;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="mdi mdi-grid-large menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">USERS</li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="menu-icon mdi mdi-floor-plan"></i>
+                            <span class="menu-title">USERS LIST</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="./users.html">GRADUATES</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="./clients.html">CLIENTS</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="./admin.html">ADMIN</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
 
 
 
 
-          <!-- <li class="nav-item nav-category">Forms and Datas</li>
+                    <!-- <li class="nav-item nav-category">Forms and Datas</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="menu-icon mdi mdi-card-text-outline"></i>
@@ -428,7 +391,7 @@
               </ul>
             </div>
           </li> -->
-          <!-- <li class="nav-item">
+                    <!-- <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="menu-icon mdi mdi-table"></i>
               <span class="menu-title">Tables</span>
@@ -452,7 +415,7 @@
               </ul>
             </div>
           </li> -->
-          <!-- <li class="nav-item nav-category">pages</li>
+                    <!-- <li class="nav-item nav-category">pages</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="menu-icon mdi mdi-account-circle-outline"></i>
@@ -472,17 +435,17 @@
               <span class="menu-title">Documentation</span>
             </a>
           </li> -->
-        </ul>
-      </nav>
-      <!-- partial -->
-      <div class="main-panel" >
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="home-tab">
-                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
-                  <ul class="nav nav-tabs" role="tablist">
-                    <!-- <li class="nav-item">
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="home-tab">
+                                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <!-- <li class="nav-item">
                       <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
                     </li>
                     <li class="nav-item">
@@ -494,18 +457,18 @@
                     <li class="nav-item">
                       <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
                     </li> -->
-                  </ul>
-                  <div>
-                    <div class="btn-wrapper">
-                      <!-- <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
+                                    </ul>
+                                    <div>
+                                        <div class="btn-wrapper">
+                                            <!-- <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
                       <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
                       <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a> -->
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-content tab-content-basic p-2 m-1" style="background-color: inherit;">
-                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview"> 
-                    <!-- <div class="row">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-content tab-content-basic p-2 m-1" style="background-color: inherit;">
+                                    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+                                        <!-- <div class="row">
                       <div class="col-sm-12">
                         <div class="statistics-details d-flex align-items-center justify-content-between p-2" style="background-color: beige;">
                           <div>
@@ -541,7 +504,7 @@
                         </div>
                       </div>
                     </div>  -->
-                    <!-- <div class="row">
+                                        <!-- <div class="row">
                       <div class="col-lg-8 d-flex flex-column">
                         <div class="row flex-grow">
                           <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
@@ -615,10 +578,10 @@
                         </div>
                       </div>
                     </div> -->
-                    <div class="row">
-                      <div class="col-lg-12 d-flex flex-column">
-                        
-                        <!-- <div class="row flex-grow">
+                                        <div class="row">
+                                            <div class="col-lg-12 d-flex flex-column">
+
+                                                <!-- <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded table-darkBGImg">
                               <div class="card-body">
@@ -632,113 +595,113 @@
                             </div>
                           </div>
                         </div> -->
-                        <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <h4 class="card-title card-title-dash">Admin List</h4>
-                                   <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
-                                  </div>
+                                                <div class="row flex-grow">
+                                                    <div class="col-12 grid-margin stretch-card">
+                                                        <div class="card card-rounded">
+                                                            <div class="card-body">
+                                                                <div class="d-sm-flex justify-content-between align-items-start">
+                                                                    <div>
+                                                                        <h4 class="card-title card-title-dash">Admin List</h4>
+                                                                        <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
+                                                                    </div>
 
 
 
 
 
-                                  <div>
-                                    <button class="btn btn-dark btn-lg text-white mb-0 me-0" type="button" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-account-plus"></i>Add New Admin</button>
-                                  </div>
+                                                                    <div>
+                                                                        <button class="btn btn-dark btn-lg text-white mb-0 me-0" type="button" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-account-plus"></i>Add New Admin</button>
+                                                                    </div>
 
 
 
-                                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-xl" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLabel">Add new Admin</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-xl" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="exampleModalLabel">Add new Admin</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
-                                        </div>
-                                        <!--------------- Register Administrator--------------------->
-                                        <div class="modal-body">
-                                          <div class="col-12 grid-margin">
-                                            <div class="card">
-                                              <div class="card-body">
-                                                <h4 class="card-title">Admin</h4>
-                                                <form class="form-sample">
-                                                  <p class="card-description">
-                                                    Personal info
-                                                  </p>
-                                                  <div class="row">
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label" id="firstname">First Name</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label" >Last Name</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control"id="lastname" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div class="row">
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label" >Gender</label>
-                                                        <div class="col-sm-9">
-                                                          <select class="form-control" id="gender">
+                                                                                </div>
+                                                                                <!--------------- Register Administrator--------------------->
+                                                                                <div class="modal-body">
+                                                                                    <div class="col-12 grid-margin">
+                                                                                        <div class="card">
+                                                                                            <div class="card-body">
+                                                                                                <h4 class="card-title">Admin</h4>
+                                                                                                <form class="form-sample">
+                                                                                                    <p class="card-description">
+                                                                                                        Personal info
+                                                                                                    </p>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group row">
+                                                                                                                <label class="col-sm-3 col-form-label" id="firstname">First Name</label>
+                                                                                                                <div class="col-sm-9">
+                                                                                                                    <input type="text" class="form-control" />
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group row">
+                                                                                                                <label class="col-sm-3 col-form-label">Last Name</label>
+                                                                                                                <div class="col-sm-9">
+                                                                                                                    <input type="text" class="form-control" id="lastname" />
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group row">
+                                                                                                                <label class="col-sm-3 col-form-label">Gender</label>
+                                                                                                                <div class="col-sm-9">
+                                                                                                                    <select class="form-control" id="gender">
                                                             <option>Male</option>
                                                             <option>Female</option>
                                                           </select>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label" id="DOB">Date of Birth</label>
-                                                        <div class="col-sm-9">
-                                                          <input class="form-control" placeholder="dd/mm/yyyy"/>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div class="row">
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Role</label>
-                                                        <div class="col-sm-9">
-                                                          <select class="form-control" id="Role">
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group row">
+                                                                                                                <label class="col-sm-3 col-form-label" id="DOB">Date of Birth</label>
+                                                                                                                <div class="col-sm-9">
+                                                                                                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group row">
+                                                                                                                <label class="col-sm-3 col-form-label">Role</label>
+                                                                                                                <div class="col-sm-9">
+                                                                                                                    <select class="form-control" id="Role">
                                                             <option>Super User</option>
                                                             <option>Administrator</option>
                                                             <option>General</option>                                                            
                                                           </select>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        
-                                                        <div class="form-group row">
-                                                          <label class="col-sm-3 col-form-label" id="position">Position</label>
-                                                          <div class="col-sm-9">
-                                                            <input class="form-control"/>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <!-- <p class="card-description">
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group row">
+
+                                                                                                                <div class="form-group row">
+                                                                                                                    <label class="col-sm-3 col-form-label" id="position">Position</label>
+                                                                                                                    <div class="col-sm-9">
+                                                                                                                        <input class="form-control" />
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <!-- <p class="card-description">
                                                     Address
                                                   </p> -->
-                                                  <!-- <div class="row">
+                                                                                                    <!-- <div class="row">
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
                                                         <label class="col-sm-3 col-form-label">Address 1</label>
@@ -756,7 +719,7 @@
                                                       </div>
                                                     </div>
                                                   </div> -->
-                                                  <!-- <div class="row">
+                                                                                                    <!-- <div class="row">
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
                                                         <label class="col-sm-3 col-form-label">Address 2</label>
@@ -774,7 +737,7 @@
                                                       </div>
                                                     </div>
                                                   </div> -->
-                                                  <!-- <div class="row">
+                                                                                                    <!-- <div class="row">
                                                     <div class="col-md-6">
                                                       <div class="form-group row">
                                                         <label class="col-sm-3 col-form-label">City</label>
@@ -797,161 +760,171 @@
                                                       </div>
                                                     </div>
                                                   </div> -->
-                                                </form>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary" id="Add-admin">Save changes</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                                                                                                </form>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="button" class="btn btn-primary" id="Add-admin">Save changes</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
 
 
 
 
 
 
-                                  
-                                </div>
-                                <div class="table-responsive  mt-1">
-                                  <table class="table select-table">
-                                    <thead>
-                                      <tr>
-                                        <th>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
+
+                                                                </div>
+                                                                <div class="table-responsive  mt-1">
+                                                                    <table class="table select-table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>
+                                                                                    <div class="form-check form-check-flat mt-0">
+                                                                                        <label class="form-check-label">
                                               <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </th>
-                                        <th>Names</th>
-                                        <th>Tittle</th>
-                                        
-                                        <th>Status</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
+                                                                                    </div>
+                                                                                </th>
+                                                                                <th>Names</th>
+                                                                                <th>Tittle</th>
+
+                                                                                <th>Status</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <div class="form-check form-check-flat mt-0">
+                                                                                        <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex ">
-                                            <img src="images/faces/face17.jpg" alt="">
-                                            <div>
-                                              <h6>David Lee</h6>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>Administration Officer</h6>
-                                          <!-- <p>company type</p> -->
-                                        </td>
-                                    
-                                        <td><div class="badge badge-success">Online</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex ">
+                                                                                        <img src="images/faces/face17.jpg" alt="">
+                                                                                        <div>
+                                                                                            <h6>David Lee</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <h6>Administration Officer</h6>
+                                                                                    <!-- <p>company type</p> -->
+                                                                                </td>
+
+                                                                                <td>
+                                                                                    <div class="badge badge-success">Online</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <div class="form-check form-check-flat mt-0">
+                                                                                        <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex ">
-                                            <img src="images/faces/face18.jpg" alt="">
-                                            <div>
-                                              <h6>John Wayne</h6>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>IT Supervisor</h6>
-                                          <!-- <p>company type</p> -->
-                                        </td>
-                                    
-                                        <td><div class="badge badge-danger">Offline</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex ">
+                                                                                        <img src="images/faces/face18.jpg" alt="">
+                                                                                        <div>
+                                                                                            <h6>John Wayne</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <h6>IT Supervisor</h6>
+                                                                                    <!-- <p>company type</p> -->
+                                                                                </td>
+
+                                                                                <td>
+                                                                                    <div class="badge badge-danger">Offline</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <div class="form-check form-check-flat mt-0">
+                                                                                        <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex ">
-                                            <img src="images/faces/face13.jpg" alt="">
-                                            <div>
-                                              <h6>James Wayne</h6>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>Legal Advisor</h6>
-                                          <!-- <p>company type</p> -->
-                                        </td>
-                                    
-                                        <td><div class="badge badge-danger">Offline</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex ">
+                                                                                        <img src="images/faces/face13.jpg" alt="">
+                                                                                        <div>
+                                                                                            <h6>James Wayne</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <h6>Legal Advisor</h6>
+                                                                                    <!-- <p>company type</p> -->
+                                                                                </td>
+
+                                                                                <td>
+                                                                                    <div class="badge badge-danger">Offline</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <div class="form-check form-check-flat mt-0">
+                                                                                        <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex ">
-                                            <img src="images/faces/face16.jpg" alt="">
-                                            <div>
-                                              <h6>Matthew Butler</h6>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>Administration Officer</h6>
-                                          <!-- <p>company type</p> -->
-                                        </td>
-                                    
-                                        <td><div class="badge badge-success">Online</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex ">
+                                                                                        <img src="images/faces/face16.jpg" alt="">
+                                                                                        <div>
+                                                                                            <h6>Matthew Butler</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <h6>Administration Officer</h6>
+                                                                                    <!-- <p>company type</p> -->
+                                                                                </td>
+
+                                                                                <td>
+                                                                                    <div class="badge badge-success">Online</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <div class="form-check form-check-flat mt-0">
+                                                                                        <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex ">
-                                            <img src="images/faces/face7.jpg" alt="">
-                                            <div>
-                                              <h6>Gerald Smith</h6>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>Enrollment Officer</h6>
-                                          <!-- <p>company type</p> -->
-                                        </td>
-                                    
-                                        <td><div class="badge badge-danger">Offline</div></td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- <div class="row flex-grow">
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex ">
+                                                                                        <img src="images/faces/face7.jpg" alt="">
+                                                                                        <div>
+                                                                                            <h6>Gerald Smith</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <h6>Enrollment Officer</h6>
+                                                                                    <!-- <p>company type</p> -->
+                                                                                </td>
+
+                                                                                <td>
+                                                                                    <div class="badge badge-danger">Offline</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="row flex-grow">
                           <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                             <div class="card card-rounded">
                               <div class="card-body card-rounded">
@@ -1081,10 +1054,10 @@
                             </div>
                           </div>
                         </div> -->
-                      </div>
-                      <!-- <div class="col-lg-4 d-flex flex-column"> -->
-                       
-                        <!-- <div class="row flex-grow">
+                                            </div>
+                                            <!-- <div class="col-lg-4 d-flex flex-column"> -->
+
+                                            <!-- <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
                               <div class="card-body">
@@ -1101,7 +1074,7 @@
                             </div>
                           </div>
                         </div> -->
-                        <!-- <div class="row flex-grow">
+                                            <!-- <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
                               <div class="card-body">
@@ -1130,7 +1103,7 @@
                             </div>
                           </div>
                         </div> -->
-                        <!-- <div class="row flex-grow">
+                                            <!-- <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
                               <div class="card-body">
@@ -1209,209 +1182,49 @@
                             </div>
                           </div>
                         </div> -->
-                      </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <!-- <footer class="footer">
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <!-- <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
           </div>
         </footer> -->
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
+    </div>
+    <!-- container-scroller -->
 
-  <!-- plugins:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <script src="vendors/chart.js/Chart.min.js"></script>
-  <script src="vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="vendors/progressbar.js/progressbar.min.js"></script>
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="vendors/progressbar.js/progressbar.min.js"></script>
 
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
-  <script src="js/template.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/todolist.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="js/dashboard.js"></script>
-  <script src="js/Chart.roundedBarCharts.js"></script>
-  <!-- Add Admin js -->
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
-    //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-analytics.js";
-    
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    const sign_in_btn = document.querySelector("#sign-in-btn");
-  const sign_up_btn = document.querySelector("#sign-up-btn");
-  const sign_up = document.querySelector("#signUp");
-  const sign_up_act = document.getElementById("sign_up");
-  const signIn = document.getElementById("signIn");
-  const container = document.querySelector(".container");
-  const addAdmin = document.getElementById("Add-admin");
-  
-  
-  
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyAuuAMrOqkTix4hgvE4gG3MtA44ZYQWg2k",
-      authDomain: "mindworxgrad.firebaseapp.com",
-      projectId: "mindworxgrad",
-      storageBucket: "mindworxgrad.appspot.com",
-      messagingSenderId: "921423385255",
-      appId: "1:921423385255:web:1e0ac2a0df745193e34182",
-      measurementId: "G-D1HH02SNW3"
-    };
-  
-    // Initialize Firebase
-    
-    const app = initializeApp(firebaseConfig);
-    //const analytics = getAnalytics(app);
-  
-    //Initialize variables
-  
-  //const auth = firebase.auth()
-  const database = getDatabase(app);
-  
-  import {getDatabase, ref, set, child, get, update}
-  from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
-  
-  var username,email,password,confirmPass,surname,DOb;
-  
-  //---------------------References-----------------------
-  
-  username = document.getElementById("username");
-  email = document.getElementById("email");
-  password = document.getElementById("password");
-  confirmPass = document.getElementById("confirmPass");
-  
-  
-  
-  //Form validation
-  
-  function isEmptyOrSpaces(str){
-  
-    return str ===null || str.match(/^ *$/) !== null;
-  }
-  
-  function validate(){
-  
-    let nameregex = /[a-zA-Z]+/;
-    let emailregex = /[a-zA-Z0-9]+@(gmail|mindworx|outlook|yahoo)\.(com|co.za)/;
-    let userpwdregex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
-  
-    if(! (password.value === confirmPass.value)){
-      alert("Passwords do not match ")
-      return;
-    }
-  
-    if(isEmptyOrSpaces(username.value) || isEmptyOrSpaces(email.value) || isEmptyOrSpaces(password.value) || isEmptyOrSpaces(confirmPass.value)){
-      alert("PLease fil in the empty field(s)");return;
-    }
-    if(!nameregex.test(username.value)) 
-    {
-      alert("the name should only contain alphabets!")
-      return;
-    }
-  
-    if(!emailregex.test(email.value))
-    {
-      alert("Invalid email");return;
-    }
-    if(!userpwdregex.test(password.value)){
-      alert("Password not strong enough");return;
-    }
-    return true;
-  
-  }
-  //-----------------------Register----------------------------------
-  function RegisterUser(){
-  
-    if(!validate()){
-      return;
-    }
-  
-   
-  
-    const dbRef = ref(database);
-    get(child(dbRef, "Users/"+username.value)).then((snapshort)=>{
-      
-      if(snapshort.exists()){
-        alert("User aready exists");
-      }else{
-        var date = Date(Date.now());
-        set(ref(database,"Users/"+username.value),
-        {
-          email : email.value,
-          full_name : username.value,
-          password :password.value,
-          Role : "admin",
-          last_login : date.toString(),
-          country : null,
-          city :null,
-          addressLine:null,
-          course :null,
-          DOB:null,
-          qualification:null,
-          gender:null
-  
-          
-        }
-        )
-      }
-    }).then(()=>
-    {
-      alert("User registered successfully!")
-      container.classList.remove("sign-up-mode");
-    }).catch(function(error){
-  
-  
-  var error_code = error.error_code
-  var error_message = error.message
-  alert("Trouble in paradise !! "+error.message)
-  
-  })
-  }
-  
-  
-  //--------------------------encription-----------------------------
-  
-  
-  
-  //-------------------------Toggle-------------------------------
-
-  // -------------------------Insert---------------------------------
-  addAdmin.addEventListener("click",RegisterUser);
-  
-  
-  </script>
-  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
-  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
-  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
-  <!-- End custom js for this page-->
-
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
 </body>
 
 </html>
-
