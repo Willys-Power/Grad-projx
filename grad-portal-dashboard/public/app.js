@@ -66,7 +66,7 @@ const trackAuthState = async() => {
     onAuthStateChanged(auth, user => {
         if (user != null) {
             // User is signed in
-            console.log(`logged in! ${user.displayName}`);
+            console.log(`logged in! ${user.email}`);
             getProfilepic()
             showLoginState(user);
             hideLoginError();
@@ -133,6 +133,45 @@ if (window.location.pathname == '/') {
 if (window.location.pathname == '/pages/profile') {
     setTimeout(getProfile, 1500);
 
+} //getAdminDetails
+//get administrator data
+const getAdminDetails = async() => {
+
+
+        onAuthStateChanged(auth, user => {
+            if (user != null) {
+                // User is signed in
+                const usersRef = ref(db, 'profile/' + user.uid);
+                onValue(usersRef, (snapshot) => {
+
+                    var adminbody = document.getElementById('displayAdminName');
+                    var adminName1 = document.getElementById('adminName1');
+                    var adminEmail = document.getElementById('adminEmail');
+                    // const childData = childSnapshot.val();
+                    // ...
+                    var Name = snapshot.val().fullname;
+                    var email = snapshot.val().email;
+
+
+
+                    adminbody.innerHTML = Name;
+                    adminName1.innerHTML = Name;
+                    adminEmail.innerHTML = email;
+
+
+
+                });
+            }
+
+        });
+
+
+
+    }
+    //show all qualifications available for user to pick from.
+if (window.location.pathname == '/admin/public/admin' || window.location.pathname == '/admin/public/users' || window.location.pathname == '/admin/public/clients') {
+    setTimeout(getAdminDetails, .5);
+
 }
 //---------------------------------------------- End Custom page handler conditions --------------------------------///
 
@@ -154,7 +193,6 @@ const signup = async() => {
         const userCredential = await createUserWithEmailAndPassword(auth, Email, psw);
         if (userCredential) {
             //Signed in automatically
-            console.log(userCredential.user);
             const user = userCredential.user;
 
             //add the grad in users.
@@ -318,7 +356,7 @@ function populateGradTable() {
             var divClss = document.createElement('div');
             divClss.classList.add("flex", "items-center", "text-sm");
             var divImg = document.createElement('div');
-            divImg.classList.add("relative", "hidden", "w-8", "h-8", "mr-3", "rounded-full", "md:block");
+            divImg.classList.add("relative", "hidden", "w-12", "h-12", "mr-3", "rounded-full", "md:block");
             var gradprofpic = document.createElement('img');
             gradprofpic.classList.add("object-cover", "w-full", "h-full", "rounded-full");
             var divLast = document.createElement('div');
@@ -327,7 +365,7 @@ function populateGradTable() {
             //name of graduate
             var divNameNprofes = document.createElement('div');
             var paragraph1 = document.createElement('p');
-            paragraph1.classList.add("font-semibold");
+            paragraph1.classList.add("font-semibold", "mb-0");
             var paragraph1Text = document.createTextNode(`${Name}`);
             paragraph1.appendChild(paragraph1Text);
             //graduate profession
@@ -403,7 +441,8 @@ function populateGradTable() {
 
             var btnInterview = document.createElement("button");
             btnInterview.classList.add("px-4", "py-2", "text-sm", "font-medium", "leading-5", "text-white", "transition-colors", "duration-150", "bg-purple-600", "border", "border-transparent", "rounded-lg", "active:bg-purple-600", "hover:bg-purple-700", "focus:outline-none", "focus:shadow-outline-purple");
-
+            btnInterview.setAttribute('data-toggle', "modal");
+            btnInterview.setAttribute('data-target', "#exampleModalCenter");
             var btnInterviewNode = document.createTextNode('Interviews');
             btnInterview.appendChild(btnInterviewNode);
 
@@ -427,40 +466,48 @@ function populateGradTable() {
     // tblUserElement.appendChild(tbodyUserElement);
 }
 
-//show all qualifications available for user to pick from.
 
 //get profile picture.
 function getProfilepic() {
-    //get current user
-    const userId = auth.currentUser.uid;
-    //get file name from database, not storage
-    const userprofile = ref(db, '/profileImg/' + userId + '/');
-    onValue(userprofile, (snapshot) => {
-        var userImgName = snapshot.val();
-        console.log(userImgName);
-        // Create a reference from an HTTPS URL
+    onAuthStateChanged(auth, user => {
+        if (user != null) {
+            //get current user
+            const userId = user.uid;
+            //get file name from database, not storage
+            const userprofile = ref(db, '/profileImg/' + userId + '/');
+            onValue(userprofile, (snapshot) => {
+                var userImgName = snapshot.val();
+                // Create a reference from an HTTPS URL
 
-        // Note that in the URL, characters are URL escaped!
+                // Note that in the URL, characters are URL escaped!
 
-        const imgpathReference = sRef(storage, '/profileImages/' + userId + '/' + userImgName);
+                const imgpathReference = sRef(storage, '/profileImages/' + userId + '/' + userImgName);
 
-        getDownloadURL(imgpathReference)
-            .then((url) => {
-                // //display image
-                if (window.location.pathname != '/pages/editProfile' && window.location.pathname != '/signup')
-                    img_outputDisplay.setAttribute("src", url);
-            })
+                getDownloadURL(imgpathReference)
+                    .then((url) => {
+                        // //display image
+                        if (window.location.pathname != '/pages/editProfile' && window.location.pathname != '/signup') {
+                            img_outputDisplay.setAttribute("src", url);
+                            if (window.location.pathname == '/admin/public/admin' || window.location.pathname == '/admin/public/users' || window.location.pathname == '/admin/public/clients') {
+                                document.getElementById('output2').setAttribute('src', url);
+                            }
+                        }
 
-    }, {
-        onlyOnce: true,
+
+                    })
+
+            }, {
+                onlyOnce: true,
+            });
+        }
     });
+
 
 }
 
 //get profile details
 function getProfile() {
     const userId = auth.currentUser.uid;
-    console.log(userId);
     const usersRef = ref(db, '/profile/' + userId + '/');
 
     onValue(usersRef, (snapshot) => {
@@ -489,7 +536,6 @@ function getProfile() {
 //-------- START UPDATE GRADUATE PROFILE FUNCTION ------------------------//
 function updateGrad() {
 
-
     //enter updated values
 
     fullname = document.getElementById("fullname").value;
@@ -511,6 +557,7 @@ function updateGrad() {
 
     //get currently signned in user.
     var userId = auth.currentUser.uid;
+    var userEmail = auth.currentUser.email;
 
     let updates = {};
     //update userid profile to Firebase Database
@@ -524,6 +571,7 @@ function updateGrad() {
         province: province,
         DOB: DOB,
         course: course,
+        email: userEmail,
         qualification: qualification,
         qName: Qname,
         LinkedIn: LinkedIn,
@@ -785,6 +833,7 @@ if (profileLogoutLink) {
 
 if (btnSignout) {
     btnSignout.addEventListener('click', logout, false);
+
 }
 
 

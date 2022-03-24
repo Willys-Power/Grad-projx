@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/css/dataTables.bootstrap4.min.css " rel=stylesheet>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./content/css/popover.css">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -347,38 +348,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="gradBodyT" class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                                    <tr class="text-gray-700 dark:text-gray-400">
-                                        <td class="px-4 py-3">
-                                            <div class="flex items-center text-sm">
-                                                <!-- Avatar with inset shadow -->
-                                                <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                                    <img class="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
-                                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                                                </div>
-                                                <div>
-                                                    <p class="font-semibold">Michael Scofield</p>
-                                                    <p class="text-xs text-gray-600 dark:text-gray-400">
-                                                        DevOps Engineer
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                            Software Engineering
-                                        </td>
-                                        <td class="px-4 py-3 text-xs">
-                                            MS Computer Science
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                                            Open
-                                          </span>
-                                            <button onclick="gradquickview()" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                                            Interview
-                                          </button>
-                                        </td>
-                                    </tr>
-
 
                                 </tbody>
                             </table>
@@ -393,32 +362,6 @@
         </div>
     </div>
 
-    <div id="popup">
-        <div class="relative hidden w-12 h-12 mr-3 rounded-full md:block">
-            <img class="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
-            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-        </div>
-        <br>
-        <hr>
-        <div>
-            <p class="font-semibold">Siyamthanda Jantjies</p>
-
-        </div>
-
-
-        <br>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-            Full Stack Developer
-        </p>
-        <hr>
-        <br>
-        <p class="text-sm text-gray-600 dark:text-gray-400">AWS Cloud</p>
-        <br>
-        <br>
-        <button onclick="gradquickview()" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-        Close
-      </button>
-    </div>
 
 
 
@@ -427,9 +370,113 @@
             $('#graduatesTable').DataTable();
         });
     </script> -->
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Graduate Overview</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Admin</h4>
+                                <form class="form-sample">
+                                    <p class="card-description">
+                                        Cover info
+                                    </p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label" id="firstname">First Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Last Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="lastname" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Gender</label>
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="gender">
+<option>Male</option>
+<option>Female</option>
+</select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <div class="col-sm-9">
+                                                    <select class="form-control" id="Role">
+                              <option selected="selected">B.I</option>
+                              <option selected="selected">Cloud</option>
+                              <option selected="selected">SDLC</option>                                                            
+                              </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+
+                                                <div class="form-group row">
+                                                    <label class="col-sm-3 col-form-label" id="position">Position</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Add potencial</button>
+                    <button type="button" class="btn btn-primary">Ask to interview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script>
+        $('#exampleModalCenter').on('shown.bs.modal', function() {
+            $('#myInput').trigger('focus')
+        })
+    </script>
     <!-- <script type="module" src="./assets/js/coolstuff.js"></script> -->
     <script src="./dist/bundle.js"></script>
 </body>
