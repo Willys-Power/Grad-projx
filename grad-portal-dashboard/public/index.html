@@ -8,20 +8,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/css/dataTables.bootstrap4.min.css " rel=stylesheet>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./content/css/popover.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="./assets/js/init-alpine.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vquery/5.0.1/v.min.js" integrity="sha512-JTaEfpc0EjojckV4ObScEHC2yHkDKUXEC5xO4Yb8upLDUR/2clSQKloqw6Ocp66a7dW689eKo0b/KC9C+T6osg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 
-<body>
+<body class="">
     <div id="divLoginError" hidden="true" class="alert alert-danger" class="close" data-dismiss="alert" aria-label="Close">
         <div id="loginError_message" hidden="true" class="alert-link">Error message</div>
     </div>
@@ -376,7 +377,7 @@
 </button> -->
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -389,96 +390,72 @@
                     <div class="col-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Admin</h4>
+                                <h4 class="card-title">Graduate name</h4>
                                 <form class="form-sample">
                                     <p class="card-description">
-                                        Cover info
-                                    </p>
+                                        Profession </p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label" id="firstname">First Name</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" />
-                                                </div>
+                                                <label class="col-sm-8 col-form-label" id="firstname">Academic Focus</label>
+                                                <p> name of academic focus</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Last Name</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="lastname" />
-                                                </div>
+                                                <label class="col-sm-4 col-form-label">Gender</label>
+                                                <p>male</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Gender</label>
-                                                <div class="col-sm-9">
-                                                    <select class="form-control" id="gender">
-<option>Male</option>
-<option>Female</option>
-</select>
+                                                <label class="col-sm-6 col-form-label">Skills</label>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <p>skill1 lksajdkadl aksd</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p>skill2</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <div class="col-sm-9">
-                                                    <input class="form-control" placeholder="dd/mm/yyyy" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <div class="col-sm-9">
-                                                    <select class="form-control" id="Role">
-                              <option selected="selected">B.I</option>
-                              <option selected="selected">Cloud</option>
-                              <option selected="selected">SDLC</option>                                                            
-                              </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-
-                                                <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label" id="position">Position</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" />
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <p>skill3</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p>skill4</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-9">
+                                                        GitHub & linkedin links
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                 </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Add potencial</button>
-                    <button type="button" class="btn btn-primary">Ask to interview</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Add potencial</button>
+                        <button type="button" class="btn btn-primary">Ask to interview</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="./dist/bundle.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        $('#exampleModalCenter').on('shown.bs.modal', function() {
-            $('#myInput').trigger('focus')
-        })
-    </script>
-    <!-- <script type="module" src="./assets/js/coolstuff.js"></script> -->
-    <script src="./dist/bundle.js"></script>
 </body>
 
 </html>
