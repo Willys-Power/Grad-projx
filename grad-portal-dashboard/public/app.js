@@ -187,7 +187,7 @@ const signup = async() => {
     var checkbox = checkboxPOPI.value;
 
 
-    //make user sign in with email and password.
+    //make user sign up with email and password.
     try {
 
         const userCredential = await createUserWithEmailAndPassword(auth, Email, psw);
@@ -533,7 +533,7 @@ function getProfile() {
 
 
 
-//-------- START UPDATE GRADUATE PROFILE FUNCTION ------------------------//
+//-------- START UPDATE User(ADMIN - CLIENT - GRADUATE) PROFILE FUNCTION ------------------------//
 function updateGrad() {
 
     //enter updated values
@@ -588,7 +588,7 @@ function updateGrad() {
     return update(ref(db), updates);
 }
 
-//-------- END UPDATE GRADUATE PROFILE FUNCTION ------------------------//
+//-------- END UPDATE User(ADMIN - CLIENT - GRADUATE) PROFILE FUNCTION ------------------------//
 
 //update graduate group object
 function updateGradGroup() {
@@ -639,10 +639,9 @@ function updateAdminGroup() {
     const numofAdmins = ref(db, 'groups/group1/no_of_users');
     onValue(numofAdmins, (snapshot) => {
         var data = snapshot.val();
-        console.log(data);
 
         data += 1;
-        console.log(data);
+
         updates['/groups/group1/no_of_users/'] = data;
 
         //add userID to new graduate member list.
@@ -650,7 +649,7 @@ function updateAdminGroup() {
         //updated child node.
 
 
-        alert('Group updated successfully');
+        console.log('Group updated successfully' + `${data}`);
         update(ref(db), updates);
 
     }, {
@@ -694,9 +693,7 @@ function updateClientGroup() {
 
 // -------- END UPDATE FUNCTIONS --------------------------------//
 
-
-
-
+//------------------------ PASSWORD FUNCTIONS ----------------------------------------------------//
 function forgotPassword() {
     forgotPassEmail = document.getElementById("forgotPassEmail").value;
 
@@ -718,8 +715,6 @@ function forgotPassword() {
         })
 }
 
-//Gradupdate.addEventListener("click", updateGrad);
-//generate password
 function generatePassword() {
     var length = 8,
         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
@@ -729,6 +724,77 @@ function generatePassword() {
     }
     return retVal;
 }
+
+//------------------------ PASSWORD FUNCTIONS ------------------------------ //
+
+//------------------------- APPENDING NEW USER & ROLE ------------------------------ //
+//Add new Admin user
+const addNewAdmin = async() => {
+    const secondaryApp = initializeApp(firebaseApp);
+    // const secondAuth = getAuth(secondaryApp);
+
+
+    var adminName = document.getElementById("firstname").value;
+    var adminLast = document.getElementById("lastname").value;
+    var adminEmail = document.getElementById("email").value;
+    var adminDOB = document.getElementById("DOB").value;
+    var adminGender = document.getElementById("gender").value;
+    var adminTitle = document.getElementById("position").value;
+
+    var fullname = adminName + " " + adminLast;
+    var passwrd = generatePassword();
+
+    //add to database
+    //make user sign in with email and password.
+    try {
+
+        const userCredential = await createUserWithEmailAndPassword(auth, adminEmail, passwrd);
+        if (userCredential) {
+            //Signed in automatically
+            const user = userCredential.user;
+
+            //add the grad in users.
+            set(ref(db, 'users/admin' + user.uid), {
+                fullname: fullname,
+                email: adminEmail,
+                psw: passwrd,
+                gender: adminGender,
+                dob: adminDOB,
+                title: adminTitle,
+                create_at: (new Date()).toDateString(),
+                groups: {
+                    group1: true,
+                }
+
+            });
+
+
+            //update the graduate group members.
+            updateAdminGroup();
+
+
+            console.log("logged in!");
+            //print a nice message to notify user of created account.
+
+
+        }
+
+    } catch (error) {
+        console.log(error);
+        showSignupError(error);
+
+    }
+
+
+
+
+
+}
+var btnAddAdmin = document.getElementById('Add-admin');
+if (btnAddAdmin) {
+    btnAddAdmin.addEventListener('click', addNewAdmin, false);
+}
+
 //Add new client
 let clientPassword = generatePassword();
 
@@ -767,6 +833,8 @@ function addNewClient() {
     })
     alert("Client Added Successfully!")
 }
+
+
 
 
 //------------- START VALIDATION FUNTIONS ---------//
@@ -844,3 +912,41 @@ if (menu) {
 
 // ----- END EVENT HANDLERS -----//
 //
+
+//quick view/ overview of user
+function viewGraduate() {
+
+
+
+    // User is signed in
+    const usersRef = ref(db, 'profile/' + user.uid);
+    onValue(usersRef, (snapshot) => {
+
+        var gradProfession = document.getElementById("profession");
+        var viewAcademicFocus = document.getElementById("viewAcademicFocus");
+        var viewGender = document.getElementById("viewGender");
+        var viewSkillsList = document.getElementById("skills");
+
+
+        // const childData = childSnapshot.val();
+        // ...
+        var profession = snapshot.val().profession;
+        var academicFocus = snapshot.val().qName;
+        var gender = snapshot.val().gender;
+
+
+
+        gradProfession.innerHTML = profession;
+        viewAcademicFocus.innerHTML = academicFocus;
+        viewGender.innerHTML = gender;
+
+
+
+    });
+
+
+
+
+
+
+}

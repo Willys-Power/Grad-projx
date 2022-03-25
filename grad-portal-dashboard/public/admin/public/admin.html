@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="vendors/typicons/typicons.css">
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- endinject -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- endinject -->
@@ -388,116 +389,6 @@
                                 </div>
                                 <div class="tab-content tab-content-basic p-2 m-1" style="background-color: inherit;">
                                     <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-                                        <!-- <div class="row">
-                      <div class="col-sm-12">
-                        <div class="statistics-details d-flex align-items-center justify-content-between p-2" style="background-color: beige;">
-                          <div>
-                            <p class="statistics-title">Graduates</p>
-                            <h3 class="rate-percentage">63</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
-                          </div>
-                          <div>
-                            <p class="statistics-title">Admins</p>
-                            <h3 class="rate-percentage">11</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
-                          </div>
-                          <div>
-                            <p class="statistics-title">Open For Offer</p>
-                            <h3 class="rate-percentage">31</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+22%</span></p>
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Accepted Offers</p>
-                            <h3 class="rate-percentage">42</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+6.5%</span></p>
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Students</p>
-                            <h3 class="rate-percentage">132</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-14.5%</span></p>
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Avg. Time on Site</p>
-                            <h3 class="rate-percentage">2m:35s</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>  -->
-                                        <!-- <div class="row">
-                      <div class="col-lg-8 d-flex flex-column">
-                        <div class="row flex-grow">
-                          <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                   <h4 class="card-title card-title-dash">Performance Line Chart</h4>
-                                   <h5 class="card-subtitle card-subtitle-dash">Lorem Ipsum is simply dummy text of the printing</h5>
-                                  </div>
-                                  <div id="performance-line-legend"></div>
-                                </div>
-                                <div class="chartjs-wrapper mt-5">
-                                  <canvas id="performaneLine"></canvas>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 d-flex flex-column">
-                        <div class="row flex-grow">
-                          <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                            <div class="card bg-primary card-rounded">
-                              <div class="card-body pb-0">
-                                <h4 class="card-title card-title-dash text-white mb-4">Status Summary</h4>
-                                <div class="row">
-                                  <div class="col-sm-4">
-                                    <p class="status-summary-ight-white mb-1">Closed Value</p>
-                                    <h2 class="text-info">357</h2>
-                                  </div>
-                                  <div class="col-sm-8">
-                                    <div class="status-summary-chart-wrapper pb-4">
-                                      <canvas id="status-summary"></canvas>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="row">
-                                  <div class="col-sm-6">
-                                    <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
-                                      <div class="circle-progress-width">
-                                        <div id="totalVisitors" class="progressbar-js-circle pr-2"></div>
-                                      </div>
-                                      <div>
-                                        <p class="text-small mb-2">Total Visitors</p>
-                                        <h4 class="mb-0 fw-bold">26.80%</h4>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-sm-6">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                      <div class="circle-progress-width">
-                                        <div id="visitperday" class="progressbar-js-circle pr-2"></div>
-                                      </div>
-                                      <div>
-                                        <p class="text-small mb-2">Visits per day</p>
-                                        <h4 class="mb-0 fw-bold">9065</h4>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
                                         <div class="row">
                                             <div class="col-lg-12 d-flex flex-column">
 
@@ -546,6 +437,12 @@
                                                                                 </div>
                                                                                 <!--------------- Register Administrator--------------------->
                                                                                 <div class="modal-body">
+                                                                                    <div id="divLoginError" hidden="true" class="alert alert-danger" class="close" data-dismiss="alert" aria-label="Close">
+                                                                                        <div id="loginError_message" class="alert-link">Error message</div>
+                                                                                    </div>
+                                                                                    <div id="divAuthState" class="alert alert-success" hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                                                                                        <div id="AuthState_msg" class="alert-link">state message</div>
+                                                                                    </div>
                                                                                     <div class="col-12 grid-margin">
                                                                                         <div class="card">
                                                                                             <div class="card-body">
@@ -557,9 +454,27 @@
                                                                                                     <div class="row">
                                                                                                         <div class="col-md-6">
                                                                                                             <div class="form-group row">
-                                                                                                                <label class="col-sm-3 col-form-label" id="firstname">First Name</label>
+                                                                                                                <label class="col-sm-3 col-form-label">Email</label>
                                                                                                                 <div class="col-sm-9">
-                                                                                                                    <input type="text" class="form-control" />
+                                                                                                                    <input type="email" id="email" class="form-control" />
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group row">
+                                                                                                                <label class="col-sm-3 col-form-label">Position</label>
+                                                                                                                <div class="col-sm-9">
+                                                                                                                    <input type="text" id="position" class="form-control" />
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group row">
+                                                                                                                <label class="col-sm-3 col-form-label">First Name</label>
+                                                                                                                <div class="col-sm-9">
+                                                                                                                    <input type="text" id="firstname" class="form-control" />
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -586,100 +501,14 @@
                                                                                                         </div>
                                                                                                         <div class="col-md-6">
                                                                                                             <div class="form-group row">
-                                                                                                                <label class="col-sm-3 col-form-label" id="DOB">Date of Birth</label>
+                                                                                                                <label class="col-sm-3 col-form-label">Date of Birth</label>
                                                                                                                 <div class="col-sm-9">
-                                                                                                                    <input class="form-control" placeholder="dd/mm/yyyy" />
+                                                                                                                    <input type="date" class="form-control" id="DOB" placeholder="dd/mm/yyyy" />
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
-                                                                                                    <div class="row">
-                                                                                                        <div class="col-md-6">
-                                                                                                            <div class="form-group row">
-                                                                                                                <label class="col-sm-3 col-form-label">Role</label>
-                                                                                                                <div class="col-sm-9">
-                                                                                                                    <select class="form-control" id="Role">
-                                                            <option>Super User</option>
-                                                            <option>Administrator</option>
-                                                            <option>General</option>                                                            
-                                                          </select>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <div class="col-md-6">
-                                                                                                            <div class="form-group row">
 
-                                                                                                                <div class="form-group row">
-                                                                                                                    <label class="col-sm-3 col-form-label" id="position">Position</label>
-                                                                                                                    <div class="col-sm-9">
-                                                                                                                        <input class="form-control" />
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <!-- <p class="card-description">
-                                                    Address
-                                                  </p> -->
-                                                                                                    <!-- <div class="row">
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Address 1</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">State</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div> -->
-                                                                                                    <!-- <div class="row">
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Address 2</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Postcode</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div> -->
-                                                                                                    <!-- <div class="row">
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">City</label>
-                                                        <div class="col-sm-9">
-                                                          <input type="text" class="form-control" />
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                      <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Country</label>
-                                                        <div class="col-sm-9">
-                                                          <select class="form-control">
-                                                            <option>South Africa</option>
-                                                            <option>Botswana</option>
-                                                            <option>Russia</option>
-                                                            <option>USA</option>
-                                                          </select>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div> -->
                                                                                                 </form>
                                                                                             </div>
                                                                                         </div>
@@ -687,16 +516,11 @@
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                    <button type="button" class="btn btn-primary" id="Add-admin">Save changes</button>
+                                                                                    <button type="button" class="btn btn-primary" id="Add-admin">Add New Admin</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
-
-
-
-
 
 
                                                                 </div>
@@ -711,8 +535,7 @@
                                                                                     </div>
                                                                                 </th>
                                                                                 <th>Names</th>
-                                                                                <th>Tittle</th>
-
+                                                                                <th>Title</th>
                                                                                 <th>Status</th>
                                                                             </tr>
                                                                         </thead>
