@@ -87,28 +87,26 @@ var fullname, email, gender, password, confirmPassword, address, country, city, 
     checkboxPOPI, profession;
 
 
-const Gradupdatebtn = document.getElementById("save");
 
-fullname = document.getElementById("fullname");
-email = document.getElementById("email");
-gender = document.getElementById("gender");
+
+
 // address = document.getElementById("address");
-country = document.getElementById("country");
-profession = document.getElementById("profession");
-city = document.getElementById("city");
-province = document.getElementById("province");
-DOB = document.getElementById("DOB");
-skills = document.getElementById("skills");
-qualification = document.getElementById("qualification");
-password = document.getElementById("psw");
-confirmPassword = document.getElementById("confirmPsw");
-checkboxPOPI = document.getElementById("popiACTchkbox");
+// country = document.getElementById("country");
+// profession = document.getElementById("profession");
+// city = document.getElementById("city");
+// province = document.getElementById("province");
+// DOB = document.getElementById("DOB");
+// skills = document.getElementById("skills");
+// qualification = document.getElementById("qualification");
+// password = document.getElementById("psw");
+// confirmPassword = document.getElementById("confirmPsw");
+
 
 // skills = Array.from(document.getElementById("skills").selectedOptions).map(o => o.value);
-LinkedIn = document.getElementById("LinkedIn");
-github = document.getElementById("Github");
-WTR = document.getElementById("WTR");
-Qname = document.getElementById("qualificationName");
+// LinkedIn = document.getElementById("LinkedIn");
+// github = document.getElementById("Github");
+// WTR = document.getElementById("WTR");
+// Qname = document.getElementById("qualificationName");
 var fileName = '';
 
 
@@ -179,6 +177,10 @@ if (window.location.pathname == '/admin/public/admin' || window.location.pathnam
 
 //SIGN-UP A GRADUATE USER TYPE FUNCTION
 const signup = async() => {
+    fullname = document.getElementById("fullname");
+    email = document.getElementById("email");
+    password = document.getElementById("psw");
+    checkboxPOPI = document.getElementById("popiACTchkbox");
 
     //get all the input fields
     var fullName = fullname.value;
@@ -243,7 +245,28 @@ const login = async() => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, signInEmail, signInpass);
         console.log(userCredential.user);
-        window.location = "index";
+
+        //control user access content.
+        const userID = userCredential.user.uid;
+
+        const userprofile = ref(db, '/users/' + userID + '/groups/');
+        onValue(userprofile, (snapshot) => {
+            var userGroup = snapshot.val();
+            console.log(userGroup);
+            if (userGroup) {
+                if (userGroup.group1) {
+                    window.location = "/admin/public/";
+                } else if (userGroup.group2) {
+
+                    window.location = "home";
+                } else if (userGroup.group3) {
+                    window.location = "/pages/profile";
+                }
+            } else {
+                console.log("UserGroup is Null");
+            }
+        });
+
 
     } catch (error) {
         console.log(error);
@@ -885,7 +908,7 @@ if (btnLogin) {
 // if (indexLogoutLink) {
 //     indexLogoutLink.addEventListener('click', logout, false);
 // }
-
+const Gradupdatebtn = document.getElementById("save");
 if (Gradupdatebtn) {
     Gradupdatebtn.addEventListener('click', updateGrad, false);
 }
