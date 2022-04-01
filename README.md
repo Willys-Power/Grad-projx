@@ -26,5 +26,5 @@ Web Application system for Companies to easily find potential graduate candidate
     
 ### HTML5-CSS3-JS Front-end
 
-\\*node_modules/.bin/webpack --entry ./public/app.js -o ./public/dist (monitor&management) 
+<!----node_modules/.bin/webpack --entry ./public/app.js -o ./public/dist (monitor&management) --->
 
